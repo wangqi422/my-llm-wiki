@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html><head><style>
+
+html { background: #000; }
+body {
+  width: 720pt; height: 405pt; margin: 0; padding: 0;
+  font-family: Arial, sans-serif;
+  display: flex; flex-direction: column;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+}
+.top-bar { width: 100%; height: 3pt; background: #E33737; flex-shrink: 0; }
+.header { padding: 16pt 30pt 8pt 30pt; flex-shrink: 0; }
+.content { padding: 0 30pt 16pt 30pt; flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+.two-col { display: flex; gap: 16pt; flex: 1; }
+.col { flex: 1; display: flex; flex-direction: column; }
+.col-60 { flex: 6; display: flex; flex-direction: column; }
+.col-40 { flex: 4; display: flex; flex-direction: column; }
+h1 { color: #FFFFFF; font-size: 22pt; margin: 0 0 4pt 0; font-weight: bold; }
+h2 { color: #E33737; font-size: 13pt; margin: 0 0 6pt 0; font-weight: bold; text-transform: uppercase; letter-spacing: 1pt; }
+h3 { color: #E33737; font-size: 11pt; margin: 6pt 0 4pt 0; }
+p { color: #CCCCCC; font-size: 9pt; margin: 2pt 0; line-height: 1.4; }
+.small { font-size: 7.5pt; color: #999999; }
+.highlight { color: #E33737; font-weight: bold; }
+.white { color: #FFFFFF; }
+.tag { display: inline-block; background: #E33737; color: white; padding: 2pt 6pt; font-size: 7pt; margin: 1pt; border-radius: 2pt; }
+.card { background: rgba(255,255,255,0.06); border-left: 2pt solid #E33737; padding: 6pt 8pt; margin: 3pt 0; border-radius: 0 4pt 4pt 0; }
+.card-dark { background: rgba(255,255,255,0.03); padding: 6pt 8pt; margin: 3pt 0; border-radius: 4pt; border: 1pt solid rgba(255,255,255,0.1); }
+.img-container { border-radius: 4pt; overflow: hidden; flex: 1; display: flex; align-items: center; justify-content: center; }
+.img-container img { width: 100%; height: 100%; object-fit: cover; border-radius: 4pt; }
+.page-num { position: absolute; bottom: 8pt; right: 16pt; color: #555; font-size: 7pt; }
+.section-num { color: #E33737; font-size: 48pt; font-weight: bold; opacity: 0.15; position: absolute; right: 30pt; top: 10pt; }
+
+
+</style></head>
+<body style="background-image: url('bg-content.png');">
+
+<div class="top-bar"></div>
+<div class="header"><h1>全球影视 VFX 四巨头</h1><h2>The Big Four VFX Studios</h2></div>
+<div class="content">
+  <div style="display: flex; gap: 8pt; flex-wrap: wrap;">
+    <div class="card" style="flex: 1; min-width: 145pt; padding: 8pt 10pt;">
+      <p style="color: #E33737; font-weight: bold; font-size: 10pt; margin: 0;">ILM 工业光魔</p>
+      <p class="small">美国旧金山 · 1975</p>
+      <p class="small"><b style="color:#fff;">星球大战 · 侏罗纪公园 · 复仇者联盟</b></p>
+      <p class="small">CG先驱 · StageCraft虚拟制作(LED Volume)</p>
+    </div>
+    <div class="card" style="flex: 1; min-width: 145pt; padding: 8pt 10pt;">
+      <p style="color: #E33737; font-weight: bold; font-size: 10pt; margin: 0;">Weta Digital 维塔数码</p>
+      <p class="small">新西兰惠灵顿 · 1993</p>
+      <p class="small"><b style="color:#fff;">指环王 · 阿凡达 · 猩球崛起</b></p>
+      <p class="small">虚拟角色 · 面部捕捉 · Massive群集</p>
+    </div>
+    <div class="card" style="flex: 1; min-width: 145pt; padding: 8pt 10pt;">
+      <p style="color: #E33737; font-weight: bold; font-size: 10pt; margin: 0;">DNEG</p>
+      <p class="small">英国伦敦 · 1998</p>
+      <p class="small"><b style="color:#fff;">星际穿越 · 沙丘 · 信条 · 奥本海默</b></p>
+      <p class="small">太空/物理模拟 · CG环境 · 大规模破坏</p>
+    </div>
+    <div class="card" style="flex: 1; min-width: 145pt; padding: 8pt 10pt;">
+      <p style="color: #E33737; font-weight: bold; font-size: 10pt; margin: 0;">Framestore</p>
+      <p class="small">英国伦敦 · 1986</p>
+      <p class="small"><b style="color:#fff;">地心引力 · 帕丁顿熊 · 银河护卫队</b></p>
+      <p class="small">CG角色 · 环境制作</p>
+    </div>
+  </div>
+  <div class="card-dark" style="margin-top: 6pt;">
+    <p class="small"><b style="color:#E33737;">其他知名：</b>MPC (COD真人广告VFX) · 数字王国 · 索尼SPI · BASE FX (流浪地球) · 原力动画 (灵笼)</p>
+  </div>
+</div>
+<div class="page-num"><p>21</p></div>
+</body></html>

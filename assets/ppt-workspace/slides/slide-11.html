@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html><head><style>
+
+html { background: #000; }
+body {
+  width: 720pt; height: 405pt; margin: 0; padding: 0;
+  font-family: Arial, sans-serif;
+  display: flex; flex-direction: column;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+}
+.top-bar { width: 100%; height: 3pt; background: #E33737; flex-shrink: 0; }
+.header { padding: 16pt 30pt 8pt 30pt; flex-shrink: 0; }
+.content { padding: 0 30pt 16pt 30pt; flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+.two-col { display: flex; gap: 16pt; flex: 1; }
+.col { flex: 1; display: flex; flex-direction: column; }
+.col-60 { flex: 6; display: flex; flex-direction: column; }
+.col-40 { flex: 4; display: flex; flex-direction: column; }
+h1 { color: #FFFFFF; font-size: 22pt; margin: 0 0 4pt 0; font-weight: bold; }
+h2 { color: #E33737; font-size: 13pt; margin: 0 0 6pt 0; font-weight: bold; text-transform: uppercase; letter-spacing: 1pt; }
+h3 { color: #E33737; font-size: 11pt; margin: 6pt 0 4pt 0; }
+p { color: #CCCCCC; font-size: 9pt; margin: 2pt 0; line-height: 1.4; }
+.small { font-size: 7.5pt; color: #999999; }
+.highlight { color: #E33737; font-weight: bold; }
+.white { color: #FFFFFF; }
+.tag { display: inline-block; background: #E33737; color: white; padding: 2pt 6pt; font-size: 7pt; margin: 1pt; border-radius: 2pt; }
+.card { background: rgba(255,255,255,0.06); border-left: 2pt solid #E33737; padding: 6pt 8pt; margin: 3pt 0; border-radius: 0 4pt 4pt 0; }
+.card-dark { background: rgba(255,255,255,0.03); padding: 6pt 8pt; margin: 3pt 0; border-radius: 4pt; border: 1pt solid rgba(255,255,255,0.1); }
+.img-container { border-radius: 4pt; overflow: hidden; flex: 1; display: flex; align-items: center; justify-content: center; }
+.img-container img { width: 100%; height: 100%; object-fit: cover; border-radius: 4pt; }
+.page-num { position: absolute; bottom: 8pt; right: 16pt; color: #555; font-size: 7pt; }
+.section-num { color: #E33737; font-size: 48pt; font-weight: bold; opacity: 0.15; position: absolute; right: 30pt; top: 10pt; }
+
+
+</style></head>
+<body style="background-image: url('bg-content.png');">
+
+<div class="top-bar"></div>
+<div class="header"><h1>火焰与烟雾分类</h1><h2>1.3 Fire & Smoke Types</h2></div>
+<div class="content">
+  <div class="two-col" style="gap: 12pt;">
+    <div class="col">
+      <h3>7 种火焰类型</h3>
+      <div class="card-dark" style="padding: 3pt 6pt; margin: 2pt 0;">
+        <p><b style="color:#FF6B35;">持续燃烧</b> — Flipbook+动态光源+烟雾</p>
+      </div>
+      <div class="card-dark" style="padding: 3pt 6pt; margin: 2pt 0;">
+        <p><b style="color:#FF6B35;">油类火焰</b> — 高亮度粒子+黑色烟雾层</p>
+      </div>
+      <div class="card-dark" style="padding: 3pt 6pt; margin: 2pt 0;">
+        <p><b style="color:#FF6B35;">白磷燃烧</b> — 过曝发光+白色体积烟雾</p>
+      </div>
+      <div class="card-dark" style="padding: 3pt 6pt; margin: 2pt 0;">
+        <p><b style="color:#FF6B35;">燃烧蔓延</b> — 程序化扩散+烧焦Decal</p>
+      </div>
+      <div class="card-dark" style="padding: 3pt 6pt; margin: 2pt 0;">
+        <p><b style="color:#FF6B35;">爆燃</b> — 蓝→橙快速闪烁粒子</p>
+      </div>
+      <div class="card-dark" style="padding: 3pt 6pt; margin: 2pt 0;">
+        <p><b style="color:#FF6B35;">火焰喷射</b> — 定向粒子+沿途动态光源</p>
+      </div>
+    </div>
+    <div class="col">
+      <h3>7 种烟雾类型</h3>
+      <div class="card-dark" style="padding: 3pt 6pt; margin: 2pt 0;">
+        <p><b style="color:#888;">爆炸黑烟</b> — 深黑·极高密度·快速翻滚</p>
+      </div>
+      <div class="card-dark" style="padding: 3pt 6pt; margin: 2pt 0;">
+        <p><b style="color:#888;">硝烟</b> — 浅灰·低密度·缓慢飘散</p>
+      </div>
+      <div class="card-dark" style="padding: 3pt 6pt; margin: 2pt 0;">
+        <p><b style="color:#888;">烟雾弹</b> — 白/彩色·快速大面积扩散</p>
+      </div>
+      <div class="card-dark" style="padding: 3pt 6pt; margin: 2pt 0;">
+        <p><b style="color:#888;">废墟粉尘</b> — 灰白·冲击扩散→沉降</p>
+      </div>
+      <div class="card-dark" style="padding: 3pt 6pt; margin: 2pt 0;">
+        <p><b style="color:#888;">信号烟</b> — 红/绿/黄/紫·上升飘散</p>
+      </div>
+      <div class="card-dark" style="padding: 3pt 6pt; margin: 2pt 0;">
+        <p><b style="color:#888;">引擎排气</b> — 灰黑·从排气口持续喷出</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="page-num"><p>11</p></div>
+</body></html>

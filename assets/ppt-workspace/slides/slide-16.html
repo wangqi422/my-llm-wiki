@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html><head><style>
+
+html { background: #000; }
+body {
+  width: 720pt; height: 405pt; margin: 0; padding: 0;
+  font-family: Arial, sans-serif;
+  display: flex; flex-direction: column;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+}
+.top-bar { width: 100%; height: 3pt; background: #E33737; flex-shrink: 0; }
+.header { padding: 16pt 30pt 8pt 30pt; flex-shrink: 0; }
+.content { padding: 0 30pt 16pt 30pt; flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+.two-col { display: flex; gap: 16pt; flex: 1; }
+.col { flex: 1; display: flex; flex-direction: column; }
+.col-60 { flex: 6; display: flex; flex-direction: column; }
+.col-40 { flex: 4; display: flex; flex-direction: column; }
+h1 { color: #FFFFFF; font-size: 22pt; margin: 0 0 4pt 0; font-weight: bold; }
+h2 { color: #E33737; font-size: 13pt; margin: 0 0 6pt 0; font-weight: bold; text-transform: uppercase; letter-spacing: 1pt; }
+h3 { color: #E33737; font-size: 11pt; margin: 6pt 0 4pt 0; }
+p { color: #CCCCCC; font-size: 9pt; margin: 2pt 0; line-height: 1.4; }
+.small { font-size: 7.5pt; color: #999999; }
+.highlight { color: #E33737; font-weight: bold; }
+.white { color: #FFFFFF; }
+.tag { display: inline-block; background: #E33737; color: white; padding: 2pt 6pt; font-size: 7pt; margin: 1pt; border-radius: 2pt; }
+.card { background: rgba(255,255,255,0.06); border-left: 2pt solid #E33737; padding: 6pt 8pt; margin: 3pt 0; border-radius: 0 4pt 4pt 0; }
+.card-dark { background: rgba(255,255,255,0.03); padding: 6pt 8pt; margin: 3pt 0; border-radius: 4pt; border: 1pt solid rgba(255,255,255,0.1); }
+.img-container { border-radius: 4pt; overflow: hidden; flex: 1; display: flex; align-items: center; justify-content: center; }
+.img-container img { width: 100%; height: 100%; object-fit: cover; border-radius: 4pt; }
+.page-num { position: absolute; bottom: 8pt; right: 16pt; color: #555; font-size: 7pt; }
+.section-num { color: #E33737; font-size: 48pt; font-weight: bold; opacity: 0.15; position: absolute; right: 30pt; top: 10pt; }
+
+
+</style></head>
+<body style="background-image: url('bg-content.png');">
+
+<div class="top-bar"></div>
+<div class="header"><h1>枪口焰制作全流程</h1><h2>Muzzle Flash Production Pipeline</h2></div>
+<div class="content">
+  <div style="display: flex; gap: 6pt; flex-wrap: wrap;">
+    <div class="card" style="flex: 1; min-width: 100pt; padding: 6pt 8pt;">
+      <p style="color: #E33737; font-size: 8pt; font-weight: bold;">PHASE 1</p>
+      <p><b style="color:#fff;">参考收集</b></p>
+      <p class="small">实拍高速摄影(1000-10000fps) · ActionVFX素材库 · 不同枪型差异记录</p>
+    </div>
+    <div class="card" style="flex: 1; min-width: 100pt; padding: 6pt 8pt;">
+      <p style="color: #E33737; font-size: 8pt; font-weight: bold;">PHASE 2</p>
+      <p><b style="color:#fff;">概念设计</b></p>
+      <p class="small">2D概念帧 · 时序节奏设计 · 交互光照范围设计</p>
+    </div>
+    <div class="card" style="flex: 1; min-width: 100pt; padding: 6pt 8pt;">
+      <p style="color: #E33737; font-size: 8pt; font-weight: bold;">PHASE 3</p>
+      <p><b style="color:#fff;">3D 制作</b></p>
+      <p class="small">A: Houdini Pyro→VDB · B: 多层粒子系统 · C: Flipbook序列</p>
+    </div>
+    <div class="card" style="flex: 1; min-width: 100pt; padding: 6pt 8pt;">
+      <p style="color: #E33737; font-size: 8pt; font-weight: bold;">PHASE 4</p>
+      <p><b style="color:#fff;">光照交互</b></p>
+      <p class="small">伴随动态点光源 · 颜色随时间插值 · 环境阴影</p>
+    </div>
+    <div class="card" style="flex: 1; min-width: 100pt; padding: 6pt 8pt;">
+      <p style="color: #E33737; font-size: 8pt; font-weight: bold;">PHASE 5</p>
+      <p><b style="color:#fff;">渲染</b></p>
+      <p class="small">Arnold/V-Ray/Redshift · 火焰/烟雾/光照分层</p>
+    </div>
+    <div class="card" style="flex: 1; min-width: 100pt; padding: 6pt 8pt;">
+      <p style="color: #E33737; font-size: 8pt; font-weight: bold;">PHASE 6</p>
+      <p><b style="color:#fff;">合成输出</b></p>
+      <p class="small">Nuke/AE · Bloom/Glow/Lens Flare · 背景融合调色</p>
+    </div>
+  </div>
+  <div class="card-dark" style="margin-top: 8pt;">
+    <p class="small"><b style="color:#E33737;">各公司技术路线：</b>Blur(3dsMax+XSI) · Digic(Maya+Houdini) · Platige(Maya+Houdini+Nuke全流程) · 游戏引擎(GPU粒子+Flipbook)</p>
+  </div>
+</div>
+<div class="page-num"><p>16</p></div>
+</body></html>

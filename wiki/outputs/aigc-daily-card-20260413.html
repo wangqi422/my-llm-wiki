@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIGC 日报 — 2026年4月13日</title>
+<style>
+  :root {
+    --color-black: #000000;
+    --color-near-black: #1d1d1f;
+    --color-light-bg: #f5f5f7;
+    --color-white: #ffffff;
+    --color-blue: #0071e3;
+    --color-bright-blue: #2997ff;
+    --color-text-secondary: rgba(0, 0, 0, 0.56);
+    --color-text-tertiary: rgba(0, 0, 0, 0.36);
+    --color-text-light-secondary: rgba(255, 255, 255, 0.72);
+    --color-text-light-tertiary: rgba(255, 255, 255, 0.48);
+    --color-dark-surface: #161617;
+    --color-dark-card: #1c1c1e;
+    --color-separator-dark: rgba(255, 255, 255, 0.08);
+    --color-red: #ff3b30;
+    --color-orange: #ff9500;
+    --color-green: #34c759;
+    --color-purple: #af52de;
+    --color-cyan: #32d4de;
+    --color-pink: #ff2d55;
+    --shadow-card: 0 3px 30px rgba(0, 0, 0, 0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--color-black);
+    color: var(--color-near-black);
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* === NAV === */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 48px;
+    background: rgba(0, 0, 0, 0.82);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 24px;
+  }
+
+  .nav-inner {
+    max-width: 980px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-brand {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-white);
+    letter-spacing: -0.12px;
+    opacity: 0.92;
+  }
+
+  .nav-date {
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.56);
+    letter-spacing: -0.12px;
+  }
+
+  /* === HERO === */
+  .hero {
+    background: var(--color-black);
+    padding: 80px 24px 72px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -120px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(41, 151, 255, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-eyebrow {
+    font-size: 17px;
+    font-weight: 400;
+    color: var(--color-bright-blue);
+    letter-spacing: -0.374px;
+    line-height: 1.47;
+    margin-bottom: 12px;
+  }
+
+  .hero-title {
+    font-size: 56px;
+    font-weight: 600;
+    color: var(--color-white);
+    letter-spacing: -0.28px;
+    line-height: 1.07;
+    margin-bottom: 16px;
+  }
+
+  .hero-subtitle {
+    font-size: 21px;
+    font-weight: 400;
+    color: var(--color-text-light-secondary);
+    letter-spacing: 0.231px;
+    line-height: 1.38;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 36px;
+  }
+
+  .stat-item {
+    text-align: center;
+  }
+
+  .stat-value {
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--color-white);
+    letter-spacing: -0.2px;
+    line-height: 1.1;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-text-light-tertiary);
+    letter-spacing: 0.02em;
+    margin-top: 4px;
+  }
+
+  /* === TRENDS SECTION === */
+  .trends-section {
+    background: var(--color-light-bg);
+    padding: 80px 24px;
+  }
+
+  .section-inner {
+    max-width: 980px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-text-tertiary);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .section-title {
+    font-size: 40px;
+    font-weight: 600;
+    color: var(--color-near-black);
+    letter-spacing: -0.4px;
+    line-height: 1.10;
+    margin-bottom: 40px;
+  }
+
+  .trends-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .trend-card {
+    background: var(--color-white);
+    border-radius: 18px;
+    padding: 28px 28px 24px;
+    box-shadow: var(--shadow-card);
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .trend-card:hover {
+    transform: scale(1.012);
+  }
+
+  .trend-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+  }
+
+  .trend-card:nth-child(1)::before { background: linear-gradient(90deg, var(--color-blue), var(--color-bright-blue)); }
+  .trend-card:nth-child(2)::before { background: linear-gradient(90deg, var(--color-purple), #c969e0); }
+  .trend-card:nth-child(3)::before { background: linear-gradient(90deg, var(--color-green), #5be08a); }
+  .trend-card:nth-child(4)::before { background: linear-gradient(90deg, var(--color-orange), #ffb340); }
+
+  .trend-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  .trend-card:nth-child(1) .trend-icon { background: rgba(0, 113, 227, 0.1); }
+  .trend-card:nth-child(2) .trend-icon { background: rgba(175, 82, 222, 0.1); }
+  .trend-card:nth-child(3) .trend-icon { background: rgba(52, 199, 89, 0.1); }
+  .trend-card:nth-child(4) .trend-icon { background: rgba(255, 149, 0, 0.1); }
+
+  .trend-title {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--color-near-black);
+    letter-spacing: -0.374px;
+    line-height: 1.24;
+    margin-bottom: 8px;
+  }
+
+  .trend-desc {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--color-text-secondary);
+    letter-spacing: -0.224px;
+    line-height: 1.50;
+  }
+
+  /* === TOP 10 SECTION === */
+  .top10-section {
+    background: var(--color-black);
+    padding: 80px 24px;
+  }
+
+  .top10-section .section-label {
+    color: var(--color-text-light-tertiary);
+  }
+
+  .top10-section .section-title {
+    color: var(--color-white);
+  }
+
+  .top10-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .top10-card {
+    background: var(--color-dark-card);
+    border-radius: 16px;
+    padding: 24px 28px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .top10-card:hover {
+    transform: scale(1.006);
+    background: #222224;
+  }
+
+  .card-rank {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -0.2px;
+  }
+
+  .rank-gold { background: linear-gradient(135deg, #ffd60a, #ff9f0a); color: #1d1d1f; }
+  .rank-silver { background: linear-gradient(135deg, #c7c7cc, #8e8e93); color: #1d1d1f; }
+  .rank-bronze { background: linear-gradient(135deg, #ff9f0a, #ff6723); color: #1d1d1f; }
+  .rank-normal { background: rgba(255, 255, 255, 0.06); color: rgba(255, 255, 255, 0.48); }
+
+  .card-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+
+  .card-title {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--color-white);
+    letter-spacing: -0.374px;
+    line-height: 1.30;
+  }
+
+  .card-badge {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    padding: 2px 10px;
+    border-radius: 980px;
+    white-space: nowrap;
+  }
+
+  .badge-agent { background: rgba(41, 151, 255, 0.15); color: var(--color-bright-blue); }
+  .badge-model { background: rgba(175, 82, 222, 0.15); color: #c969e0; }
+  .badge-design { background: rgba(255, 45, 85, 0.12); color: var(--color-pink); }
+  .badge-video { background: rgba(52, 199, 89, 0.12); color: #5bd97d; }
+  .badge-render { background: rgba(255, 149, 0, 0.12); color: #ffb340; }
+
+  .card-desc {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.56);
+    letter-spacing: -0.224px;
+    line-height: 1.50;
+    margin-bottom: 10px;
+  }
+
+  .card-insight {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-bright-blue);
+    letter-spacing: -0.12px;
+    line-height: 1.46;
+    padding: 10px 14px;
+    background: rgba(41, 151, 255, 0.06);
+    border-radius: 10px;
+    border-left: 2px solid rgba(41, 151, 255, 0.3);
+  }
+
+  .card-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+  }
+
+  .meta-score {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.12px;
+  }
+
+  .score-bar {
+    width: 48px;
+    height: 4px;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+  }
+
+  .score-fill {
+    height: 100%;
+    border-radius: 2px;
+    background: var(--color-bright-blue);
+  }
+
+  .meta-source {
+    font-size: 11px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.28);
+    letter-spacing: -0.06px;
+  }
+
+  .meta-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .meta-tag {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 980px;
+    background: rgba(255, 255, 255, 0.04);
+    color: rgba(255, 255, 255, 0.32);
+    letter-spacing: -0.06px;
+  }
+
+  /* === FOOTER === */
+  .footer {
+    background: var(--color-black);
+    padding: 40px 24px;
+    text-align: center;
+  }
+
+  .footer-divider {
+    max-width: 980px;
+    margin: 0 auto 20px;
+    height: 1px;
+    background: var(--color-separator-dark);
+  }
+
+  .footer-text {
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.28);
+    letter-spacing: -0.12px;
+    line-height: 1.5;
+  }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 834px) {
+    .hero-title { font-size: 40px; }
+    .hero-subtitle { font-size: 19px; }
+    .section-title { font-size: 32px; }
+    .trends-grid { grid-template-columns: 1fr; }
+    .hero-stats { gap: 28px; }
+  }
+
+  @media (max-width: 480px) {
+    .hero { padding: 60px 20px 52px; }
+    .hero-title { font-size: 32px; letter-spacing: -0.2px; }
+    .hero-subtitle { font-size: 17px; }
+    .section-title { font-size: 28px; }
+    .trends-section, .top10-section { padding: 56px 20px; }
+    .top10-card { padding: 20px 20px; gap: 14px; }
+    .trend-card { padding: 22px 22px 20px; }
+    .hero-stats { gap: 20px; flex-wrap: wrap; }
+    .stat-value { font-size: 24px; }
+  }
+
+  /* Entrance animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .hero-inner { animation: fadeUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both; }
+  .trend-card:nth-child(1) { animation: fadeUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s both; }
+  .trend-card:nth-child(2) { animation: fadeUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s both; }
+  .trend-card:nth-child(3) { animation: fadeUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s both; }
+  .trend-card:nth-child(4) { animation: fadeUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s both; }
+  .top10-card { animation: fadeUp 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both; }
+  .top10-card:nth-child(1) { animation-delay: 0.05s; }
+  .top10-card:nth-child(2) { animation-delay: 0.1s; }
+  .top10-card:nth-child(3) { animation-delay: 0.15s; }
+  .top10-card:nth-child(4) { animation-delay: 0.2s; }
+  .top10-card:nth-child(5) { animation-delay: 0.25s; }
+  .top10-card:nth-child(6) { animation-delay: 0.3s; }
+  .top10-card:nth-child(7) { animation-delay: 0.35s; }
+  .top10-card:nth-child(8) { animation-delay: 0.4s; }
+  .top10-card:nth-child(9) { animation-delay: 0.45s; }
+  .top10-card:nth-child(10) { animation-delay: 0.5s; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <span class="nav-brand">AIGC 日报</span>
+    <span class="nav-date">2026年4月13日 周日</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">CODM 宣发设计团队 · AIGC Intelligence</p>
+    <h1 class="hero-title">AIGC 日报</h1>
+    <p class="hero-subtitle">Agent三方鼎立，设计AI全链路进化，开源视频质量拐点确认。</p>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-value">10</div>
+        <div class="stat-label">精选内容</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">8.3</div>
+        <div class="stat-label">平均评分</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">4</div>
+        <div class="stat-label">关键趋势</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">24h</div>
+        <div class="stat-label">数据窗口</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRENDS -->
+<section class="trends-section">
+  <div class="section-inner">
+    <p class="section-label">Key Trends</p>
+    <h2 class="section-title">四大趋势</h2>
+
+    <div class="trends-grid">
+      <div class="trend-card">
+        <div class="trend-icon">🤖</div>
+        <div class="trend-title">Agent 三方鼎立</div>
+        <div class="trend-desc">Claude Managed Agents + Meta Muse Spark + GPT-5.4 Tool Search 同时发力，Agent从实验品变为标准基建，CODM面临"选谁家平台"的选型决策。</div>
+      </div>
+
+      <div class="trend-card">
+        <div class="trend-icon">🎨</div>
+        <div class="trend-title">设计AI全链路进化</div>
+        <div class="trend-desc">Recraft V4（品牌资产专用）+ Lovart（全链路Agent）互补共存，AI从"生图工具"进化为"设计师同事"，全套物料一键生成成为可能。</div>
+      </div>
+
+      <div class="trend-card">
+        <div class="trend-icon">🎬</div>
+        <div class="trend-title">开源视频质量拐点</div>
+        <div class="trend-desc">HappyHorse V2 Arena双榜登顶 + LTX 2.3 4K音视频联合，开源首次匹配商业级质量，自部署层从备选升格为主力。</div>
+      </div>
+
+      <div class="trend-card">
+        <div class="trend-icon">👤</div>
+        <div class="trend-title">Agent 获得面孔</div>
+        <div class="trend-desc">PikaStream 1.0 让 Agent "出镜"——实时30FPS视频生成+语音克隆，品牌虚拟大使、实时互动营销开辟全新场景。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOP 10 -->
+<section class="top10-section">
+  <div class="section-inner">
+    <p class="section-label">Top 10</p>
+    <h2 class="section-title">精选内容</h2>
+
+    <div class="top10-list">
+
+      <!-- #1 -->
+      <div class="top10-card">
+        <div class="card-rank rank-gold">1</div>
+        <div class="card-content">
+          <div class="card-header">
+            <span class="card-title">Claude Managed Agents 公测</span>
+            <span class="card-badge badge-agent">Agent</span>
+          </div>
+          <div class="card-desc">Anthropic 开放零基建 Agent 部署：Session/Harness/Tool 三层解耦，$0.05/任务起步。设计师可直接配置品牌审核、多平台分发、素材质检 Agent，无需开发排期。</div>
+          <div class="card-insight">💡 CODM 价值：品牌色合规逐张检查成本首次经济可行，"生成→审核→分发"全自动流水线已获企业级验证。</div>
+          <div class="card-meta">
+            <div class="meta-score">
+              <span style="color: #ffd60a;">★ 8.9</span>
+              <div class="score-bar"><div class="score-fill" style="width:89%;"></div></div>
+            </div>
+            <span class="meta-source">Anthropic · 持续发酵</span>
+            <div class="meta-tags">
+              <span class="meta-tag">AgentPaaS</span>
+              <span class="meta-tag">零基建</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- #2 -->
+      <div class="top10-card">
+        <div class="card-rank rank-silver">2</div>
+        <div class="card-content">
+          <div class="card-header">
+            <span class="card-title">Meta Muse Spark 多模态理解</span>
+            <span class="card-badge badge-model">模型</span>
+          </div>
+          <div class="card-desc">Meta 首款闭源模型，CharXiv 视觉推理 86.4% 全模型最高。能理解海报构图、色彩关系、文字层级——一个真正能"审美"的 AI 审核员。</div>
+          <div class="card-insight">💡 CODM 价值：AI 设计评审不再只检查品牌色，还能评估整体视觉平衡、信息层级，批量分析竞品视觉策略。</div>
+          <div class="card-meta">
+            <div class="meta-score">
+              <span style="color: #c7c7cc;">★ 8.3</span>
+              <div class="score-bar"><div class="score-fill" style="width:83%;"></div></div>
+            </div>
+            <span class="meta-source">Meta / Fortune / 36Kr</span>
+            <div class="meta-tags">
+              <span class="meta-tag">视觉推理</span>
+              <span class="meta-tag">闭源转向</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- #3 -->
+      <div class="top10-card">
+        <div class="card-rank rank-bronze">3</div>
+        <div class="card-content">
+          <div class="card-header">
+            <span class="card-title">GPT-5.4 Tool Search 动态工具检索</span>
+            <span class="card-badge badge-agent">Agent</span>
+          </div>
+          <div class="card-desc">50+ 工具的 Agent 系统不再需要全量注入提示词，模型按需"搜索"工具规格。配合百万 token 上下文 + Computer Use 桌面操作能力。</div>
+          <div class="card-insight">💡 CODM 价值：全链路宣发 Agent（MJ API、Runway、DAM、多平台分发）调度成本降 60-80%，Agent 可直接操作 PS/Figma。</div>
+          <div class="card-meta">
+            <div class="meta-score">
+              <span style="color: #ff9f0a;">★ 8.2</span>
+              <div class="score-bar"><div class="score-fill" style="width:82%;"></div></div>
+            </div>
+            <span class="meta-source">OpenAI · 持续发酵</span>
+            <div class="meta-tags">
+              <span class="meta-tag">ToolSearch</span>
+              <span class="meta-tag">ComputerUse</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- #4 -->
+      <div class="top10-card">
+        <div class="card-rank rank-normal">4</div>
+        <div class="card-content">
+          <div class="card-header">
+            <span class="card-title">Recraft V4 Pro 品牌设计专用模型</span>
+            <span class="card-badge badge-design">设计</span>
+          </div>
+          <div class="card-desc">HuggingFace Arena ELO 第一，击败 MJ 和 DALL-E。原生 SVG 矢量输出 + 精准多语言文字渲染 + 协调色彩调色板，首个"品牌生产工具"级 AI 模型。</div>
+          <div class="card-insight">💡 CODM 价值：LOGO 矢量化直接进入印刷流、品牌色锁定自动遵循配色方案、中文标题可直接 AI 生成无变形。</div>
+          <div class="card-meta">
+            <div class="meta-score">
+              <span style="color: var(--color-white);">★ 8.9</span>
+              <div class="score-bar"><div class="score-fill" style="width:89%;"></div></div>
+            </div>
+            <span class="meta-source">Recraft / MindStudio · 4.11</span>
+            <div class="meta-tags">
+              <span class="meta-tag">SVG矢量</span>
+              <span class="meta-tag">文字渲染</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- #5 -->
+      <div class="top10-card">
+        <div class="card-rank rank-normal">5</div>
+        <div class="card-content">
+          <div class="card-header">
+            <span class="card-title">PikaStream 1.0 实时AI视频通话</span>
+            <span class="card-badge badge-video">视频</span>
+          </div>
+          <div class="card-desc">首个 Agent 实时视频引擎——单 H100 实现 30FPS/480p，亚秒延迟。语音克隆 + Avatar 生成 + 面部追踪，Agent 可"出镜"参与视频会议。</div>
+          <div class="card-insight">💡 CODM 价值：品牌虚拟角色实时参与直播互动、数字代言人不再需要预渲染、一场发布会实时多语言全球覆盖。</div>
+          <div class="card-meta">
+            <div class="meta-score">
+              <span style="color: var(--color-white);">★ 8.0</span>
+              <div class="score-bar"><div class="score-fill" style="width:80%;"></div></div>
+            </div>
+            <span class="meta-source">Pika Labs · 持续发酵</span>
+            <div class="meta-tags">
+              <span class="meta-tag">实时视频</span>
+              <span class="meta-tag">数字分身</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- #6 -->
+      <div class="top10-card">
+        <div class="card-rank rank-normal">6</div>
+        <div class="card-content">
+          <div class="card-header">
+            <span class="card-title">LTX 2.3 开源 4K 音视频联合生成</span>
+            <span class="card-badge badge-video">视频</span>
+          </div>
+          <div class="card-desc">220 亿参数 DiT 架构，单次前向传递同步生成 4K 视频 + 音频，零授权费完全开源。原生竖屏 9:16，ComfyUI 插件就绪。</div>
+          <div class="card-insight">💡 CODM 价值：内网自部署消除数据泄露风险，竖屏直出抖音/TikTok 格式，音视频一体化效率翻倍。</div>
+          <div class="card-meta">
+            <div class="meta-score">
+              <span style="color: var(--color-white);">★ 8.0</span>
+              <div class="score-bar"><div class="score-fill" style="width:80%;"></div></div>
+            </div>
+            <span class="meta-source">Lightricks · 开源</span>
+            <div class="meta-tags">
+              <span class="meta-tag">开源</span>
+              <span class="meta-tag">4K音视频</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- #7 -->
+      <div class="top10-card">
+        <div class="card-rank rank-normal">7</div>
+        <div class="card-content">
+          <div class="card-header">
+            <span class="card-title">HappyHorse V2 Arena 双榜登顶</span>
+            <span class="card-badge badge-video">视频</span>
+          </div>
+          <div class="card-desc">V2 ELO 1357+ 同时刷新 Text-to-Video 和 Image-to-Video 双榜记录。开源视频模型首次匹配商业闭源质量——自部署层从"备选"升为"主力"。</div>
+          <div class="card-insight">💡 CODM 价值：三层视频架构中自部署层不再是质量妥协，而是"质量 + 安全 + 成本"最优解，ComfyUI 可定制专属管线。</div>
+          <div class="card-meta">
+            <div class="meta-score">
+              <span style="color: var(--color-white);">★ 7.9</span>
+              <div class="score-bar"><div class="score-fill" style="width:79%;"></div></div>
+            </div>
+            <span class="meta-source">知乎 / Artificial Analysis · 4.9</span>
+            <div class="meta-tags">
+              <span class="meta-tag">开源视频</span>
+              <span class="meta-tag">质量拐点</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- #8 -->
+      <div class="top10-card">
+        <div class="card-rank rank-normal">8</div>
+        <div class="card-content">
+          <div class="card-header">
+            <span class="card-title">Lovart 全球首个设计 Agent</span>
+            <span class="card-badge badge-design">设计</span>
+          </div>
+          <div class="card-desc">LiblibAI 推出全链路设计 Agent：需求理解→方案规划→多模态生成→一致性编辑→导出，自动化。分层图像编辑 + 4K 输出 + 品牌风格一致性。</div>
+          <div class="card-insight">💡 CODM 价值：输入赛季 brief，自动输出 KV + 社媒多尺寸 + Banner 全套，从主 KV 到缩略图保持视觉 DNA 统一。</div>
+          <div class="card-meta">
+            <div class="meta-score">
+              <span style="color: var(--color-white);">★ 8.2</span>
+              <div class="score-bar"><div class="score-fill" style="width:82%;"></div></div>
+            </div>
+            <span class="meta-source">LiblibAI / 腾讯云开发者</span>
+            <div class="meta-tags">
+              <span class="meta-tag">全链路</span>
+              <span class="meta-tag">设计Agent</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- #9 -->
+      <div class="top10-card">
+        <div class="card-rank rank-normal">9</div>
+        <div class="card-content">
+          <div class="card-header">
+            <span class="card-title">Kling 3.0 Omni One 统一架构验证</span>
+            <span class="card-badge badge-video">视频</span>
+          </div>
+          <div class="card-desc">3D Spacetime Joint Attention + CoT 推理，生成 + 编辑 + 音频单平台全流程。生产验证数据：减少 50%+ 流程切换时间，竞品被迫跟进。</div>
+          <div class="card-insight">💡 CODM 价值：单平台替代"Runway 生成 + 第三方编辑 + 音频后期"三步流程，但需建立平台冗余策略防锁定。</div>
+          <div class="card-meta">
+            <div class="meta-score">
+              <span style="color: var(--color-white);">★ 8.1</span>
+              <div class="score-bar"><div class="score-fill" style="width:81%;"></div></div>
+            </div>
+            <span class="meta-source">VO3 AI / Kling · 4.9</span>
+            <div class="meta-tags">
+              <span class="meta-tag">统一架构</span>
+              <span class="meta-tag">音视频一体</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- #10 -->
+      <div class="top10-card">
+        <div class="card-rank rank-normal">10</div>
+        <div class="card-content">
+          <div class="card-header">
+            <span class="card-title">DLSS 5 + Reallusion GA 3D+AI 管线</span>
+            <span class="card-badge badge-render">渲染</span>
+          </div>
+          <div class="card-desc">NVIDIA 实时神经渲染 + Reallusion 3D 预可视化正式版，"一套 3D 资产，双通道渲染"首次成型。美术可控光照/色彩分级确保品牌 DNA 一致。</div>
+          <div class="card-insight">💡 CODM 价值：同一角色资产——Reallusion 输出 KV 海报级，DLSS 5 输出游戏内宣传级。引擎内画面接近预渲染品质。</div>
+          <div class="card-meta">
+            <div class="meta-score">
+              <span style="color: var(--color-white);">★ 8.0</span>
+              <div class="score-bar"><div class="score-fill" style="width:80%;"></div></div>
+            </div>
+            <span class="meta-source">NVIDIA GTC / Cliptics</span>
+            <div class="meta-tags">
+              <span class="meta-tag">神经渲染</span>
+              <span class="meta-tag">双通道</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-divider"></div>
+  <p class="footer-text">
+    CODM 宣发设计组 · AIGC 日报 · 2026.04.13<br>
+    数据窗口 2026-04-12 ~ 2026-04-13 · 评分维度：CODM相关性 / 方法可复用性 / 视觉启发 / 落地可执行性 / 时效性
+  </p>
+</footer>
+
+</body>
+</html>

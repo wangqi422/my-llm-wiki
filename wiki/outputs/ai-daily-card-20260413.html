@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>AI Daily · 设计师速报 · 2026.04.13</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;700;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    width: 1080px;
+    overflow: hidden;
+    font-family: 'Inter', 'Noto Sans SC', ui-sans-serif, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background: #ffffff;
+    color: rgb(55, 53, 47);
+  }
+
+  .page {
+    width: 1080px;
+    height: 1920px;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* ── Cover ── */
+  .cover {
+    height: 160px;
+    background: linear-gradient(135deg, #d44c47 0%, #e8590c 30%, #d9730d 60%, #dfab01 100%);
+    /* items: 10, sections: 4 */
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 15% 60%, rgba(255,255,255,0.2) 0%, transparent 55%),
+      radial-gradient(ellipse at 85% 30%, rgba(255,255,255,0.12) 0%, transparent 50%);
+  }
+
+  .cover-badge {
+    position: absolute;
+    top: 22px;
+    right: 48px;
+    font-size: 12px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 5px;
+    text-transform: uppercase;
+  }
+
+  .cover-date {
+    position: absolute;
+    bottom: 18px;
+    right: 48px;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 1px;
+  }
+
+  /* ── Content ── */
+  .content {
+    flex: 1;
+    padding: 0 48px;
+    padding-bottom: 6px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* ── Header ── */
+  .header {
+    padding-top: 18px;
+    padding-bottom: 20px;
+    border-bottom: 1.5px solid rgb(233, 233, 231);
+    flex-shrink: 0;
+  }
+
+  .page-icon {
+    font-size: 44px;
+    margin-top: -38px;
+    margin-bottom: 5px;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.1));
+  }
+
+  .page-title {
+    font-size: 42px;
+    font-weight: 900;
+    color: rgb(55, 53, 47);
+    letter-spacing: -1.5px;
+    line-height: 1.15;
+  }
+
+  .page-subtitle {
+    font-size: 14.5px;
+    color: rgba(55, 53, 47, 0.4);
+    font-weight: 400;
+    margin-top: 4px;
+  }
+
+  .prop-tags {
+    display: flex;
+    gap: 7px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .notion-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 10px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 20px;
+    white-space: nowrap;
+  }
+
+  .tag-blue    { background: rgb(211, 229, 239); color: rgb(24, 51, 71); }
+  .tag-purple  { background: rgb(232, 222, 238); color: rgb(65, 36, 84); }
+  .tag-green   { background: rgb(219, 237, 219); color: rgb(28, 56, 41); }
+  .tag-orange  { background: rgb(250, 222, 201); color: rgb(73, 41, 14); }
+  .tag-red     { background: rgb(255, 226, 221); color: rgb(93, 23, 21); }
+  .tag-pink    { background: rgb(245, 224, 233); color: rgb(76, 35, 55); }
+  .tag-teal    { background: rgb(211, 229, 226); color: rgb(15, 49, 44); }
+
+  /* ── Section Heading ── */
+  .section-heading {
+    font-size: 14px;
+    font-weight: 700;
+    color: rgba(55, 53, 47, 0.45);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 26px;
+    margin-bottom: 6px;
+    padding-bottom: 7px;
+    border-bottom: 1.5px solid rgb(241, 241, 239);
+    flex-shrink: 0;
+  }
+
+  .section-heading .sec-emoji { margin-right: 5px; }
+
+  /* ── Sections Wrapper (fills remaining space) ── */
+  .sections-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    overflow: hidden;
+  }
+
+  /* ── News List ── */
+  .news-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .news-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 20px 4px;
+    border-bottom: 1px solid rgba(55, 53, 47, 0.04);
+  }
+
+  .news-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .num-hot {
+    background: linear-gradient(135deg, #d44c47, #e8590c);
+    color: #fff;
+  }
+
+  .num-feat {
+    background: linear-gradient(135deg, #2383e2, #6940a5);
+    color: #fff;
+  }
+
+  .num-default {
+    background: rgba(55, 53, 47, 0.06);
+    color: rgba(55, 53, 47, 0.5);
+  }
+
+  .news-content { flex: 1; min-width: 0; }
+
+  .news-title {
+    font-size: 21px;
+    font-weight: 700;
+    color: rgb(55, 53, 47);
+    line-height: 1.35;
+    letter-spacing: -0.2px;
+  }
+
+  .news-title .hl { color: rgb(35, 131, 226); }
+  .news-title .hl-red { color: rgb(212, 76, 71); }
+  .news-title .hl-purple { color: rgb(105, 64, 165); }
+  .news-title .hl-orange { color: rgb(217, 115, 13); }
+  .news-title .hl-teal { color: rgb(0, 135, 107); }
+
+  .news-desc {
+    font-size: 14.5px;
+    color: rgba(55, 53, 47, 0.42);
+    line-height: 1.42;
+    margin-top: 3px;
+  }
+
+  .inline-tag {
+    display: inline-block;
+    padding: 0px 6px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: 600;
+    vertical-align: middle;
+    margin-left: 5px;
+    position: relative;
+    top: -1px;
+  }
+
+  /* ── Data Strip ── */
+  .data-strip {
+    display: flex;
+    gap: 0;
+    border-radius: 6px;
+    overflow: hidden;
+    flex-shrink: 0;
+    margin-top: 22px;
+  }
+
+  .data-cell {
+    flex: 1;
+    padding: 16px 5px;
+    text-align: center;
+    border-right: 1px solid rgba(55, 53, 47, 0.06);
+  }
+
+  .data-cell:last-child { border-right: none; }
+  .data-cell:nth-child(odd) { background: rgb(251, 251, 250); }
+  .data-cell:nth-child(even) { background: rgb(247, 246, 243); }
+
+  .data-label {
+    font-size: 9.5px;
+    font-weight: 600;
+    color: rgba(55, 53, 47, 0.38);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+
+  .data-value {
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+  }
+
+  .dv-red { color: rgb(212, 76, 71); }
+  .dv-blue { color: rgb(35, 131, 226); }
+  .dv-orange { color: rgb(217, 115, 13); }
+  .dv-purple { color: rgb(105, 64, 165); }
+  .dv-teal { color: rgb(0, 135, 107); }
+
+  /* ── Bottom ── */
+  .bottom-bar {
+    flex-shrink: 0;
+    padding: 12px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgb(233, 233, 231);
+    margin-top: 12px;
+  }
+
+  .bottom-tags { display: flex; gap: 5px; flex-wrap: wrap; }
+
+  .bottom-tag {
+    font-size: 11px;
+    color: rgba(55, 53, 47, 0.28);
+    padding: 2px 7px;
+    border-radius: 3px;
+    background: rgba(55, 53, 47, 0.04);
+    font-weight: 500;
+  }
+
+  .bottom-source {
+    font-size: 11px;
+    color: rgba(55, 53, 47, 0.18);
+  }
+
+  /* ── Footer ── */
+  .footer {
+    flex-shrink: 0;
+    height: 58px;
+    background: rgb(251, 251, 250);
+    border-top: 1px solid rgb(233, 233, 231);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+  }
+
+  .footer-logo { font-size: 17px; }
+  .footer-text {
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(55, 53, 47, 0.28);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .sep-dot {
+    width: 3px; height: 3px; border-radius: 50%;
+    background: rgba(55, 53, 47, 0.12);
+    display: inline-block;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="cover">
+    <div class="cover-badge">AI DAILY · DESIGNER EDITION</div>
+    <div class="cover-date">2026 · 04 · 13 MON</div>
+  </div>
+
+  <div class="content">
+
+    <div class="header">
+      <div class="page-icon">🎨</div>
+      <h1 class="page-title">AI Daily · 设计师 10 条速报</h1>
+      <div class="page-subtitle">2026年4月13日 · 星期一 · CODM 宣发设计特辑</div>
+      <div class="prop-tags">
+        <span class="notion-tag tag-purple">🎬 AI 视频生成</span>
+        <span class="notion-tag tag-blue">🖼️ AI 图像 & 设计</span>
+        <span class="notion-tag tag-teal">🤖 AI Agent & 平台</span>
+        <span class="notion-tag tag-red">🎮 3D/音频 & 工具</span>
+      </div>
+    </div>
+
+    <div class="sections-wrapper">
+
+    <div class="section-heading"><span class="sec-emoji">🎬</span>AI 视频生成</div>
+    <div class="news-list">
+      <div class="news-item">
+        <div class="news-num num-default">1</div>
+        <div class="news-content">
+          <div class="news-title"><span class="hl-red">PikaStream 1.0</span>：实时AI视频通话引擎——Agent获得"面孔"</div>
+          <div class="news-desc">Pika Labs发布PikaStream 1.0——首个为AI Agent设计的实时视频引擎，在单张H…</div>
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="news-num num-default">2</div>
+        <div class="news-content">
+          <div class="news-title"><span class="hl-purple">LTX 2.3</span>：开源4K音视频联合生成——零成本铺量级视频的新选项</div>
+          <div class="news-desc">Lightricks发布LTX 2.3——首个基于DiT架构的开源音视频联合生成模型（220亿参数），单…</div>
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="news-num num-default">3</div>
+        <div class="news-content">
+          <div class="news-title"><span class="hl-orange">HappyHorse V2 Arena</span>泄露验证：ELO 1357+登顶双榜，开源视频模型拐点确认</div>
+          <div class="news-desc">HappyHorse V1&amp;V2两个版本在Artificial Analysis Video Arena…</div>
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="news-num num-default">4</div>
+        <div class="news-content">
+          <div class="news-title"><span class="hl-teal">Kling 3.0 Omni One</span>统一架构持续验证：生成+编辑+音频一体化的生产实践</div>
+          <div class="news-desc">Kling 3.0 Omni One架构的技术深度分析持续发酵：3D Spacetime Joint A…</div>
+        </div>
+      </div>
+    </div>
+    <div class="section-heading"><span class="sec-emoji">🖼️</span>AI 图像 & 设计</div>
+    <div class="news-list">
+      <div class="news-item">
+        <div class="news-num num-feat">5</div>
+        <div class="news-content">
+          <div class="news-title"><span class="hl">Meta Muse Spark</span>：首个闭源多模态模型，原生图像理解重新定义创意审核</div>
+          <div class="news-desc">Meta Superintelligence Labs发布Muse Spark，这是Meta首款闭源/专…</div>
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="news-num num-default">6</div>
+        <div class="news-content">
+          <div class="news-title"><span class="hl-red">Recraft V4 Pro</span>：品牌设计专用AI图像模型，原生SVG矢量+文字渲染突破</div>
+          <div class="news-desc">Recraft V4推出两级模型架构：写实级（photorealistic）和原生SVG矢量级，Hugg…</div>
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="news-num num-default">7</div>
+        <div class="news-content">
+          <div class="news-title"><span class="hl-purple">Lovart Design Agent</span>：全球首个设计Agent，全链路设计自动化</div>
+          <div class="news-desc">LiblibAI推出Lovart——自称"全球首个专业设计Agent"，集成GPT image-1/Fl…</div>
+        </div>
+      </div>
+    </div>
+    <div class="section-heading"><span class="sec-emoji">🤖</span>AI Agent & 平台</div>
+    <div class="news-list">
+      <div class="news-item">
+        <div class="news-num num-hot">8</div>
+        <div class="news-content">
+          <div class="news-title"><span class="hl-orange">Claude Managed Agents</span>公测：零基建部署生产级AI Agent<span class="inline-tag tag-red">🔥</span></div>
+          <div class="news-desc">Anthropic正式开放Claude Managed Agents公测（Public Beta），提供…</div>
+        </div>
+      </div>
+    </div>
+    <div class="section-heading"><span class="sec-emoji">🎮</span>3D/音频 & 工具</div>
+    <div class="news-list">
+      <div class="news-item">
+        <div class="news-num num-feat">9</div>
+        <div class="news-content">
+          <div class="news-title"><span class="hl-teal">GPT-5.4 Tool Search</span>：动态工具检索让复杂Agent系统成本骤降</div>
+          <div class="news-desc">GPT-5.4引入Tool Search功能——当Agent系统拥有50+工具时，无需将所有工具定义加载…</div>
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="news-num num-default">10</div>
+        <div class="news-content">
+          <div class="news-title"><span class="hl">DLSS 5 + Reallusion GA</span>生产管线成熟：3D+AI神经渲染进入游戏工业</div>
+          <div class="news-desc">NVIDIA DLSS 5在GTC 2026上发布后引发持续深度讨论——实时神经渲染模型合成照片级光照和…</div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <!-- Data Strip -->
+    <div class="data-strip">
+      <div class="data-cell">
+        <div class="data-label">LTX 2.3</div>
+        <div class="data-value dv-red">220亿</div>
+      </div>
+      <div class="data-cell">
+        <div class="data-label">TOP 2</div>
+        <div class="data-value dv-purple">—</div>
+      </div>
+      <div class="data-cell">
+        <div class="data-label">TOP 3</div>
+        <div class="data-value dv-blue">—</div>
+      </div>
+      <div class="data-cell">
+        <div class="data-label">TOP 4</div>
+        <div class="data-value dv-teal">—</div>
+      </div>
+      <div class="data-cell">
+        <div class="data-label">TOP 5</div>
+        <div class="data-value dv-orange">—</div>
+      </div>
+    </div>
+
+    <!-- Bottom Tags -->
+    <div class="bottom-bar">
+      <div class="bottom-tags">
+        <span class="bottom-tag">#RecraftV4Pro</span>
+        <span class="bottom-tag">#LTX2.3</span>
+      </div>
+      <span class="bottom-source">AIGC Daily · CodeBuddy</span>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <span class="footer-logo">🎨</span>
+    <span class="footer-text">AI Daily · Designer Edition</span>
+    <span class="sep-dot"></span>
+    <span class="footer-text" style="font-weight:500; letter-spacing:1px;">Powered by CodeBuddy</span>
+  </div>
+
+</div>
+
+</body>
+</html>

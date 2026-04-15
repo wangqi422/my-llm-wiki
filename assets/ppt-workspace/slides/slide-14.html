@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html><head><style>
+
+html { background: #000; }
+body {
+  width: 720pt; height: 405pt; margin: 0; padding: 0;
+  font-family: Arial, sans-serif;
+  display: flex; flex-direction: column;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+}
+.top-bar { width: 100%; height: 3pt; background: #E33737; flex-shrink: 0; }
+.header { padding: 16pt 30pt 8pt 30pt; flex-shrink: 0; }
+.content { padding: 0 30pt 16pt 30pt; flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+.two-col { display: flex; gap: 16pt; flex: 1; }
+.col { flex: 1; display: flex; flex-direction: column; }
+.col-60 { flex: 6; display: flex; flex-direction: column; }
+.col-40 { flex: 4; display: flex; flex-direction: column; }
+h1 { color: #FFFFFF; font-size: 22pt; margin: 0 0 4pt 0; font-weight: bold; }
+h2 { color: #E33737; font-size: 13pt; margin: 0 0 6pt 0; font-weight: bold; text-transform: uppercase; letter-spacing: 1pt; }
+h3 { color: #E33737; font-size: 11pt; margin: 6pt 0 4pt 0; }
+p { color: #CCCCCC; font-size: 9pt; margin: 2pt 0; line-height: 1.4; }
+.small { font-size: 7.5pt; color: #999999; }
+.highlight { color: #E33737; font-weight: bold; }
+.white { color: #FFFFFF; }
+.tag { display: inline-block; background: #E33737; color: white; padding: 2pt 6pt; font-size: 7pt; margin: 1pt; border-radius: 2pt; }
+.card { background: rgba(255,255,255,0.06); border-left: 2pt solid #E33737; padding: 6pt 8pt; margin: 3pt 0; border-radius: 0 4pt 4pt 0; }
+.card-dark { background: rgba(255,255,255,0.03); padding: 6pt 8pt; margin: 3pt 0; border-radius: 4pt; border: 1pt solid rgba(255,255,255,0.1); }
+.img-container { border-radius: 4pt; overflow: hidden; flex: 1; display: flex; align-items: center; justify-content: center; }
+.img-container img { width: 100%; height: 100%; object-fit: cover; border-radius: 4pt; }
+.page-num { position: absolute; bottom: 8pt; right: 16pt; color: #555; font-size: 7pt; }
+.section-num { color: #E33737; font-size: 48pt; font-weight: bold; opacity: 0.15; position: absolute; right: 30pt; top: 10pt; }
+
+
+</style></head>
+<body style="background-image: url('bg-content.png');">
+
+<div class="top-bar"></div>
+<div class="header"><h1>后处理与镜头特效</h1><h2>1.7 Post Processing & Camera FX</h2></div>
+<div class="content">
+  <div class="two-col" style="gap: 12pt;">
+    <div class="col">
+      <h3>画面增强</h3>
+      <div class="card-dark" style="padding: 4pt 8pt; margin: 2pt 0;">
+        <p class="small">景深DOF · 运动模糊 · 泛光Bloom · 色差 · 暗角 · 胶片颗粒 · 锐化</p>
+      </div>
+      <h3>调色系统</h3>
+      <div class="card-dark" style="padding: 4pt 8pt; margin: 2pt 0;">
+        <p class="small">颜色分级 · LUT电影级调色</p>
+        <p class="small"><b style="color:#6BA3C7;">冷战冰蓝</b> vs <b style="color:#D4A04A;">中东暖黄</b></p>
+      </div>
+      <h3>CG 镜头语言</h3>
+      <div class="card-dark" style="padding: 4pt 8pt; margin: 2pt 0;">
+        <p class="small">慢动作 · 速度渐变 · 时间冻结 · 手持晃动 · 镜头光晕 · 镜头水滴</p>
+      </div>
+    </div>
+    <div class="col">
+      <h3>特殊状态效果</h3>
+      <div class="card" style="padding: 3pt 6pt; margin: 2pt 0;">
+        <p class="small"><b style="color:#fff;">闪光弹致盲</b> — 全白→缓慢恢复+耳鸣</p>
+      </div>
+      <div class="card" style="padding: 3pt 6pt; margin: 2pt 0;">
+        <p class="small"><b style="color:#fff;">EMP干扰</b> — 抖动+扫描线+色彩失真</p>
+      </div>
+      <div class="card" style="padding: 3pt 6pt; margin: 2pt 0;">
+        <p class="small"><b style="color:#fff;">核爆白屏</b> — 极端过曝→冲击波</p>
+      </div>
+      <div class="card" style="padding: 3pt 6pt; margin: 2pt 0;">
+        <p class="small"><b style="color:#fff;">夜视仪</b> — 绿色调+噪点+光晕</p>
+      </div>
+      <div class="card" style="padding: 3pt 6pt; margin: 2pt 0;">
+        <p class="small"><b style="color:#fff;">受伤血屏</b> — 边缘泛红+模糊+心跳</p>
+      </div>
+      <h3>转场效果</h3>
+      <div class="card-dark" style="padding: 4pt 8pt; margin: 2pt 0;">
+        <p class="small">淡入淡出 · 交叉溶解 · 匹配剪辑 · 闪白/闪黑 · Glitch故障</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="page-num"><p>14</p></div>
+</body></html>

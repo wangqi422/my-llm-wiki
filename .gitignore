@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+
+# OS files
+Thumbs.db
+Desktop.ini
+.DS_Store
+._*
+
+# Obsidian (保留 .obsidian 配置以同步插件/主题设置)
+# 如果你不想同步 Obsidian 配置，取消下面这行的注释：
+# .obsidian/
+
+# Obsidian workspace (每台电脑不同，不同步)
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+
+# CodeBuddy 本地数据
+.codebuddy/
+
+# Temp files
+_temp_*/
+*.tmp
+~$*
+.obsidian-skills-temp/
+.claude/
+
+# Generated card screenshots (可从 HTML 重新生成)
+# 如果你想同步 PNG 卡片，注释掉下面这行：
+# _deploy/daily-card/output/
+
+# Package lock (可选，看你需不需要)
+package-lock.json

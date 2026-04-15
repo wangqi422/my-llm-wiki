@@ -1,0 +1,9 @@
+timestamp	commit	skill	old_score	new_score	status	dimension	note	eval_mode
+2026-04-15T00:43	baseline	ingest	-	73.0	baseline	-	初始评估：Frontmatter缺失+模板路径错误	dry_run
+2026-04-15T00:43	baseline	distill	-	64.8	baseline	-	初始评估：检查点缺失+合并操作模糊	dry_run
+2026-04-15T00:43	baseline	publish	-	71.3	baseline	-	初始评估：检查点缺失+边界条件不足	dry_run
+2026-04-15T00:43	baseline	daily-card	-	69.5	baseline	-	初始评估：Frontmatter缺失+LLM触发简略	dry_run
+2026-04-15T00:50	optimize-r1	ingest	73.0	82.2	keep	Frontmatter+资源整合	添加YAML frontmatter+修正4处模板路径+增加边界条件	dry_run
+2026-04-15T00:50	optimize-r1	distill	64.8	81.3	keep	检查点+具体性	添加YAML frontmatter+2个检查点+合并去重规则+回滚机制+异常处理	dry_run
+2026-04-15T00:50	optimize-r1	publish	71.3	82.8	keep	检查点+边界条件	添加YAML frontmatter+2个检查点+fallback策略+重复publish检查	dry_run
+2026-04-15T00:50	optimize-r1	daily-card	69.5	80.9	keep	Frontmatter+工作流	添加YAML frontmatter+LLM触发5步细化+错误处理+数据栏规则	dry_run
