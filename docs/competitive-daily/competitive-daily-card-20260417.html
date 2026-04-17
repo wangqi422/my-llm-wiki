@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CODM 竞品日报 — 2026.04.17</title>
+<style>
+  :root {
+    --codm-black: #0D0D0D;
+    --codm-black-soft: #1A1A1A;
+    --codm-yellow: #FFE600;
+    --codm-white: #FFFFFF;
+    --codm-gray-100: #CCCCCC;
+    --codm-gray-200: #AAAAAA;
+    --codm-gray-300: #777777;
+    --codm-gray-400: #555555;
+    --codm-gray-500: #333333;
+    --border-color: rgba(255,255,255,0.08);
+    --card-bg: #141414;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--codm-black);
+    color: var(--codm-white);
+    font-family: "Microsoft YaHei", "微软雅黑", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+    font-size: 14px;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* ── 侧边水印 ── */
+  .side-watermark {
+    position: fixed;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    writing-mode: vertical-lr;
+    font-size: 11px;
+    letter-spacing: 0.55em;
+    color: rgba(255,255,255,0.07);
+    font-weight: 300;
+    user-select: none;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── 页面容器 ── */
+  .page {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 40px 40px 48px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── 页眉 ── */
+  .page-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .chapter-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .chapter-tag-bar {
+    width: 3px;
+    height: 18px;
+    background: var(--codm-yellow);
+    margin-right: 6px;
+    flex-shrink: 0;
+  }
+
+  .chapter-tag-label {
+    background: var(--codm-yellow);
+    color: var(--codm-black);
+    padding: 3px 10px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+
+  .header-section-name {
+    font-size: 13px;
+    color: var(--codm-gray-200);
+    letter-spacing: 0.02em;
+  }
+
+  .header-right {
+    font-size: 11px;
+    color: var(--codm-gray-300);
+    text-align: right;
+    line-height: 1.6;
+  }
+
+  .header-right .brand {
+    font-weight: 600;
+    color: var(--codm-gray-200);
+    letter-spacing: 0.04em;
+  }
+
+  /* ── 分隔线 ── */
+  .divider {
+    height: 0.5px;
+    background: var(--border-color);
+    margin: 16px 0;
+  }
+
+  .divider-bold {
+    height: 1px;
+    background: rgba(255,255,255,0.12);
+    margin: 20px 0;
+  }
+
+  /* ── 标题区 ── */
+  .title-block {
+    margin-bottom: 28px;
+  }
+
+  .title-date {
+    font-size: 12px;
+    color: var(--codm-gray-300);
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+  }
+
+  .title-main {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+
+  .title-main .hl { color: var(--codm-yellow); }
+
+  .title-sub {
+    font-size: 13px;
+    color: var(--codm-gray-200);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .title-desc {
+    font-size: 14px;
+    color: var(--codm-gray-200);
+    line-height: 1.7;
+  }
+
+  .title-desc .hl { color: var(--codm-yellow); font-weight: 500; }
+
+  /* ── 威胁指示条 ── */
+  .threat-bar {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+
+  .threat-item {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 12px;
+    letter-spacing: 0.06em;
+    border: 1px solid;
+  }
+
+  .threat-high {
+    border-color: var(--codm-yellow);
+    color: var(--codm-yellow);
+    background: rgba(255,230,0,0.06);
+  }
+
+  .threat-mid {
+    border-color: var(--codm-gray-300);
+    color: var(--codm-gray-200);
+    background: rgba(255,255,255,0.03);
+  }
+
+  .threat-info {
+    border-color: var(--codm-gray-400);
+    color: var(--codm-gray-300);
+    background: transparent;
+  }
+
+  /* ── 快报区 ── */
+  .section-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--codm-gray-300);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: var(--border-color);
+  }
+
+  .briefing-list {
+    margin-bottom: 24px;
+  }
+
+  .briefing-item {
+    padding: 12px 16px;
+    border-left: 3px solid var(--codm-gray-500);
+    background: var(--card-bg);
+    margin-bottom: 2px;
+    font-size: 13px;
+    color: var(--codm-gray-100);
+    line-height: 1.7;
+  }
+
+  .briefing-item:first-child { border-left-color: var(--codm-yellow); }
+  .briefing-item:nth-child(2) { border-left-color: rgba(255,230,0,0.5); }
+
+  .briefing-item b { color: var(--codm-white); font-weight: 600; }
+  .briefing-item .hl { color: var(--codm-yellow); font-weight: 500; }
+  .briefing-item .tag {
+    font-size: 11px;
+    color: var(--codm-gray-300);
+    letter-spacing: 0.15em;
+    margin-right: 6px;
+  }
+
+  /* ── 竞品卡片 ── */
+  .card {
+    background: var(--card-bg);
+    border: 0.5px solid var(--border-color);
+    margin-bottom: 12px;
+    position: relative;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+  }
+
+  .card-critical::before { background: var(--codm-yellow); }
+  .card-warning::before { background: rgba(255,230,0,0.5); }
+  .card-normal::before { background: var(--codm-gray-400); }
+  .card-info::before { background: var(--codm-gray-500); }
+
+  .card-head {
+    padding: 14px 16px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 0.5px solid var(--border-color);
+  }
+
+  .card-title {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+  }
+
+  .card-tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    padding: 3px 8px;
+    text-transform: uppercase;
+  }
+
+  .tag-critical {
+    background: var(--codm-yellow);
+    color: var(--codm-black);
+  }
+
+  .tag-warning {
+    background: rgba(255,230,0,0.15);
+    color: var(--codm-yellow);
+    border: 0.5px solid rgba(255,230,0,0.3);
+  }
+
+  .tag-normal {
+    background: rgba(255,255,255,0.06);
+    color: var(--codm-gray-200);
+    border: 0.5px solid var(--border-color);
+  }
+
+  .tag-info {
+    background: transparent;
+    color: var(--codm-gray-300);
+    border: 0.5px solid var(--codm-gray-400);
+  }
+
+  .card-body {
+    padding: 12px 16px 14px;
+  }
+
+  .card-body p {
+    font-size: 13px;
+    color: var(--codm-gray-100);
+    line-height: 1.75;
+    margin-bottom: 10px;
+  }
+
+  .card-body .hl { color: var(--codm-yellow); font-weight: 500; }
+
+  .card-insight {
+    font-size: 12px;
+    color: var(--codm-gray-300);
+    padding: 8px 12px;
+    background: rgba(255,230,0,0.03);
+    border-left: 2px solid rgba(255,230,0,0.25);
+    margin-bottom: 12px;
+    line-height: 1.6;
+  }
+
+  .card-insight strong { color: var(--codm-gray-200); }
+
+  /* ── 链接区 ── */
+  .link-section {
+    border-top: 0.5px solid var(--border-color);
+    padding-top: 8px;
+  }
+
+  .link-section-label {
+    font-size: 10px;
+    color: var(--codm-gray-400);
+    letter-spacing: 0.2em;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+
+  .link-row {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .link-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 10px;
+    background: rgba(255,255,255,0.02);
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+
+  .link-item:hover { background: rgba(255,255,255,0.05); }
+
+  .link-badge {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 2px 6px;
+    flex-shrink: 0;
+    text-transform: uppercase;
+  }
+
+  .link-badge-x { background: rgba(255,255,255,0.1); color: var(--codm-white); }
+  .link-badge-yt { background: rgba(255,60,56,0.15); color: #FF3C38; }
+  .link-badge-weibo { background: rgba(255,100,80,0.12); color: #FF6450; }
+  .link-badge-web { background: rgba(255,255,255,0.05); color: var(--codm-gray-300); }
+  .link-badge-steam { background: rgba(102,153,204,0.15); color: #6699CC; }
+  .link-badge-ea { background: rgba(255,100,0,0.12); color: #FF6400; }
+  .link-badge-bili { background: rgba(0,160,230,0.12); color: #00A0E6; }
+
+  .link-text {
+    font-size: 12px;
+    color: var(--codm-gray-200);
+    flex: 1;
+    line-height: 1.4;
+  }
+
+  .link-arrow {
+    font-size: 10px;
+    color: var(--codm-gray-400);
+    flex-shrink: 0;
+  }
+
+  /* ── 设计参考 ── */
+  .ref-section { margin-top: 4px; }
+
+  .ref-item {
+    display: flex;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 0.5px solid var(--border-color);
+    align-items: flex-start;
+  }
+
+  .ref-item:last-child { border-bottom: none; }
+
+  .ref-num {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--codm-yellow);
+    flex-shrink: 0;
+    width: 24px;
+    text-align: right;
+    padding-top: 1px;
+  }
+
+  .ref-content { flex: 1; }
+
+  .ref-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--codm-white);
+    margin-bottom: 2px;
+  }
+
+  .ref-desc {
+    font-size: 12px;
+    color: var(--codm-gray-300);
+    line-height: 1.6;
+  }
+
+  /* ── 页脚 ── */
+  .page-footer {
+    margin-top: 32px;
+    padding-top: 14px;
+    border-top: 0.5px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .footer-left {
+    font-size: 10px;
+    color: var(--codm-gray-400);
+    line-height: 1.8;
+  }
+
+  .footer-left .team { color: var(--codm-gray-300); }
+
+  .footer-right {
+    font-size: 10px;
+    color: var(--codm-gray-400);
+    text-align: right;
+    letter-spacing: 0.08em;
+  }
+
+  .footer-yellow {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--codm-yellow);
+    margin-right: 4px;
+    vertical-align: middle;
+  }
+
+  /* ── 装饰方块 ── */
+  .deco-squares {
+    display: flex;
+    gap: 4px;
+    margin-top: 6px;
+  }
+
+  .deco-sq {
+    width: 6px;
+    height: 6px;
+    background: var(--codm-yellow);
+    opacity: 0.6;
+  }
+
+  .deco-sq:nth-child(2) { opacity: 0.35; }
+  .deco-sq:nth-child(3) { opacity: 0.15; }
+
+  /* ── 响应式 ── */
+  @media (max-width: 600px) {
+    .page { padding: 28px 20px 36px; }
+    .title-main { font-size: 26px; }
+    .side-watermark { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- 侧边水印 -->
+<div class="side-watermark">CALL OF DUTY MOBILE</div>
+
+<div class="page">
+
+  <!-- 页眉 -->
+  <div class="page-header">
+    <div class="header-left">
+      <div class="chapter-tag">
+        <span class="chapter-tag-bar"></span>
+        <span class="chapter-tag-label">竞品日报</span>
+      </div>
+      <span class="header-section-name">COMPETITIVE INTEL</span>
+    </div>
+    <div class="header-right">
+      <div class="brand">CALL OF DUTY</div>
+      <div>使命召唤手游</div>
+    </div>
+  </div>
+
+  <div class="divider-bold"></div>
+
+  <!-- 标题区 -->
+  <div class="title-block">
+    <div class="title-date">2026.04.17 · THURSDAY · PG.01</div>
+    <h1 class="title-main">CODM 竞品<span class="hl">日报</span></h1>
+    <div class="title-sub">[ daily competitive intelligence ]</div>
+    <p class="title-desc">
+      CODM <span class="hl">S4「永恒囚笼」官宣 4/22</span> · 哥斯拉×金刚联动全面启动 · 暗区闪魂收藏卡今日发售 · ABI 锦标赛开赛
+    </p>
+
+    <div class="threat-bar">
+      <span class="threat-item threat-high">[ 自家重大 ×1 ]</span>
+      <span class="threat-item threat-high">[ 发售日 ×1 ]</span>
+      <span class="threat-item threat-mid">[ 运营中 ×1 ]</span>
+      <span class="threat-item threat-info">[ 赛事 ×1 ]</span>
+    </div>
+  </div>
+
+  <!-- 快报区 -->
+  <div class="section-label">重点速览 · BRIEFING</div>
+
+  <div class="briefing-list">
+    <div class="briefing-item">
+      <span class="tag">[ A ]</span><b>CODM S4「永恒囚笼 / Eternal Prison」官宣 4/22 上线</b> — 哥斯拉×金刚联动全面启动，<span class="hl">重生岛回归 BR+DMZ 双模式</span>，神话 DP27 确认，比预期提前 2 天
+    </div>
+    <div class="briefing-item">
+      <span class="tag">[ B ]</span><b>暗区突围 × 闪魂「锋刃出金」今日正式发售</b> — 黑卡蒂全新卡面 + 稀有枪械涂装，<span class="hl">首次大规模跨界实体周边</span>里程碑事件
+    </div>
+    <div class="briefing-item">
+      <span class="tag">[ C ]</span><b>三角洲 S9「回声」进入 D+1 发酵期</b> — UGC 评测爆发，<span class="hl">猛攻节 4/29 预告释放</span>，国际版 4/21 上线倒计时
+    </div>
+    <div class="briefing-item">
+      <span class="tag">[ D ]</span><b>ABI Warlord 锦标赛今日正式开赛</b> — 一周年庆 + 竞技赛事双线并行，<span class="hl">4500 Bonds 免费领持续</span>
+    </div>
+  </div>
+
+  <div class="divider-bold"></div>
+
+  <!-- 竞品详情 -->
+  <div class="section-label">竞品动态 · INTEL CARDS</div>
+
+  <!-- ▌ CODM 自家（今日主角） -->
+  <div class="card card-critical">
+    <div class="card-head">
+      <span class="card-title">[ 01 ] 使命召唤手游 · CODM S4</span>
+      <span class="card-tag tag-critical">KEY EVENT</span>
+    </div>
+    <div class="card-body">
+      <p><span class="hl">S4「永恒囚笼 / Eternal Prison」正式官宣，4/22 全球上线</span>。哥斯拉×金刚联动基于《哥斯拉大战金刚2：帝国崛起》，金刚和哥斯拉主题特战兵造型登场，怪兽主题任务解锁特殊奖励。<span class="hl">重生岛（Rebirth Island）回归</span>——同时登陆 BR 和 DMZ: Recon 双模式。全新 BR 职业「Toxic Overload（毒素过载）」公布。神话 DP27 机枪确认为 Battle Pass 重磅奖励。官方博客 4/16 发布完整 S4 内容公告。</p>
+      <div class="card-insight">
+        <strong>[ 运营要点 ]</strong> S4 提前至 4/22 上线避开了三角洲 S9 首周热度峰值，同时抢在猛攻节（4/29）之前建立联动话题。重生岛双模式回归同时服务 BR 和 DMZ 两个社群——一张经典地图覆盖两个玩家池的策略值得内部复盘。
+      </div>
+      <div class="link-section">
+        <div class="link-section-label">[ sources ]</div>
+        <div class="link-row">
+          <a class="link-item" href="https://www.callofduty.com/blog/2026/04/call-of-duty-mobile-season-4-2026-eternal-prison" target="_blank">
+            <span class="link-badge link-badge-web">BLOG</span>
+            <span class="link-text">callofduty.com · S4 Eternal Prison 完整内容公告</span>
+            <span class="link-arrow">→</span>
+          </a>
+          <a class="link-item" href="https://x.com/PlayCODMobile" target="_blank">
+            <span class="link-badge link-badge-x">X</span>
+            <span class="link-text">@PlayCODMobile · S4 预告 + 哥斯拉×金刚联动官宣</span>
+            <span class="link-arrow">→</span>
+          </a>
+          <a class="link-item" href="https://www.youtube.com/@callofdutymobile" target="_blank">
+            <span class="link-badge link-badge-yt">YT</span>
+            <span class="link-text">Call of Duty: Mobile · S4 赛季预告片 + 联动画面</span>
+            <span class="link-arrow">→</span>
+          </a>
+          <a class="link-item" href="https://space.bilibili.com/1537978798" target="_blank">
+            <span class="link-badge link-badge-bili">B站</span>
+            <span class="link-text">使命召唤手游 · S4 预告 + 重生岛回归 + 神话 DP27</span>
+            <span class="link-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ▌ 暗区突围 -->
+  <div class="card card-warning">
+    <div class="card-head">
+      <span class="card-title">[ 02 ] 暗区突围 · Arena Breakout</span>
+      <span class="card-tag tag-warning">LAUNCH DAY</span>
+    </div>
+    <div class="card-body">
+      <p><span class="hl">暗区突围 × 闪魂收藏卡「锋刃出金」今日正式发售</span>——黑卡蒂全新卡面 + 稀有枪械涂装，暗区突围首次大规模跨界实体周边。S17「迷雾」赛季持续运营，暗区 MBTI 人格测试等社区互动内容上线。国际版 <span class="hl">ABI Warlord 锦标赛今日正式开赛</span>——S5 高端竞技模式面向精英玩家。一周年庆典持续：4500 Bonds 免费 + S 级武器涂装 + 免费皮肤套装。</p>
+      <div class="card-insight">
+        <strong>[ 设计参考 ]</strong> 闪魂「锋刃出金」是暗区突围打通虚拟+实体双向营销的里程碑——关注首日销量和社区反响。"黑卡蒂刺破硝烟"暗黑美学文案 + 角色卡面 + 枪械涂装的整合包装值得参考。MBTI 人格测试等非游戏内容运营表明暗区在社区互动创新上持续发力。
+      </div>
+      <div class="link-section">
+        <div class="link-section-label">[ sources ]</div>
+        <div class="link-row">
+          <a class="link-item" href="https://news.17173.com/content/04112026/115351277.shtml" target="_blank">
+            <span class="link-badge link-badge-web">17173</span>
+            <span class="link-text">暗区突围 × 闪魂 收藏卡「锋刃出金」4/17 发售详情</span>
+            <span class="link-arrow">→</span>
+          </a>
+          <a class="link-item" href="https://weibo.com/u/7529539984" target="_blank">
+            <span class="link-badge link-badge-weibo">微博</span>
+            <span class="link-text">@暗区突围官方微博 · 闪魂收藏卡发售日推广</span>
+            <span class="link-arrow">→</span>
+          </a>
+          <a class="link-item" href="https://x.com/ArenaBreakoutI" target="_blank">
+            <span class="link-badge link-badge-x">X</span>
+            <span class="link-text">@ArenaBreakoutI · Warlord 锦标赛开赛 + 一周年庆典</span>
+            <span class="link-arrow">→</span>
+          </a>
+          <a class="link-item" href="https://store.steampowered.com/app/2073620/Arena_Breakout_Infinite/" target="_blank">
+            <span class="link-badge link-badge-steam">STEAM</span>
+            <span class="link-text">Arena Breakout: Infinite · S5 + 一周年 + Warlord</span>
+            <span class="link-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ▌ 三角洲行动 -->
+  <div class="card card-normal">
+    <div class="card-head">
+      <span class="card-title">[ 03 ] 三角洲行动 · Delta Force</span>
+      <span class="card-tag tag-normal">IN OPERATION</span>
+    </div>
+    <div class="card-body">
+      <p>S9「回声」赛季进入<span class="hl">上线 D+1 运营发酵期</span>，全平台更新推送完成。UGC 评测和攻略内容大量涌现——回响干员技能深度解析、M82 伤害测试成为热点。<span class="hl">猛攻节活动 4/29 正式上线</span>预告视频发布。传说近战武器「坠星者」实录视频上线。国际版 Season Echo <span class="hl">4/21 上线</span>，多家国际媒体（Dot Esports、Pocket Gamer）密集报道。古墓丽影 30 周年联动 4/30 实装倒计时。</p>
+      <div class="card-insight">
+        <strong>[ 设计参考 ]</strong> S9 首日后 UGC 爆发印证版本内容量级足以支撑 1-2 周话题热度。猛攻节 4/29 是赛季中期活动锚点——与 CODM S4 上线（4/22）形成一周内的双重竞争。国际版 4/21 延迟上线形成错峰，延长了 S9 整体话题周期。
+      </div>
+      <div class="link-section">
+        <div class="link-section-label">[ sources ]</div>
+        <div class="link-row">
+          <a class="link-item" href="https://www.gamersky.com/handbook/202604/2124234.shtml" target="_blank">
+            <span class="link-badge link-badge-web">游民</span>
+            <span class="link-text">《三角洲行动》4/16 S9 赛季更新公告解读</span>
+            <span class="link-arrow">→</span>
+          </a>
+          <a class="link-item" href="https://x.com/PlayDeltaForce" target="_blank">
+            <span class="link-badge link-badge-x">X</span>
+            <span class="link-text">@PlayDeltaForce · Season Echo 4/21 国际版上线</span>
+            <span class="link-arrow">→</span>
+          </a>
+          <a class="link-item" href="https://space.bilibili.com/1707991502" target="_blank">
+            <span class="link-badge link-badge-bili">B站</span>
+            <span class="link-text">三角洲行动 · S9 更新速览 + 猛攻节预告 + 坠星者</span>
+            <span class="link-arrow">→</span>
+          </a>
+          <a class="link-item" href="https://dotesports.com/delta-force/news/delta-force-season-echo" target="_blank">
+            <span class="link-badge link-badge-web">DOT</span>
+            <span class="link-text">Dot Esports · All new content in Delta Force Season Echo</span>
+            <span class="link-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ▌ 宣发节奏对比 -->
+  <div class="card card-info">
+    <div class="card-head">
+      <span class="card-title">[ 04 ] 宣发节奏对比 · TEMPO ANALYSIS</span>
+      <span class="card-tag tag-info">ANALYSIS</span>
+    </div>
+    <div class="card-body">
+      <p>今日格局：<span class="hl">CODM S4 官宣抢占话题窗口</span>，暗区闪魂收藏卡发售日 + ABI 锦标赛开赛双线引爆，三角洲 S9 进入内容发酵期。未来一周是三大竞品密集交锋期：CODM S4（4/22）→ 三角洲国际版（4/21）→ 猛攻节（4/29）→ 古墓丽影（4/30）。</p>
+      <div class="card-insight">
+        <strong>[ 宣发强度对比 ]</strong><br>
+        ⭐⭐⭐⭐⭐ CODM — S4 Eternal Prison 官宣 + 哥斯拉联动全面启动<br>
+        ⭐⭐⭐⭐ 暗区突围 — 闪魂收藏卡今日发售 + ABI 锦标赛开赛<br>
+        ⭐⭐⭐⭐ 三角洲行动 — S9 D+1 UGC 爆发 + 猛攻节预告 + 国际版 4/21
+      </div>
+    </div>
+  </div>
+
+  <div class="divider-bold"></div>
+
+  <!-- 设计参考价值 -->
+  <div class="section-label">设计参考价值 · DESIGN INTEL</div>
+
+  <div class="ref-section">
+    <div class="ref-item">
+      <div class="ref-num">1.</div>
+      <div class="ref-content">
+        <div class="ref-title">CODM S4 时间策略——精准卡位竞品窗口</div>
+        <div class="ref-desc">4/22 上线避开三角洲 S9 首周峰值，抢在猛攻节（4/29）之前建立联动话题。重生岛双模式回归同时服务 BR 和 DMZ 两个社群——一张经典地图覆盖两个玩家池的资源效率值得深度复盘</div>
+      </div>
+    </div>
+    <div class="ref-item">
+      <div class="ref-num">2.</div>
+      <div class="ref-content">
+        <div class="ref-title">暗区「锋刃出金」首发——虚拟+实体双向营销里程碑</div>
+        <div class="ref-desc">将游戏角色（黑卡蒂）和枪械涂装转化为实体收藏卡，打通虚实双向营销链路。CODM 拥有丰富武器皮肤和角色资产，Z 世代收藏文化切入点值得探索</div>
+      </div>
+    </div>
+    <div class="ref-item">
+      <div class="ref-num">3.</div>
+      <div class="ref-content">
+        <div class="ref-title">4/21-4/30 竞品密集交锋周——关键十天</div>
+        <div class="ref-desc">三角洲国际版 S9（4/21）→ CODM S4 + 哥斯拉联动（4/22）→ 猛攻节（4/29）→ 古墓丽影联动（4/30）——四个重大节点密集排布，是 2026 年射击品类最激烈的竞争周期之一</div>
+      </div>
+    </div>
+    <div class="ref-item">
+      <div class="ref-num">4.</div>
+      <div class="ref-content">
+        <div class="ref-title">社区运营创新——暗区 MBTI 人格测试启示</div>
+        <div class="ref-desc">暗区突围上线的 MBTI 人格测试是非游戏内容运营的新尝试，通过社交化互动提升社区活跃度。CODM 可探索类似的轻量化社区互动内容，在赛季间隙保持用户粘性</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 页脚 -->
+  <div class="page-footer">
+    <div class="footer-left">
+      <div>DESIGN</div>
+      <div class="team"><span class="footer-yellow"></span>J3 宣发设计组 · 小柒运营日报</div>
+      <div class="deco-squares">
+        <span class="deco-sq"></span>
+        <span class="deco-sq"></span>
+        <span class="deco-sq"></span>
+      </div>
+    </div>
+    <div class="footer-right">
+      2026.04.17<br>
+      V33 · PG.01
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
