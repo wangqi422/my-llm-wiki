@@ -5,7 +5,16 @@
 
 ---
 
+## 🌐 统一归档入口
+
+- **Archive H5**：[`index.html`](index.html)
+- **说明**：归档页会统一收录 `docs/competitive-daily/` 下符合命名规范的日报 HTML / MD / PNG
+- **生成命令**：`node _deploy/generate-competitive-archive.js`
+
+---
+
 ## 📋 日报列表
+
 
 | 日期 | HTML 网页 | MD 原文 |
 |------|----------|---------|
@@ -18,7 +27,9 @@
 
 ## 🔗 在线查看
 
-GitHub Pages: [https://wangqi422.github.io/my-llm-wiki/docs/competitive-daily/](https://wangqi422.github.io/my-llm-wiki/docs/competitive-daily/)
+- **归档入口**：[`https://wangqi422.github.io/my-llm-wiki/docs/competitive-daily/`](https://wangqi422.github.io/my-llm-wiki/docs/competitive-daily/)
+- **说明**：部署后会优先打开 `docs/competitive-daily/index.html`，作为所有竞品日报的统一 H5 目录
+
 
 ---
 
@@ -28,4 +39,4 @@ GitHub Pages: [https://wangqi422.github.io/my-llm-wiki/docs/competitive-daily/](
 - **MD 原文**：每日竞品情报源文件，包含官方一手链接
 - **更新频率**：工作日每日更新
 - **推送渠道**：企业微信群（精简 Markdown + 完整 HTML 链接）
-- **生成 Skill**：`_skills/competitive-daily.md`
+- **生成 Skill**：`_skills/daily-card.md`（统一日报流水线）
