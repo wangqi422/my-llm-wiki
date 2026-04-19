@@ -11,6 +11,7 @@
 
   html, body {
     width: 1080px;
+    height: 1920px;
     overflow: hidden;
     font-family: 'Inter', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -53,8 +54,7 @@
 
   /* ── Cover 区 ── */
   .cover {
-    height: 220px;
-    padding: 40px 56px 0;
+    padding: 48px 56px 24px;
     flex-shrink: 0;
     position: relative;
     z-index: 1;
@@ -64,7 +64,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
   }
 
   .cover-brand {
@@ -83,7 +83,7 @@
     background: #FFE600;
     color: #0D0D0D;
     padding: 4px 14px;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 800;
     letter-spacing: 0.06em;
   }
@@ -96,7 +96,7 @@
   }
 
   .cover-date {
-    font-size: 12px;
+    font-size: 13px;
     color: rgba(255,255,255,0.4);
     text-align: right;
     line-height: 1.6;
@@ -108,17 +108,17 @@
   }
 
   .cover-title {
-    font-size: 48px;
+    font-size: 52px;
     font-weight: 900;
     letter-spacing: -1.5px;
     line-height: 1.1;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
   }
 
   .cover-title .hl { color: #FFE600; }
 
   .cover-sub {
-    font-size: 14px;
+    font-size: 15px;
     color: rgba(255,255,255,0.6);
     letter-spacing: 0.35em;
     text-transform: uppercase;
@@ -134,18 +134,14 @@
 
   /* ── 概览区 ── */
   .overview {
-    padding: 18px 56px 14px;
+    padding: 22px 56px 18px;
     flex-shrink: 0;
   }
 
   .overview-text {
-    font-size: 14px;
+    font-size: 15px;
     color: rgba(255,255,255,0.65);
-    line-height: 1.65;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    line-height: 1.7;
   }
 
   .overview-text .hl { color: #FFE600; font-weight: 500; }
@@ -153,16 +149,16 @@
   /* ── 威胁条 ── */
   .threat-bar {
     display: flex;
-    gap: 8px;
+    gap: 10px;
     padding: 0 56px;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
     flex-shrink: 0;
   }
 
   .threat-pill {
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 700;
-    padding: 4px 14px;
+    padding: 5px 16px;
     letter-spacing: 0.06em;
     border: 1px solid;
   }
@@ -179,13 +175,13 @@
     background: rgba(255,255,255,0.03);
   }
 
-  /* ── 内容区 ── */
+  /* ── 内容区 —— 核心：flex:1 填满中间全部空间 ── */
   .content {
     flex: 1;
     padding: 0 56px;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    min-height: 0;
   }
 
   .section-label {
@@ -194,7 +190,7 @@
     color: rgba(255,255,255,0.35);
     letter-spacing: 0.25em;
     text-transform: uppercase;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -212,8 +208,8 @@
   .comp-cards {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    margin-bottom: 18px;
+    gap: 12px;
+    margin-bottom: 24px;
     flex-shrink: 0;
   }
 
@@ -221,20 +217,20 @@
     background: #141414;
     border: 0.5px solid rgba(255,255,255,0.06);
     border-left: 3px solid #888;
-    padding: 14px 18px;
+    padding: 18px 22px;
   }
 
   .comp-header {
     display: flex;
     align-items: center;
     gap: 8px;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
 
-  .comp-icon { font-size: 16px; }
+  .comp-icon { font-size: 17px; }
 
   .comp-name {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 700;
     color: #FFFFFF;
     flex: 1;
@@ -267,19 +263,19 @@
   }
 
   .comp-highlight {
-    font-size: 13px;
+    font-size: 14px;
     color: rgba(255,255,255,0.7);
-    line-height: 1.55;
+    line-height: 1.6;
     padding-left: 14px;
     position: relative;
-    margin-bottom: 3px;
+    margin-bottom: 4px;
   }
 
   .comp-highlight::before {
     content: '';
     position: absolute;
     left: 0;
-    top: 7px;
+    top: 8px;
     width: 4px;
     height: 4px;
     background: rgba(255,255,255,0.2);
@@ -287,20 +283,20 @@
 
   /* ── 宣发节奏对比 ── */
   .tempo-section {
-    margin-bottom: 18px;
+    margin-bottom: 24px;
     flex-shrink: 0;
   }
 
   .tempo-row {
     display: flex;
     align-items: center;
-    gap: 12px;
-    margin-bottom: 7px;
+    gap: 14px;
+    margin-bottom: 10px;
   }
 
   .tempo-name {
     width: 90px;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 600;
     color: rgba(255,255,255,0.7);
     flex-shrink: 0;
@@ -309,7 +305,7 @@
 
   .tempo-bar-bg {
     flex: 1;
-    height: 6px;
+    height: 8px;
     background: rgba(255,255,255,0.06);
     position: relative;
   }
@@ -321,92 +317,92 @@
   }
 
   .tempo-stars {
-    font-size: 10px;
+    font-size: 11px;
     width: 80px;
     flex-shrink: 0;
   }
 
-  /* ── CODM 运营启发 ── */
+  /* ── CODM 运营启发 —— flex:1 填满剩余空间 ── */
   .insights-section {
     flex: 1;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    min-height: 0;
   }
 
   .insights-box {
     background: rgba(255,230,0,0.03);
     border: 1px solid rgba(255,230,0,0.12);
-    padding: 20px 24px;
+    padding: 24px 28px;
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    justify-content: space-between;
   }
 
   .insights-header {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 800;
     color: #FFE600;
     letter-spacing: 0.02em;
     display: flex;
     align-items: center;
     gap: 8px;
+    margin-bottom: 8px;
   }
 
   .insights-header::before {
     content: '';
     width: 4px;
-    height: 18px;
+    height: 20px;
     background: #FFE600;
     flex-shrink: 0;
   }
 
   .insight-item {
     display: flex;
-    gap: 12px;
+    gap: 14px;
     align-items: flex-start;
   }
 
   .insight-num {
-    width: 24px;
-    height: 24px;
+    width: 26px;
+    height: 26px;
     background: rgba(255,230,0,0.12);
     color: #FFE600;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 800;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    margin-top: 1px;
+    margin-top: 2px;
   }
 
   .insight-body { flex: 1; }
 
   .insight-title {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 700;
     color: #FFFFFF;
-    margin-bottom: 2px;
+    margin-bottom: 6px;
   }
 
   .insight-text {
-    font-size: 12px;
+    font-size: 14px;
     color: rgba(255,255,255,0.55);
-    line-height: 1.55;
+    line-height: 1.65;
   }
 
   /* ── Footer ── */
   .footer {
-    height: 80px;
+    height: 72px;
     padding: 0 56px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     border-top: 1px solid rgba(255,255,255,0.08);
     flex-shrink: 0;
-    margin-top: auto;
   }
 
   .footer-left {
@@ -482,13 +478,12 @@
 
   <!-- 概览 -->
   <div class="overview">
-    <div class="overview-text">今日三大核心事件：① 三角洲行动「回声」赛季上线 D+2，坠星者近战武器数值异常引发社区争议，官方紧急发布公告确认修复中；② 暗区突围 ABI 一周年庆典进入高潮，电视台（TV Station）新地图昨日正式上线、4500 Bonds 全员派发、Warlord 锦标赛进行中；③ Battlefield 6 正式发布 2026 年路线图——S3 排位赛上线 Redsec、S4 海战模式回归、经典地图</div>
+    <div class="overview-text">今日三大核心事件：① 三角洲行动「回声」赛季上线 D+2，坠星者近战武器数值异常引发社区争议，官方紧急发布公告确认修复中；② 暗区突围 ABI 一周年庆典进入高潮，电视台（TV Station）新地图昨日正式上线、4500 Bonds 全员派发、Warlord 锦标赛进行中；③ Battlefield 6 正式发布 2026 年路线图——S3 排位赛上线 Redsec、S4 海战模式回归、经典地图回归。</div>
   </div>
 
   <!-- 威胁条 -->
   <div class="threat-bar">
     <span class="threat-pill threat-pill-high">[ 高威胁 ×3 ]</span>
-    
     <span class="threat-pill threat-pill-mid">[ 运营中 ×1 ]</span>
   </div>
 
@@ -504,7 +499,9 @@
           <span class="comp-name">三角洲行动</span>
           <span class="comp-threat threat-critical">HIGH THREAT</span>
         </div>
-        <div class="comp-highlight">Season Echo 国际版 4/21 上线倒计时 3 天——密集宣传期</div><div class="comp-highlight">S9「回声」赛季 D+2 运营期——新干员回响 &amp; M82 重狙持续成为社区讨论焦点</div><div class="comp-highlight">⚠️ 官方紧急公告：传说近战武器「坠星者」存在数值配置异常，已确认并加紧修复</div>
+        <div class="comp-highlight">Season Echo 国际版 4/21 上线倒计时 3 天——密集宣传期</div>
+        <div class="comp-highlight">S9「回声」赛季 D+2 运营期——新干员回响 &amp; M82 重狙持续成为社区讨论焦点</div>
+        <div class="comp-highlight">⚠️ 官方紧急公告：传说近战武器「坠星者」存在数值配置异常，已确认并加紧修复</div>
       </div>
       <div class="comp-card" style="border-left-color: #00E5FF;">
         <div class="comp-header">
@@ -512,7 +509,9 @@
           <span class="comp-name">暗区突围</span>
           <span class="comp-threat threat-critical">HIGH THREAT</span>
         </div>
-        <div class="comp-highlight">电视台（TV Station）新地图 4/17 正式上线——S5 赛季以来的首张全新撤离地图</div><div class="comp-highlight">一周年庆典高潮：4500 Bonds 全员免费派发 + 3×3 武器箱 + S 级周年限定涂装</div><div class="comp-highlight">S17「迷雾」赛季持续稳定运营</div>
+        <div class="comp-highlight">电视台（TV Station）新地图 4/17 正式上线——S5 赛季以来的首张全新撤离地图</div>
+        <div class="comp-highlight">一周年庆典高潮：4500 Bonds 全员免费派发 + 3×3 武器箱 + S 级周年限定涂装</div>
+        <div class="comp-highlight">S17「迷雾」赛季持续稳定运营</div>
       </div>
       <div class="comp-card" style="border-left-color: #4CAF50;">
         <div class="comp-header">
@@ -520,7 +519,9 @@
           <span class="comp-name">Battlefield 6</span>
           <span class="comp-threat threat-critical">HIGH THREAT</span>
         </div>
-        <div class="comp-highlight">2026 年完整路线图正式发布（4/17 IGN / GameInformer / EA 官方同步发布）</div><div class="comp-highlight">S3（即将上线）：排位赛引入 Redsec（免费大逃杀模式）、全新最大地图</div><div class="comp-highlight">S4（今夏）：海战模式（Naval Warfare）回归——Battlefield 系列标志性元素重返</div>
+        <div class="comp-highlight">2026 年完整路线图正式发布（4/17 IGN / GameInformer / EA 官方同步发布）</div>
+        <div class="comp-highlight">S3（即将上线）：排位赛引入 Redsec（免费大逃杀模式）、全新最大地图</div>
+        <div class="comp-highlight">S4（今夏）：海战模式（Naval Warfare）回归——Battlefield 系列标志性元素重返</div>
       </div>
       <div class="comp-card" style="border-left-color: #FF6B35;">
         <div class="comp-header">
@@ -528,43 +529,35 @@
           <span class="comp-name">CODM 官方（自家参考）</span>
           <span class="comp-threat threat-normal">NORMAL</span>
         </div>
-        <div class="comp-highlight">S4「永恒囚笼 / Eternal Prison」上线倒计时 4 天（4/22 5PM PT）</div><div class="comp-highlight">哥斯拉 × 金刚联动预热持续：怪兽主题任务 &amp; 金刚/哥斯拉特战兵造型预览</div><div class="comp-highlight">重生岛（Rebirth Island）回归 BR + DMZ: Recon 双模式——社区期待度极高</div>
+        <div class="comp-highlight">S4「永恒囚笼 / Eternal Prison」上线倒计时 4 天（4/22 5PM PT）</div>
+        <div class="comp-highlight">哥斯拉 × 金刚联动预热持续：怪兽主题任务 &amp; 金刚/哥斯拉特战兵造型预览</div>
+        <div class="comp-highlight">重生岛（Rebirth Island）回归 BR + DMZ: Recon 双模式——社区期待度极高</div>
       </div>
     </div>
 
     <!-- 宣发节奏对比 -->
-    
     <div class="tempo-section">
       <div class="section-label">宣发强度 · TEMPO</div>
-      
-        <div class="tempo-row">
-          <span class="tempo-name">三角洲行动</span>
-          <div class="tempo-bar-bg">
-            <div class="tempo-bar-fill" style="width:80%"></div>
-          </div>
-          <span class="tempo-stars">⭐⭐⭐⭐</span>
-        </div>
-        <div class="tempo-row">
-          <span class="tempo-name">暗区突围</span>
-          <div class="tempo-bar-bg">
-            <div class="tempo-bar-fill" style="width:100%"></div>
-          </div>
-          <span class="tempo-stars">⭐⭐⭐⭐⭐</span>
-        </div>
-        <div class="tempo-row">
-          <span class="tempo-name">Battlefie…</span>
-          <div class="tempo-bar-bg">
-            <div class="tempo-bar-fill" style="width:80%"></div>
-          </div>
-          <span class="tempo-stars">⭐⭐⭐⭐</span>
-        </div>
-        <div class="tempo-row">
-          <span class="tempo-name">CODM</span>
-          <div class="tempo-bar-bg">
-            <div class="tempo-bar-fill" style="width:80%"></div>
-          </div>
-          <span class="tempo-stars">⭐⭐⭐⭐</span>
-        </div>
+      <div class="tempo-row">
+        <span class="tempo-name">三角洲行动</span>
+        <div class="tempo-bar-bg"><div class="tempo-bar-fill" style="width:80%"></div></div>
+        <span class="tempo-stars">⭐⭐⭐⭐</span>
+      </div>
+      <div class="tempo-row">
+        <span class="tempo-name">暗区突围</span>
+        <div class="tempo-bar-bg"><div class="tempo-bar-fill" style="width:100%"></div></div>
+        <span class="tempo-stars">⭐⭐⭐⭐⭐</span>
+      </div>
+      <div class="tempo-row">
+        <span class="tempo-name">Battlefie…</span>
+        <div class="tempo-bar-bg"><div class="tempo-bar-fill" style="width:80%"></div></div>
+        <span class="tempo-stars">⭐⭐⭐⭐</span>
+      </div>
+      <div class="tempo-row">
+        <span class="tempo-name">CODM</span>
+        <div class="tempo-bar-bg"><div class="tempo-bar-fill" style="width:80%"></div></div>
+        <span class="tempo-stars">⭐⭐⭐⭐</span>
+      </div>
     </div>
 
     <!-- CODM 运营启发 -->
@@ -573,30 +566,27 @@
       <div class="insights-box">
         <div class="insights-header">结合竞品动态，CODM 可以这样做</div>
         
-      <div class="insight-item">
-        <span class="insight-num">1</span>
-        <div class="insight-body">
-          <div class="insight-title">Battlefield 6 全年路线图——PC/主机射击大盘重大变量</div>
-          <div class="insight-text">海战模式是 BF 独有差异化——CODM 可以思考自己的"独有模式"是什么（DMZ: Recon 已是很好的方向）
-BF6 路线图的"全年预告"模式值得借鉴——给玩家清晰的长期预期，比逐赛季零碎放料更能稳住用户</div>
+        <div class="insight-item">
+          <span class="insight-num">1</span>
+          <div class="insight-body">
+            <div class="insight-title">Battlefield 6 全年路线图——PC/主机射击大盘重大变量</div>
+            <div class="insight-text">海战模式是 BF 独有差异化——CODM 可以思考自己的"独有模式"是什么（DMZ: Recon 已是很好的方向）。BF6 路线图的"全年预告"模式值得借鉴——给玩家清晰的长期预期，比逐赛季零碎放料更能稳住用户。</div>
+          </div>
         </div>
-      </div>
-      <div class="insight-item">
-        <span class="insight-num">2</span>
-        <div class="insight-body">
-          <div class="insight-title">ABI 一周年庆典——免费福利 + 新地图的组合拳</div>
-          <div class="insight-text">周年庆的核心竞争力是"新内容 + 大福利"缺一不可——仅靠打折活动不够，必须有硬核新内容（如新地图）做锚
-ABI 的 Warlord 锦标赛 + 周年庆双线并行说明竞技赛事和运营活动可以协同放大声量</div>
+        <div class="insight-item">
+          <span class="insight-num">2</span>
+          <div class="insight-body">
+            <div class="insight-title">ABI 一周年庆典——免费福利 + 新地图的组合拳</div>
+            <div class="insight-text">周年庆的核心竞争力是"新内容 + 大福利"缺一不可——仅靠打折活动不够，必须有硬核新内容（如新地图）做锚。ABI 的 Warlord 锦标赛 + 周年庆双线并行说明竞技赛事和运营活动可以协同放大声量。</div>
+          </div>
         </div>
-      </div>
-      <div class="insight-item">
-        <span class="insight-num">3</span>
-        <div class="insight-body">
-          <div class="insight-title">三角洲坠星者翻车——新品上线质量管控的警示</div>
-          <div class="insight-text">S4 神话 DP27 上线前必须做好充分的数值测试——传说/神话级武器是高付费意愿用户的核心触达点，bug = 直接损失
-快速响应是最低标准，更好的做法是"不出问题"</div>
+        <div class="insight-item">
+          <span class="insight-num">3</span>
+          <div class="insight-body">
+            <div class="insight-title">三角洲坠星者翻车——新品上线质量管控的警示</div>
+            <div class="insight-text">S4 神话 DP27 上线前必须做好充分的数值测试——传说/神话级武器是高付费意愿用户的核心触达点，bug = 直接损失。快速响应是最低标准，更好的做法是"不出问题"。</div>
+          </div>
         </div>
-      </div>
       </div>
     </div>
 
