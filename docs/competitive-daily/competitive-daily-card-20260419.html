@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080, initial-scale=1.0">
+<title>CODM Competitive Intel — 2026.04.19</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+  body {
+    width: 1080px;
+    height: 1920px;
+    background: #0a0a0f;
+    font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
+    color: #e0e0e0;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .canvas {
+    width: 1080px;
+    height: 1920px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* 背景网格 */
+  .canvas::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: 
+      linear-gradient(rgba(0, 255, 136, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 255, 136, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* 扫描线效果 */
+  .canvas::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 255, 136, 0.008) 2px,
+      rgba(0, 255, 136, 0.008) 4px
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .content-wrapper {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 0;
+  }
+
+  /* Cover 色带 */
+  .cover-strip {
+    height: 6px;
+    background: linear-gradient(90deg, #00ff88, #00cc6a, #00ff88, #00ffcc, #00ff88);
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.6), 0 0 40px rgba(0, 255, 136, 0.3);
+  }
+
+  /* Header */
+  .header {
+    padding: 28px 48px 20px;
+    border-bottom: 1px solid rgba(0, 255, 136, 0.15);
+  }
+
+  .header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  .header-badge {
+    font-family: 'Orbitron', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    color: #00ff88;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    background: rgba(0, 255, 136, 0.08);
+    border: 1px solid rgba(0, 255, 136, 0.25);
+    padding: 4px 14px;
+    border-radius: 2px;
+  }
+
+  .header-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Orbitron', monospace;
+    font-size: 11px;
+    color: #00ff88;
+    letter-spacing: 2px;
+  }
+
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    background: #00ff88;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #00ff88;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .header-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 32px;
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: 3px;
+    text-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+    margin-bottom: 4px;
+  }
+
+  .header-subtitle {
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 2px;
+  }
+
+  .header-date {
+    font-family: 'Orbitron', monospace;
+    font-size: 14px;
+    color: rgba(0, 255, 136, 0.7);
+    letter-spacing: 3px;
+    margin-top: 6px;
+  }
+
+  /* Section 通用 */
+  .section {
+    padding: 18px 48px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .section-icon {
+    font-size: 22px;
+  }
+
+  .section-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 16px;
+    font-weight: 700;
+    color: #00ff88;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(0, 255, 136, 0.4), transparent);
+  }
+
+  /* TOP 3 卡片 */
+  .top-item {
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.06), rgba(0, 255, 136, 0.02));
+    border: 1px solid rgba(0, 255, 136, 0.12);
+    border-left: 3px solid #00ff88;
+    border-radius: 4px;
+    padding: 14px 18px;
+    margin-bottom: 10px;
+    position: relative;
+  }
+
+  .top-item-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+
+  .top-rank {
+    font-family: 'Orbitron', monospace;
+    font-size: 24px;
+    font-weight: 900;
+    color: #00ff88;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+    min-width: 36px;
+  }
+
+  .top-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: #ffffff;
+    flex: 1;
+    line-height: 1.4;
+  }
+
+  .top-tag {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 2px;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+
+  .tag-critical {
+    background: rgba(255, 59, 48, 0.2);
+    color: #ff3b30;
+    border: 1px solid rgba(255, 59, 48, 0.4);
+  }
+
+  .tag-high {
+    background: rgba(255, 149, 0, 0.2);
+    color: #ff9500;
+    border: 1px solid rgba(255, 149, 0, 0.4);
+  }
+
+  .tag-positive {
+    background: rgba(0, 255, 136, 0.15);
+    color: #00ff88;
+    border: 1px solid rgba(0, 255, 136, 0.4);
+  }
+
+  .top-desc {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.55);
+    line-height: 1.5;
+    padding-left: 46px;
+  }
+
+  /* 竞品雷达 */
+  .radar-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 9px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  }
+
+  .radar-item:last-child {
+    border-bottom: none;
+  }
+
+  .radar-bullet {
+    width: 6px;
+    height: 6px;
+    background: #00ff88;
+    border-radius: 50%;
+    margin-top: 7px;
+    flex-shrink: 0;
+    box-shadow: 0 0 6px rgba(0, 255, 136, 0.5);
+  }
+
+  .radar-text {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.5;
+  }
+
+  .radar-text strong {
+    color: #ffffff;
+    font-weight: 600;
+  }
+
+  /* 威胁评估 */
+  .threat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .threat-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+    padding: 12px 14px;
+  }
+
+  .threat-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 4px;
+  }
+
+  .threat-level {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+
+  .level-critical { color: #ff3b30; }
+  .level-positive { color: #00ff88; }
+  .level-medium { color: #ff9500; }
+  .level-potential { color: #ffcc00; }
+
+  .threat-detail {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.45;
+  }
+
+  /* 战术建议 */
+  .tactic-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 7px 0;
+  }
+
+  .tactic-num {
+    font-family: 'Orbitron', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    color: #00ff88;
+    min-width: 24px;
+  }
+
+  .tactic-text {
+    font-size: 13.5px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.5;
+  }
+
+  .tactic-text strong {
+    color: #ffffff;
+  }
+
+  /* Data Strip */
+  .data-strip {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 14px 48px;
+    background: linear-gradient(90deg, rgba(0, 255, 136, 0.05), rgba(0, 255, 136, 0.1), rgba(0, 255, 136, 0.05));
+    border-top: 1px solid rgba(0, 255, 136, 0.15);
+    border-bottom: 1px solid rgba(0, 255, 136, 0.15);
+  }
+
+  .data-item {
+    text-align: center;
+  }
+
+  .data-value {
+    font-family: 'Orbitron', monospace;
+    font-size: 22px;
+    font-weight: 900;
+    color: #00ff88;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.4);
+  }
+
+  .data-label {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 2px;
+    margin-top: 2px;
+  }
+
+  /* Bottom Tags */
+  .bottom-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 12px 48px;
+    justify-content: center;
+  }
+
+  .btag {
+    font-size: 11px;
+    color: rgba(0, 255, 136, 0.6);
+    border: 1px solid rgba(0, 255, 136, 0.15);
+    padding: 4px 12px;
+    border-radius: 2px;
+    letter-spacing: 1px;
+    background: rgba(0, 255, 136, 0.03);
+  }
+
+  /* Footer */
+  .footer {
+    padding: 12px 48px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(0, 255, 136, 0.1);
+  }
+
+  .footer-left {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.25);
+    letter-spacing: 1px;
+  }
+
+  .footer-right {
+    font-family: 'Orbitron', monospace;
+    font-size: 11px;
+    color: rgba(0, 255, 136, 0.35);
+    letter-spacing: 2px;
+  }
+
+  /* Bottom cover strip */
+  .cover-strip-bottom {
+    height: 4px;
+    background: linear-gradient(90deg, #00ff88, #00cc6a, #00ff88);
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
+  }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="content-wrapper">
+
+    <!-- Cover Strip -->
+    <div class="cover-strip"></div>
+
+    <!-- Header -->
+    <div class="header">
+      <div class="header-top">
+        <div class="header-badge">CODM COMPETITIVE INTEL</div>
+        <div class="header-status">
+          <div class="status-dot"></div>
+          LIVE FEED
+        </div>
+      </div>
+      <div class="header-title">DARK OPS BRIEF</div>
+      <div class="header-subtitle">使命召唤手游 · 竞品日报</div>
+      <div class="header-date">2026.04.19 — SATURDAY INTEL</div>
+    </div>
+
+    <!-- TOP 3 头条情报 -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-icon">🎯</span>
+        <span class="section-title">TOP INTEL</span>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="top-item">
+        <div class="top-item-header">
+          <span class="top-rank">01</span>
+          <span class="top-title">战区手游4/17正式停服 — 同IP竞品退出市场</span>
+          <span class="top-tag tag-positive">利好</span>
+        </div>
+        <div class="top-desc">Warzone Mobile 运营不足两年关服，服务器永久关闭。CODM 手游将直接受益于原 WZM 玩家回流红利。</div>
+      </div>
+
+      <div class="top-item">
+        <div class="top-item-header">
+          <span class="top-rank">02</span>
+          <span class="top-title">三角洲行动 S9「回声」赛季 4/21 全平台上线</span>
+          <span class="top-tag tag-critical">极高威胁</span>
+        </div>
+        <div class="top-desc">新干员 Morse + 新地图 Aftershock & Space City 2.0 + 弹药系统重做 + 古墓丽影联动，跨端联动对 CODM 核心用户构成直接竞争。</div>
+      </div>
+
+      <div class="top-item">
+        <div class="top-item-header">
+          <span class="top-rank">03</span>
+          <span class="top-title">Q1 中国游戏市场 971 亿元，射击品类霸榜四席</span>
+          <span class="top-tag tag-high">高关注</span>
+        </div>
+        <div class="top-desc">2026 年 Q1 同比增长 13.38%，射击品类数量占 7% 但贡献 18%+ 收入，跨端产品贡献突出，市场蛋糕持续扩大。</div>
+      </div>
+    </div>
+
+    <!-- 竞品雷达 -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-icon">📡</span>
+        <span class="section-title">RADAR</span>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="radar-item">
+        <div class="radar-bullet"></div>
+        <div class="radar-text"><strong>CODM S4「Eternal Prison」</strong>4/22 上线，带来 Rebirth Island 新内容和全新战斗通行证</div>
+      </div>
+      <div class="radar-item">
+        <div class="radar-bullet"></div>
+        <div class="radar-text"><strong>CODM 2026 电竞路线图</strong>发布：世锦赛 5-11 月，Garena 东南亚精英赛 4-5 月启动</div>
+      </div>
+      <div class="radar-item">
+        <div class="radar-bullet"></div>
+        <div class="radar-text"><strong>三角洲行动反作弊大升级</strong>：S9 引入全新反外挂系统，战术玩法与沙盒功能同步增强</div>
+      </div>
+      <div class="radar-item">
+        <div class="radar-bullet"></div>
+        <div class="radar-text"><strong>Apex 英雄手游重启传闻</strong>：光子工作室疑似接手开发，预计 2026 末-2027 初测试</div>
+      </div>
+      <div class="radar-item">
+        <div class="radar-bullet"></div>
+        <div class="radar-text"><strong>FPS 出海新机遇</strong>：Yandex Ads 深圳大会聚焦俄语区市场，FPS 手游增长空间可观</div>
+      </div>
+    </div>
+
+    <!-- 威胁评估 -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-icon">⚔️</span>
+        <span class="section-title">THREAT LEVEL</span>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="threat-grid">
+        <div class="threat-card">
+          <div class="threat-name">三角洲行动</div>
+          <div class="threat-level level-critical">● 极高威胁</div>
+          <div class="threat-detail">S9"Echo"跨端联动+IP联名，直接争夺战术FPS用户</div>
+        </div>
+        <div class="threat-card">
+          <div class="threat-name">Warzone Mobile</div>
+          <div class="threat-level level-positive">● 已停服/利好</div>
+          <div class="threat-detail">同IP退场释放用户池，CODM获回流红利窗口</div>
+        </div>
+        <div class="threat-card">
+          <div class="threat-name">CF 手游</div>
+          <div class="threat-level level-medium">● 中等威胁</div>
+          <div class="threat-detail">深耕多年基本盘稳固，FPS生态内仍占一席之地</div>
+        </div>
+        <div class="threat-card">
+          <div class="threat-name">Apex 手游（重启）</div>
+          <div class="threat-level level-potential">● 潜在威胁</div>
+          <div class="threat-detail">光子接手重启中，若回归将构成BR品类新挑战</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 战术建议 -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-icon">🔮</span>
+        <span class="section-title">TACTICS</span>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="tactic-item">
+        <span class="tactic-num">01</span>
+        <span class="tactic-text"><strong>把握 WZM 停服红利</strong> — 推出专属回归礼包，加强对原 WZM 玩家的吸引和留存</span>
+      </div>
+      <div class="tactic-item">
+        <span class="tactic-num">02</span>
+        <span class="tactic-text"><strong>S4 差异化宣传</strong> — Rebirth Island 等内容充分曝光，应对三角洲 Echo 赛季冲击</span>
+      </div>
+      <div class="tactic-item">
+        <span class="tactic-num">03</span>
+        <span class="tactic-text"><strong>电竞生态加速</strong> — 世锦赛 5 月启动前强化品牌认知，提升玩家粘性与赛事热度</span>
+      </div>
+      <div class="tactic-item">
+        <span class="tactic-num">04</span>
+        <span class="tactic-text"><strong>探索跨端协同</strong> — 研究三角洲跨端模式，评估 CODM PC-移动端联动可行性</span>
+      </div>
+    </div>
+
+    <!-- Data Strip -->
+    <div class="data-strip">
+      <div class="data-item">
+        <div class="data-value">10</div>
+        <div class="data-label">情报数</div>
+      </div>
+      <div class="data-item">
+        <div class="data-value">971亿</div>
+        <div class="data-label">Q1市场规模</div>
+      </div>
+      <div class="data-item">
+        <div class="data-value">+13.4%</div>
+        <div class="data-label">同比增长</div>
+      </div>
+      <div class="data-item">
+        <div class="data-value">4</div>
+        <div class="data-label">竞品追踪</div>
+      </div>
+    </div>
+
+    <!-- Bottom Tags -->
+    <div class="bottom-tags">
+      <span class="btag">#CODM</span>
+      <span class="btag">#三角洲行动</span>
+      <span class="btag">#WarzoneMobile</span>
+      <span class="btag">#FPS手游</span>
+      <span class="btag">#电竞2026</span>
+      <span class="btag">#射击品类</span>
+      <span class="btag">#竞品情报</span>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="footer-left">CODM COMPETITIVE INTELLIGENCE · AUTO-GENERATED</div>
+      <div class="footer-right">2026.04.19 // DARK OPS v2</div>
+    </div>
+
+    <!-- Bottom Cover Strip -->
+    <div class="cover-strip-bottom"></div>
+
+  </div>
+</div>
+</body>
+</html>
