@@ -53,8 +53,8 @@
 
   /* ── Cover 区 ── */
   .cover {
-    height: 200px;
-    padding: 36px 56px 0;
+    height: 220px;
+    padding: 40px 56px 0;
     flex-shrink: 0;
     position: relative;
     z-index: 1;
@@ -134,16 +134,16 @@
 
   /* ── 概览区 ── */
   .overview {
-    padding: 20px 56px 16px;
+    padding: 18px 56px 14px;
     flex-shrink: 0;
   }
 
   .overview-text {
-    font-size: 15px;
+    font-size: 14px;
     color: rgba(255,255,255,0.65);
-    line-height: 1.7;
+    line-height: 1.65;
     display: -webkit-box;
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
@@ -155,7 +155,7 @@
     display: flex;
     gap: 8px;
     padding: 0 56px;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
     flex-shrink: 0;
   }
 
@@ -194,7 +194,7 @@
     color: rgba(255,255,255,0.35);
     letter-spacing: 0.25em;
     text-transform: uppercase;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -212,8 +212,8 @@
   .comp-cards {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    margin-bottom: 22px;
+    gap: 8px;
+    margin-bottom: 18px;
     flex-shrink: 0;
   }
 
@@ -221,7 +221,7 @@
     background: #141414;
     border: 0.5px solid rgba(255,255,255,0.06);
     border-left: 3px solid #888;
-    padding: 16px 20px;
+    padding: 14px 18px;
   }
 
   .comp-header {
@@ -267,12 +267,12 @@
   }
 
   .comp-highlight {
-    font-size: 14px;
+    font-size: 13px;
     color: rgba(255,255,255,0.7);
-    line-height: 1.6;
+    line-height: 1.55;
     padding-left: 14px;
     position: relative;
-    margin-bottom: 5px;
+    margin-bottom: 3px;
   }
 
   .comp-highlight::before {
@@ -287,7 +287,7 @@
 
   /* ── 宣发节奏对比 ── */
   .tempo-section {
-    margin-bottom: 22px;
+    margin-bottom: 18px;
     flex-shrink: 0;
   }
 
@@ -295,12 +295,12 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    margin-bottom: 10px;
+    margin-bottom: 7px;
   }
 
   .tempo-name {
     width: 90px;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
     color: rgba(255,255,255,0.7);
     flex-shrink: 0;
@@ -309,7 +309,7 @@
 
   .tempo-bar-bg {
     flex: 1;
-    height: 8px;
+    height: 6px;
     background: rgba(255,255,255,0.06);
     position: relative;
   }
@@ -328,21 +328,19 @@
 
   /* ── CODM 运营启发 ── */
   .insights-section {
-    flex: 1;
+    flex-shrink: 0;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    min-height: 0;
   }
 
   .insights-box {
     background: rgba(255,230,0,0.03);
     border: 1px solid rgba(255,230,0,0.12);
-    padding: 28px 28px;
-    flex: 1;
+    padding: 20px 28px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 6px;
   }
 
   .insights-header {
@@ -353,6 +351,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    margin-bottom: 4px;
   }
 
   .insights-header::before {
@@ -365,16 +364,17 @@
 
   .insight-item {
     display: flex;
-    gap: 14px;
+    gap: 12px;
     align-items: flex-start;
+    padding: 4px 0;
   }
 
   .insight-num {
-    width: 28px;
-    height: 28px;
+    width: 26px;
+    height: 26px;
     background: rgba(255,230,0,0.12);
     color: #FFE600;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 800;
     display: flex;
     align-items: center;
@@ -383,19 +383,24 @@
     margin-top: 1px;
   }
 
-  .insight-body { flex: 1; }
+  .insight-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
 
   .insight-title {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 700;
     color: #FFFFFF;
-    margin-bottom: 4px;
+    margin-bottom: 0;
   }
 
   .insight-text {
-    font-size: 13px;
+    font-size: 12px;
     color: rgba(255,255,255,0.55);
-    line-height: 1.65;
+    line-height: 1.5;
   }
 
   /* ── Footer ── */
@@ -407,6 +412,7 @@
     justify-content: space-between;
     border-top: 1px solid rgba(255,255,255,0.08);
     flex-shrink: 0;
+    margin-top: auto;
   }
 
   .footer-left {
@@ -482,7 +488,7 @@
 
   <!-- 概览 -->
   <div class="overview">
-    <div class="overview-text">今日三大核心事件：① Warzone Mobile 4/17 正式停服，运营不足两年宣告终结——CODM 成同 IP 最大赢家，回流红利窗口已开启；② 三角洲行动 S9「回声」赛季 D+3，坠星者热修复完成（首刀 30 伤害）+ 国际版 Echo 4/21 上线倒计时 2 天，宣发进入最高密度期；③ Q1 中国游戏市场数据出炉——971.72 亿元同比增长 13.38%，射击品类数量占 7% 但贡献 18%+ 收入，跨端产品成增长引擎。</div>
+    <div class="overview-text">今日三大核心事件：① Warzone Mobile 4/17 正式停服，运营不足两年宣告终结——CODM 成同 IP 最大赢家，回流红利窗口已开启；② 三角洲行动 S9「回声」赛季 D+3，坠星者热修复完成（首刀 30 伤害）+ 国际版 Echo 4/21 上线倒计时 2 天，宣发进入最高密度期；③ Q1 中国游戏市场数据出炉——971.72 亿元同比增长 13.38%，射击品类数量占 7% 但贡</div>
   </div>
 
   <!-- 威胁条 -->
