@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>AI 干货周报 · 2026.04.12 - 04.19</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;700;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    width: 1080px;
+    overflow: hidden;
+    font-family: 'Inter', 'Noto Sans SC', ui-sans-serif, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background: #ffffff;
+    color: rgb(55, 53, 47);
+  }
+
+  .page {
+    width: 1080px;
+    height: 1920px;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* ── Cover ── */
+  .cover {
+    height: 160px;
+    background: linear-gradient(135deg, #0f766e 0%, #2383e2 40%, #6940a5 75%, #d44c47 100%);
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(255,255,255,0.18) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 40%, rgba(255,255,255,0.1) 0%, transparent 50%);
+  }
+
+  .cover-badge {
+    position: absolute;
+    top: 22px;
+    right: 48px;
+    font-size: 12px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 5px;
+    text-transform: uppercase;
+  }
+
+  .cover-date {
+    position: absolute;
+    bottom: 18px;
+    right: 48px;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 1px;
+  }
+
+  .cover-week {
+    position: absolute;
+    bottom: 18px;
+    left: 48px;
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 1px;
+  }
+
+  /* ── Content ── */
+  .content {
+    flex: 1;
+    padding: 0 48px;
+    padding-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+  }
+
+  /* ── Header ── */
+  .header {
+    padding-top: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1.5px solid rgb(233, 233, 231);
+    flex-shrink: 0;
+  }
+
+  .page-icon {
+    font-size: 44px;
+    margin-top: -36px;
+    margin-bottom: 4px;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.1));
+  }
+
+  .page-title {
+    font-size: 36px;
+    font-weight: 900;
+    color: rgb(55, 53, 47);
+    letter-spacing: -1.5px;
+    line-height: 1.15;
+  }
+
+  .page-subtitle {
+    font-size: 14px;
+    color: rgba(55, 53, 47, 0.4);
+    font-weight: 400;
+    margin-top: 4px;
+  }
+
+  .prop-tags {
+    display: flex;
+    gap: 7px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+
+  .notion-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 10px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 20px;
+    white-space: nowrap;
+  }
+
+  .tag-blue    { background: rgb(211, 229, 239); color: rgb(24, 51, 71); }
+  .tag-purple  { background: rgb(232, 222, 238); color: rgb(65, 36, 84); }
+  .tag-green   { background: rgb(219, 237, 219); color: rgb(28, 56, 41); }
+  .tag-orange  { background: rgb(250, 222, 201); color: rgb(73, 41, 14); }
+  .tag-red     { background: rgb(255, 226, 221); color: rgb(93, 23, 21); }
+  .tag-pink    { background: rgb(245, 224, 233); color: rgb(76, 35, 55); }
+  .tag-teal    { background: rgb(211, 229, 226); color: rgb(15, 49, 44); }
+
+  /* ── TL;DR Section ── */
+  .tldr-section {
+    flex-shrink: 0;
+    margin-top: 16px;
+  }
+
+  .tldr-box {
+    background: linear-gradient(135deg, rgba(211,229,239,0.4) 0%, rgba(232,222,238,0.3) 100%);
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin-top: 8px;
+  }
+
+  .tldr-box p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: rgba(55, 53, 47, 0.75);
+  }
+
+  .tldr-box p strong {
+    color: rgb(55, 53, 47);
+    font-weight: 700;
+  }
+
+  .tldr-box .hl-blue { color: rgb(35, 131, 226); font-weight: 700; }
+  .tldr-box .hl-teal { color: rgb(0, 135, 107); font-weight: 700; }
+  .tldr-box .hl-purple { color: rgb(105, 64, 165); font-weight: 700; }
+
+  /* ── Section Heading ── */
+  .section-heading {
+    font-size: 14px;
+    font-weight: 700;
+    color: rgba(55, 53, 47, 0.45);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 18px;
+    margin-bottom: 5px;
+    padding-bottom: 7px;
+    border-bottom: 1.5px solid rgb(241, 241, 239);
+    flex-shrink: 0;
+  }
+
+  .section-heading .sec-emoji { margin-right: 5px; }
+
+  /* ── News List ── */
+  .news-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .news-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 4px;
+    border-bottom: 1px solid rgba(55, 53, 47, 0.04);
+  }
+
+  .news-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .num-hot {
+    background: linear-gradient(135deg, #0f766e, #2383e2);
+    color: #fff;
+  }
+
+  .num-feat {
+    background: linear-gradient(135deg, #6940a5, #d44c47);
+    color: #fff;
+  }
+
+  .num-default {
+    background: rgba(55, 53, 47, 0.06);
+    color: rgba(55, 53, 47, 0.5);
+  }
+
+  .news-content { flex: 1; min-width: 0; }
+
+  .news-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: rgb(55, 53, 47);
+    line-height: 1.35;
+    letter-spacing: -0.2px;
+  }
+
+  .news-title .hl { color: rgb(35, 131, 226); }
+  .news-title .hl-red { color: rgb(212, 76, 71); }
+  .news-title .hl-purple { color: rgb(105, 64, 165); }
+  .news-title .hl-orange { color: rgb(217, 115, 13); }
+  .news-title .hl-teal { color: rgb(0, 135, 107); }
+
+  .news-desc {
+    font-size: 14px;
+    color: rgba(55, 53, 47, 0.5);
+    line-height: 1.55;
+    margin-top: 4px;
+  }
+
+  .inline-tag {
+    display: inline-block;
+    padding: 0px 6px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: 600;
+    vertical-align: middle;
+    margin-left: 5px;
+    position: relative;
+    top: -1px;
+  }
+
+  .tag-teal-inline {
+    background: rgb(211, 229, 226);
+    color: rgb(15, 49, 44);
+  }
+
+  .tag-red-inline {
+    background: rgb(255, 226, 221);
+    color: rgb(93, 23, 21);
+  }
+
+  /* ── Action Order ── */
+  .action-section {
+    flex-shrink: 0;
+    margin-top: 14px;
+  }
+
+  .action-box {
+    background: rgb(251, 251, 250);
+    border-radius: 8px;
+    padding: 16px 22px;
+    margin-top: 8px;
+    border: 1px solid rgb(241, 241, 239);
+  }
+
+  .action-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .action-list li {
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(55, 53, 47, 0.7);
+    padding: 3px 0;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .action-list li .step-num {
+    font-size: 13px;
+    font-weight: 800;
+    color: rgb(35, 131, 226);
+    flex-shrink: 0;
+  }
+
+  .action-list li strong {
+    color: rgb(55, 53, 47);
+    font-weight: 700;
+  }
+
+  /* ── Data Strip ── */
+  .data-strip {
+    display: flex;
+    gap: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    flex-shrink: 0;
+    margin-top: 16px;
+  }
+
+  .data-cell {
+    flex: 1;
+    padding: 16px 5px;
+    text-align: center;
+    border-right: 1px solid rgba(55, 53, 47, 0.06);
+  }
+
+  .data-cell:last-child { border-right: none; }
+  .data-cell:nth-child(odd) { background: rgb(251, 251, 250); }
+  .data-cell:nth-child(even) { background: rgb(247, 246, 243); }
+
+  .data-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: rgba(55, 53, 47, 0.38);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+
+  .data-value {
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+  }
+
+  .dv-red { color: rgb(212, 76, 71); }
+  .dv-blue { color: rgb(35, 131, 226); }
+  .dv-orange { color: rgb(217, 115, 13); }
+  .dv-purple { color: rgb(105, 64, 165); }
+  .dv-teal { color: rgb(0, 135, 107); }
+
+  /* ── Bottom ── */
+  .bottom-bar {
+    flex-shrink: 0;
+    padding: 14px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgb(233, 233, 231);
+    margin-top: 14px;
+  }
+
+  .bottom-tags { display: flex; gap: 5px; flex-wrap: wrap; }
+
+  .bottom-tag {
+    font-size: 11.5px;
+    color: rgba(55, 53, 47, 0.28);
+    padding: 3px 8px;
+    border-radius: 3px;
+    background: rgba(55, 53, 47, 0.04);
+    font-weight: 500;
+  }
+
+  .bottom-source {
+    font-size: 11.5px;
+    color: rgba(55, 53, 47, 0.18);
+    white-space: nowrap;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    flex-shrink: 0;
+    height: 54px;
+    background: rgb(251, 251, 250);
+    border-top: 1px solid rgb(233, 233, 231);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+  }
+
+  .footer-logo { font-size: 17px; }
+  .footer-text {
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(55, 53, 47, 0.28);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .sep-dot {
+    width: 3px; height: 3px; border-radius: 50%;
+    background: rgba(55, 53, 47, 0.12);
+    display: inline-block;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="cover">
+    <div class="cover-badge">AI WEEKLY · PRACTICAL EDITION</div>
+    <div class="cover-week">WEEK 16 · 2026</div>
+    <div class="cover-date">2026.04.12 — 04.19</div>
+  </div>
+
+  <div class="content">
+
+    <div class="header">
+      <div class="page-icon">📦</div>
+      <h1 class="page-title">AI 干货周报 · AI 接管具体工作环节</h1>
+      <div class="page-subtitle">2026年4月12日 – 4月19日 · 扫描 65 个顶级 AI Builder 信号 · 只留能马上上手的</div>
+      <div class="prop-tags">
+        <span class="notion-tag tag-blue">🎨 Claude Design</span>
+        <span class="notion-tag tag-teal">🎙️ Gemini TTS</span>
+        <span class="notion-tag tag-orange">📊 ChatGPT Excel</span>
+        <span class="notion-tag tag-purple">🤖 Codex Agent</span>
+        <span class="notion-tag tag-green">📐 DESIGN.md</span>
+      </div>
+    </div>
+
+    <!-- TL;DR -->
+    <div class="tldr-section">
+      <div class="section-heading"><span class="sec-emoji">💡</span>本期结论</div>
+      <div class="tldr-box">
+        <p>这周最值得马上上手的，不是"更大的模型"，而是 <strong>AI 已经开始真正接管具体工作环节</strong>：<span class="hl-blue">做原型提案</span> → Claude Design；<span class="hl-teal">做配音旁白</span> → Gemini Flash TTS；<span class="hl-purple">跨工具执行</span> → Codex + Computer Use。本期只留 <strong>6 条</strong>，每条都偏实用。</p>
+      </div>
+    </div>
+
+    <!-- 🛠️ 实用工具箱 -->
+    <div class="section-heading"><span class="sec-emoji">🛠️</span>实用工具箱 TOOLS & APPS</div>
+    <div class="news-list">
+      <div class="news-item">
+        <div class="news-num num-hot">1</div>
+        <div class="news-content">
+          <div class="news-title"><span class="hl">Claude Design</span>：一句话出原型、演示稿、单页方案<span class="inline-tag tag-teal-inline">⚡ 推荐先试</span></div>
+          <div class="news-desc">不是"AI画图"，而是把提案/原型/演示稿压缩到分钟级 · 适合不会 Figma 但需快速提案的人</div>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-num num-hot">2</div>
+        <div class="news-content">
+          <div class="news-title"><span class="hl-teal">Gemini 3.1 Flash TTS</span>：终于能"控制情绪"的 AI 配音</div>
+          <div class="news-desc">能做到激昂/低沉/紧迫/温柔等语气可控 · 最大突破：语气开始配合内容场景走</div>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-num num-hot">3</div>
+        <div class="news-content">
+          <div class="news-title"><span class="hl-orange">ChatGPT for Excel</span>：一句话做表格分析和图表整理</div>
+          <div class="news-desc">把"看表 + 提问 + 画图"这套反复动作合成一句话 · 适合内容排期、投放复盘、预算汇总</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ⚡ 高效工作流 -->
+    <div class="section-heading"><span class="sec-emoji">⚡</span>高效工作流 WORKFLOWS</div>
+    <div class="news-list">
+      <div class="news-item">
+        <div class="news-num num-feat">4</div>
+        <div class="news-content">
+          <div class="news-title"><span class="hl-purple">Codex</span> 不只写代码了：接管"浏览器 + 桌面 + 插件"</div>
+          <div class="news-desc">AI 从"聊天窗口"变成"真正能跑完整任务的执行层" · 对小团队最大价值：减少脑力切换和打断</div>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-num num-feat">5</div>
+        <div class="news-content">
+          <div class="news-title"><span class="hl-teal">Gemini 桌面常驻审稿流</span>：边开 Figma 边让 AI 看屏幕</div>
+          <div class="news-desc">把 AI 当"实时审稿搭子" · 减少工具间来回切换的摩擦成本 · 适合海报/PPT/竞品分析</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 🧠 方法论 -->
+    <div class="section-heading"><span class="sec-emoji">🧠</span>方法论与 PROMPT</div>
+    <div class="news-list">
+      <div class="news-item">
+        <div class="news-num num-default">6</div>
+        <div class="news-content">
+          <div class="news-title"><span class="hl-purple">DESIGN.md</span>：把品牌规范写成 AI 能读懂的"设计说明书"</div>
+          <div class="news-desc">设计会越来越像结构化上下文 · 写进颜色/字体/留白/组件语气 → AI 才能稳定复用，返工明显变少</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 🎯 推荐上手顺序 -->
+    <div class="action-section">
+      <div class="section-heading"><span class="sec-emoji">🎯</span>本周推荐上手顺序</div>
+      <div class="action-box">
+        <ol class="action-list">
+          <li><span class="step-num">①</span><strong>先试 Claude Design</strong> — 最快看到结果，适合马上出提案</li>
+          <li><span class="step-num">②</span><strong>再试 Gemini Flash TTS</strong> — 最容易直接变成视频/播客产出</li>
+          <li><span class="step-num">③</span><strong>最后搭 Codex 执行流</strong> — 一旦跑通，后续节省整套碎活时间</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Data Strip -->
+    <div class="data-strip">
+      <div class="data-cell">
+        <div class="data-label">扫描信源</div>
+        <div class="data-value dv-blue">65</div>
+      </div>
+      <div class="data-cell">
+        <div class="data-label">精选条目</div>
+        <div class="data-value dv-teal">6</div>
+      </div>
+      <div class="data-cell">
+        <div class="data-label">工具类</div>
+        <div class="data-value dv-orange">3</div>
+      </div>
+      <div class="data-cell">
+        <div class="data-label">工作流</div>
+        <div class="data-value dv-purple">2</div>
+      </div>
+      <div class="data-cell">
+        <div class="data-label">方法论</div>
+        <div class="data-value dv-red">1</div>
+      </div>
+    </div>
+
+    <!-- Bottom Tags -->
+    <div class="bottom-bar">
+      <div class="bottom-tags">
+        <span class="bottom-tag">#ClaudeDesign</span>
+        <span class="bottom-tag">#GeminiTTS</span>
+        <span class="bottom-tag">#ChatGPTExcel</span>
+        <span class="bottom-tag">#Codex</span>
+        <span class="bottom-tag">#DESIGN.md</span>
+        <span class="bottom-tag">#实用主义</span>
+      </div>
+      <span class="bottom-source">AI 干货周报 · 小柒运营</span>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <span class="footer-logo">📦</span>
+    <span class="footer-text">AI Weekly · Practical Edition</span>
+    <span class="sep-dot"></span>
+    <span class="footer-text" style="font-weight:500; letter-spacing:1px;">Powered by 小柒 AI</span>
+  </div>
+
+</div>
+
+</body>
+</html>

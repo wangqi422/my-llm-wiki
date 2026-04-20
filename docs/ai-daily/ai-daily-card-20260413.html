@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Daily · 2026.04.13</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #f7f6f3;
+    display: flex;
+    justify-content: center;
+    padding: 40px 16px;
+    font-family: 'Inter', 'Noto Sans SC', ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+  }
+
+  /* ── Notion Page ── */
+  .page {
+    width: 680px;
+    max-width: 100%;
+    background: #ffffff;
+    border-radius: 3px;
+    box-shadow:
+      0 0 0 1px rgba(15, 15, 15, 0.05),
+      0 3px 6px rgba(15, 15, 15, 0.1),
+      0 9px 24px rgba(15, 15, 15, 0.2);
+    overflow: hidden;
+  }
+
+  /* ── Cover Banner ── */
+  .cover {
+    height: 180px;
+    background: linear-gradient(135deg, #2383e2 0%, #6940a5 50%, #d44c47 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(255,255,255,0.15) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 30%, rgba(255,255,255,0.1) 0%, transparent 50%);
+  }
+
+  .cover-text {
+    position: absolute;
+    bottom: 20px;
+    right: 24px;
+    font-size: 11px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* ── Content Area ── */
+  .content {
+    padding: 0 72px 48px;
+    position: relative;
+  }
+
+  @media (max-width: 720px) {
+    .content { padding: 0 24px 36px; }
+  }
+
+  /* ── Page Icon ── */
+  .page-icon {
+    position: relative;
+    top: -36px;
+    margin-bottom: -20px;
+    width: 72px;
+    height: 72px;
+    font-size: 56px;
+    line-height: 72px;
+    text-align: center;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.1));
+  }
+
+  /* ── Title ── */
+  .page-title {
+    font-size: 40px;
+    font-weight: 700;
+    color: rgb(55, 53, 47);
+    letter-spacing: -1px;
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+
+  .page-subtitle {
+    font-size: 16px;
+    color: rgba(55, 53, 47, 0.5);
+    font-weight: 400;
+    margin-bottom: 20px;
+  }
+
+  /* ── Properties ── */
+  .properties {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 28px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgb(233, 233, 231);
+  }
+
+  .prop-row {
+    display: flex;
+    align-items: center;
+    min-height: 30px;
+    font-size: 14px;
+    border-radius: 3px;
+    padding: 2px 4px;
+    transition: background 0.1s;
+  }
+
+  .prop-row:hover { background: rgba(55, 53, 47, 0.04); }
+
+  .prop-icon {
+    width: 24px;
+    font-size: 14px;
+    flex-shrink: 0;
+    opacity: 0.45;
+    text-align: center;
+  }
+
+  .prop-label {
+    width: 80px;
+    flex-shrink: 0;
+    font-size: 14px;
+    color: rgba(55, 53, 47, 0.5);
+  }
+
+  .prop-value {
+    font-size: 14px;
+    color: rgb(55, 53, 47);
+  }
+
+  .prop-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+
+  .notion-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 20px;
+    white-space: nowrap;
+  }
+
+  .tag-blue    { background: rgb(211, 229, 239); color: rgb(24, 51, 71); }
+  .tag-purple  { background: rgb(232, 222, 238); color: rgb(65, 36, 84); }
+  .tag-green   { background: rgb(219, 237, 219); color: rgb(28, 56, 41); }
+  .tag-orange  { background: rgb(250, 222, 201); color: rgb(73, 41, 14); }
+  .tag-red     { background: rgb(255, 226, 221); color: rgb(93, 23, 21); }
+  .tag-yellow  { background: rgb(253, 236, 200); color: rgb(64, 44, 27); }
+  .tag-pink    { background: rgb(245, 224, 233); color: rgb(76, 35, 55); }
+  .tag-gray    { background: rgb(227, 226, 224); color: rgb(50, 48, 44); }
+
+  /* ── Section Heading (H2) ── */
+  .section-heading {
+    font-size: 20px;
+    font-weight: 600;
+    color: rgb(55, 53, 47);
+    margin: 28px 0 14px;
+    padding-top: 4px;
+  }
+
+  .section-heading .sec-icon {
+    margin-right: 8px;
+  }
+
+  /* ── Toggle List (news items) ── */
+  .toggle-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .toggle-item {
+    border-radius: 3px;
+    transition: background 0.1s;
+  }
+
+  .toggle-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 4px;
+    padding: 6px 4px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .toggle-item:hover .toggle-header {
+    background: rgba(55, 53, 47, 0.04);
+  }
+
+  .toggle-arrow {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(55, 53, 47, 0.35);
+    font-size: 12px;
+    transition: transform 0.15s ease;
+    border-radius: 3px;
+  }
+
+  .toggle-arrow:hover {
+    background: rgba(55, 53, 47, 0.08);
+  }
+
+  .toggle-item.open .toggle-arrow {
+    transform: rotate(90deg);
+  }
+
+  .toggle-title-area {
+    flex: 1;
+    min-width: 0;
+    padding-top: 2px;
+  }
+
+  .toggle-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(55, 53, 47, 0.5);
+    background: rgba(55, 53, 47, 0.06);
+    margin-right: 6px;
+    vertical-align: middle;
+    flex-shrink: 0;
+  }
+
+  .toggle-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgb(55, 53, 47);
+    line-height: 1.5;
+  }
+
+  .toggle-title .inline-tag {
+    display: inline-block;
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 500;
+    vertical-align: middle;
+    margin-left: 6px;
+    position: relative;
+    top: -1px;
+  }
+
+  .toggle-body {
+    display: none;
+    padding: 2px 4px 10px 28px;
+  }
+
+  .toggle-item.open .toggle-body {
+    display: block;
+  }
+
+  .toggle-desc {
+    font-size: 14px;
+    color: rgba(55, 53, 47, 0.65);
+    line-height: 1.7;
+  }
+
+  .toggle-desc strong {
+    color: rgb(55, 53, 47);
+    font-weight: 600;
+  }
+
+  .text-blue { color: rgb(35, 131, 226); }
+  .text-red { color: rgb(212, 76, 71); }
+  .text-orange { color: rgb(217, 115, 13); }
+  .text-purple { color: rgb(105, 64, 165); }
+
+  .bg-blue   { background: rgba(35, 131, 226, 0.1); padding: 1px 4px; border-radius: 3px; }
+  .bg-yellow { background: rgb(253, 236, 200); padding: 1px 4px; border-radius: 3px; }
+  .bg-green  { background: rgba(0, 135, 107, 0.1); padding: 1px 4px; border-radius: 3px; }
+  .bg-red    { background: rgba(212, 76, 71, 0.1); padding: 1px 4px; border-radius: 3px; }
+  .bg-purple { background: rgba(105, 64, 165, 0.1); padding: 1px 4px; border-radius: 3px; }
+
+  /* ── Notion Callout ── */
+  .notion-callout {
+    display: flex;
+    gap: 10px;
+    padding: 16px 16px 16px 12px;
+    border-radius: 3px;
+    background: rgb(241, 241, 239);
+    margin: 20px 0 12px;
+  }
+
+  .callout-icon {
+    font-size: 18px;
+    line-height: 1.5;
+    flex-shrink: 0;
+  }
+
+  .callout-text {
+    font-size: 14px;
+    color: rgb(55, 53, 47);
+    line-height: 1.7;
+  }
+
+  .callout-text strong { font-weight: 600; }
+
+  /* ── Divider ── */
+  .notion-divider {
+    height: 1px;
+    background: rgb(233, 233, 231);
+    margin: 24px 0 20px;
+  }
+
+  /* ── Quote ── */
+  .notion-quote {
+    border-left: 3px solid rgb(55, 53, 47);
+    padding: 4px 0 4px 16px;
+    margin: 16px 0;
+  }
+
+  .quote-text {
+    font-size: 14px;
+    color: rgb(55, 53, 47);
+    line-height: 1.7;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid rgb(233, 233, 231);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .footer-tags { display: flex; gap: 4px; flex-wrap: wrap; }
+
+  .footer-tag {
+    font-size: 11px;
+    color: rgba(55, 53, 47, 0.4);
+    padding: 2px 6px;
+    border-radius: 3px;
+    background: rgba(55, 53, 47, 0.04);
+  }
+
+  .footer-source {
+    font-size: 11px;
+    color: rgba(55, 53, 47, 0.3);
+    letter-spacing: 0.3px;
+  }
+
+  /* ── Breadcrumb ── */
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 10px 72px;
+    font-size: 12px;
+    color: rgba(55, 53, 47, 0.4);
+    border-bottom: 1px solid rgb(233, 233, 231);
+  }
+
+  @media (max-width: 720px) {
+    .breadcrumb { padding: 10px 24px; }
+  }
+
+  .breadcrumb span { opacity: 0.5; }
+
+  .bc-item {
+    color: rgba(55, 53, 47, 0.5);
+    text-decoration: none;
+    padding: 2px 4px;
+    border-radius: 3px;
+    transition: background 0.1s;
+  }
+
+  .bc-item:hover { background: rgba(55, 53, 47, 0.08); }
+
+  /* ── Table ── */
+  .notion-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    margin: 12px 0;
+  }
+
+  .notion-table th {
+    text-align: left;
+    font-weight: 500;
+    color: rgba(55, 53, 47, 0.65);
+    padding: 6px 8px;
+    border-bottom: 1px solid rgb(233, 233, 231);
+    font-size: 12px;
+  }
+
+  .notion-table td {
+    padding: 6px 8px;
+    border-bottom: 1px solid rgb(241, 241, 239);
+    color: rgb(55, 53, 47);
+    vertical-align: top;
+  }
+
+  .notion-table tr:last-child td { border-bottom: none; }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- Cover -->
+  <div class="cover">
+    <div class="cover-text">AI DAILY BRIEFING</div>
+  </div>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <span class="bc-item">📂 Daily Reports</span>
+    <span>/</span>
+    <span class="bc-item">2026年4月</span>
+    <span>/</span>
+    <span class="bc-item" style="color: rgb(55,53,47); font-weight: 500;">4月13日</span>
+  </div>
+
+  <!-- Content -->
+  <div class="content">
+
+    <!-- Icon -->
+    <div class="page-icon">📡</div>
+
+    <!-- Title -->
+    <h1 class="page-title">AI Daily · 10 条速报</h1>
+    <div class="page-subtitle">2026年4月13日 · 星期日</div>
+
+    <!-- Properties -->
+    <div class="properties">
+      <div class="prop-row">
+        <span class="prop-icon">📅</span>
+        <span class="prop-label">日期</span>
+        <span class="prop-value">April 13, 2026</span>
+      </div>
+      <div class="prop-row">
+        <span class="prop-icon">👤</span>
+        <span class="prop-label">编辑</span>
+        <span class="prop-value">AI Daily Bot</span>
+      </div>
+      <div class="prop-row">
+        <span class="prop-icon">📊</span>
+        <span class="prop-label">状态</span>
+        <span class="notion-tag tag-green">✓ 已发布</span>
+      </div>
+      <div class="prop-row">
+        <span class="prop-icon">🏷️</span>
+        <span class="prop-label">分类</span>
+        <div class="prop-tags">
+          <span class="notion-tag tag-blue">模型发布</span>
+          <span class="notion-tag tag-purple">并购融资</span>
+          <span class="notion-tag tag-orange">Agent</span>
+          <span class="notion-tag tag-red">芯片/算力</span>
+          <span class="notion-tag tag-pink">安全合规</span>
+          <span class="notion-tag tag-yellow">企业动态</span>
+        </div>
+      </div>
+      <div class="prop-row">
+        <span class="prop-icon">📰</span>
+        <span class="prop-label">条目</span>
+        <span class="prop-value"><strong style="color: rgb(35,131,226);">10</strong> 条重要资讯</span>
+      </div>
+    </div>
+
+    <!-- 编者按 Callout -->
+    <div class="notion-callout">
+      <div class="callout-icon">💡</div>
+      <div class="callout-text">
+        <strong>编者按</strong> — 本周 AI 行业进入密集发布期：<strong class="text-blue">GPT-6 官宣 4/14 发布</strong>，Anthropic 以 4 亿美元跨界并购生物科技，Meta 发布首款闭源模型 Muse Spark，日本 40 亿美元押注 2nm 芯片。模型竞赛从「更大更强」进入「更快更专」的新阶段。
+      </div>
+    </div>
+
+    <!-- ═══════ Section 1: 模型 & 产品 ═══════ -->
+    <h2 class="section-heading"><span class="sec-icon">🧠</span>模型 & 产品</h2>
+
+    <div class="toggle-list">
+
+      <div class="toggle-item open">
+        <div class="toggle-header" onclick="this.parentElement.classList.toggle('open')">
+          <div class="toggle-arrow">▶</div>
+          <div class="toggle-title-area">
+            <span class="toggle-num">1</span>
+            <span class="toggle-title">GPT-6 官宣 4 月 14 日发布 <span class="inline-tag tag-red">🔥 头条</span></span>
+          </div>
+        </div>
+        <div class="toggle-body">
+          <div class="toggle-desc">
+            OpenAI 正式宣布下一代模型 <strong>GPT-6</strong>（代号 <span class="bg-yellow">Spud</span>）将于 <strong class="text-blue">4 月 14 日</strong> 发布。预训练已于 3 月 17 日完成，据称性能比前代提升 <strong class="text-red">40%</strong>。这是对 Claude Mythos 和 GLM-5.1 等竞品的直接回应。
+          </div>
+        </div>
+      </div>
+
+      <div class="toggle-item">
+        <div class="toggle-header" onclick="this.parentElement.classList.toggle('open')">
+          <div class="toggle-arrow">▶</div>
+          <div class="toggle-title-area">
+            <span class="toggle-num">2</span>
+            <span class="toggle-title">Meta 发布首款闭源旗舰模型 Muse Spark <span class="inline-tag tag-blue">产品</span></span>
+          </div>
+        </div>
+        <div class="toggle-body">
+          <div class="toggle-desc">
+            Meta 打破长期开源路线，正式发布首款 <strong>闭源旗舰模型 Muse Spark</strong>。这款原生多模态推理模型在 <span class="bg-blue">meta.ai</span> 上线，计算效率比 Llama 4 Maverick 高 <strong class="text-blue">10 倍以上</strong>，标志着 Meta 决心在高端商用市场与 OpenAI、Anthropic 正面竞争。
+          </div>
+        </div>
+      </div>
+
+      <div class="toggle-item">
+        <div class="toggle-header" onclick="this.parentElement.classList.toggle('open')">
+          <div class="toggle-arrow">▶</div>
+          <div class="toggle-title-area">
+            <span class="toggle-num">3</span>
+            <span class="toggle-title">GLM-5.1 登顶开源模型 #1，编码逼近 Claude <span class="inline-tag tag-green">开源</span></span>
+          </div>
+        </div>
+        <div class="toggle-body">
+          <div class="toggle-desc">
+            智谱 <strong>GLM-5.1</strong> 在 Code Arena 排名升至 <strong class="text-blue">#3</strong>，超越 Gemini 3.1 和 GPT-5.4，编码能力逼近 <span class="bg-purple">Claude Sonnet 4.6</span>。Z.ai 目前拥有开源模型综合排名 <strong>#1</strong> 的位置。
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ═══════ Section 2: 并购 & 融资 ═══════ -->
+    <h2 class="section-heading"><span class="sec-icon">💰</span>并购 & 融资</h2>
+
+    <div class="toggle-list">
+
+      <div class="toggle-item">
+        <div class="toggle-header" onclick="this.parentElement.classList.toggle('open')">
+          <div class="toggle-arrow">▶</div>
+          <div class="toggle-title-area">
+            <span class="toggle-num">4</span>
+            <span class="toggle-title">Anthropic 4 亿美元收购 Coefficient Bio，跨界生物科技 <span class="inline-tag tag-purple">并购</span></span>
+          </div>
+        </div>
+        <div class="toggle-body">
+          <div class="toggle-desc">
+            Anthropic 以约 <strong class="text-red">4 亿美元</strong>（股票交易）收购 AI 药物发现初创 <strong>Coefficient Bio</strong>。CEO Dario Amodei 称此次收购旨在获得「AI 比人类更早看到科学突破方向」的能力。这是 Anthropic 首次高调布局<span class="bg-green">生命科学</span>领域。
+          </div>
+        </div>
+      </div>
+
+      <div class="toggle-item">
+        <div class="toggle-header" onclick="this.parentElement.classList.toggle('open')">
+          <div class="toggle-arrow">▶</div>
+          <div class="toggle-title-area">
+            <span class="toggle-num">5</span>
+            <span class="toggle-title">生数科技完成近 20 亿元 B 轮融资，阿里云领投 <span class="inline-tag tag-yellow">融资</span></span>
+          </div>
+        </div>
+        <div class="toggle-body">
+          <div class="toggle-desc">
+            国内 AI 多媒体公司<strong>生数科技</strong>宣布完成 <strong class="text-orange">B 轮近 20 亿元</strong>融资，由<strong>阿里云</strong>领投。资本市场继续看好 AIGC 多媒体内容生成方向，该公司是国内视频生成赛道的头部玩家。
+          </div>
+        </div>
+      </div>
+
+      <div class="toggle-item">
+        <div class="toggle-header" onclick="this.parentElement.classList.toggle('open')">
+          <div class="toggle-arrow">▶</div>
+          <div class="toggle-title-area">
+            <span class="toggle-num">6</span>
+            <span class="toggle-title">Anthropic 企业支出即将超越 OpenAI <span class="inline-tag tag-orange">市场</span></span>
+          </div>
+        </div>
+        <div class="toggle-body">
+          <div class="toggle-desc">
+            Ramp 数据显示，Anthropic 的 <strong>Claude</strong> 在美国企业 AI 支出中即将超越 OpenAI。六个月内商业采用额<strong class="text-blue">翻倍至 84 亿美元</strong>。Anthropic 此前宣布 ARR 从 3 月的 190 亿跃升至 4 月的 <span class="bg-yellow">300 亿美元</span>。
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ═══════ Section 3: 芯片 & 基础设施 ═══════ -->
+    <h2 class="section-heading"><span class="sec-icon">⚡</span>芯片 & 基础设施</h2>
+
+    <div class="toggle-list">
+
+      <div class="toggle-item">
+        <div class="toggle-header" onclick="this.parentElement.classList.toggle('open')">
+          <div class="toggle-arrow">▶</div>
+          <div class="toggle-title-area">
+            <span class="toggle-num">7</span>
+            <span class="toggle-title">日本批准向 Rapidus 追加 40 亿美元，加速 2nm 芯片 <span class="inline-tag tag-red">芯片</span></span>
+          </div>
+        </div>
+        <div class="toggle-body">
+          <div class="toggle-desc">
+            日本产业省批准向 <strong>Rapidus</strong> 追加 <strong class="text-red">6315 亿日元（~40 亿美元）</strong>资金，国家援助总额达 2.35 万亿日元。目标为 <span class="bg-blue">2027 年量产 2nm 芯片</span>，用于驱动下一代 AI 工作负载。
+          </div>
+        </div>
+      </div>
+
+      <div class="toggle-item">
+        <div class="toggle-header" onclick="this.parentElement.classList.toggle('open')">
+          <div class="toggle-arrow">▶</div>
+          <div class="toggle-title-area">
+            <span class="toggle-num">8</span>
+            <span class="toggle-title">英伟达支持的 SiFive 估值达 36.5 亿美元 <span class="inline-tag tag-gray">生态</span></span>
+          </div>
+        </div>
+        <div class="toggle-body">
+          <div class="toggle-desc">
+            英伟达支持的 <strong>SiFive</strong> 估值达 <strong class="text-blue">36.5 亿美元</strong>，RISC-V 开放芯片架构需求激增。AI 算力竞赛不再只是 GPU 的游戏，定制芯片生态正在快速壮大。
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ═══════ Section 4: 安全 & 行业 ═══════ -->
+    <h2 class="section-heading"><span class="sec-icon">🛡️</span>安全 & 行业</h2>
+
+    <div class="toggle-list">
+
+      <div class="toggle-item">
+        <div class="toggle-header" onclick="this.parentElement.classList.toggle('open')">
+          <div class="toggle-arrow">▶</div>
+          <div class="toggle-title-area">
+            <span class="toggle-num">9</span>
+            <span class="toggle-title">Claude Mythos 引发多国监管紧急评估 <span class="inline-tag tag-pink">安全</span></span>
+          </div>
+        </div>
+        <div class="toggle-body">
+          <div class="toggle-desc">
+            Anthropic 的 <strong>Claude Mythos</strong> 被发现能发现并利用零日漏洞，被称为"GPT-2 以来首个因危险能力而受限的模型"。<strong>英国央行、FCA</strong> 与 NCSC 举行紧急会谈评估风险；美国财政部则鼓励银行测试该模型在金融领域的应用。<span class="bg-red">安全与商业化的张力空前</span>。
+          </div>
+        </div>
+      </div>
+
+      <div class="toggle-item">
+        <div class="toggle-header" onclick="this.parentElement.classList.toggle('open')">
+          <div class="toggle-arrow">▶</div>
+          <div class="toggle-title-area">
+            <span class="toggle-num">10</span>
+            <span class="toggle-title">苹果正在测试 AI 智能眼镜，计划 2027 年发布 <span class="inline-tag tag-blue">硬件</span></span>
+          </div>
+        </div>
+        <div class="toggle-body">
+          <div class="toggle-desc">
+            据报道，<strong>苹果</strong>正在测试 <strong class="text-purple">4 种 AI 智能眼镜设计</strong>，包括多种镜框样式和椭圆形摄像头。计划于 2026 年底与 iPhone 18 Pro 一同亮相，<span class="bg-yellow">2027 年正式发布</span>。AI 端侧设备竞赛进入新阶段。
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Divider -->
+    <div class="notion-divider"></div>
+
+    <!-- 速览表 -->
+    <h2 class="section-heading"><span class="sec-icon">📊</span>一周数字速览</h2>
+
+    <table class="notion-table">
+      <thead>
+        <tr>
+          <th>指标</th>
+          <th>数据</th>
+          <th>备注</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>GPT-6 性能提升</td>
+          <td><strong class="text-red">+40%</strong></td>
+          <td>vs 前代，4/14 发布</td>
+        </tr>
+        <tr>
+          <td>Anthropic ARR</td>
+          <td><strong class="text-blue">$300 亿</strong></td>
+          <td>环比 +58%（3月 $190 亿）</td>
+        </tr>
+        <tr>
+          <td>日本 Rapidus 援助</td>
+          <td><strong class="text-orange">2.35 万亿日元</strong></td>
+          <td>目标 2027 量产 2nm</td>
+        </tr>
+        <tr>
+          <td>生数科技融资</td>
+          <td><strong class="text-purple">~20 亿元</strong></td>
+          <td>阿里云领投 B 轮</td>
+        </tr>
+        <tr>
+          <td>Muse Spark 效率</td>
+          <td><strong class="text-blue">10x</strong></td>
+          <td>vs Llama 4 Maverick</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Quote -->
+    <div class="notion-quote">
+      <div class="quote-text">
+        "AI 正在从原型阶段冲刺至商业化阶段：OpenAI 用 GPT-6 争夺技术制高点，Anthropic 用并购拓展版图，Meta 放弃纯开源拥抱商用。模型竞赛的下半场，不再只比谁更大——而是比谁更快到达用户手中。"
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="footer-tags">
+        <span class="footer-tag">#GPT6</span>
+        <span class="footer-tag">#MuseSpark</span>
+        <span class="footer-tag">#GLM5</span>
+        <span class="footer-tag">#Anthropic</span>
+        <span class="footer-tag">#Rapidus</span>
+        <span class="footer-tag">#ClaudeMythos</span>
+        <span class="footer-tag">#Apple</span>
+      </div>
+      <span class="footer-source">Sources: smol.ai · creati.ai · sina.cn</span>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// 默认只展开第一条，其余折叠
+document.querySelectorAll('.toggle-item').forEach((item, i) => {
+  if (i !== 0) item.classList.remove('open');
+});
+</script>
+
+</body>
+</html>

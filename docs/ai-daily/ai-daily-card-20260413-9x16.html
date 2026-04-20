@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>AI Daily · 2026.04.13 · 9:16</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    width: 1080px;
+    height: 1920px;
+    overflow: hidden;
+  }
+
+  body {
+    font-family: 'Inter', 'Noto Sans SC', ui-sans-serif, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background: #ffffff;
+    color: rgb(55, 53, 47);
+  }
+
+  /* ── Page Container ── */
+  .page {
+    width: 1080px;
+    height: 1920px;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* ── Cover Banner ── */
+  .cover {
+    height: 200px;
+    background: linear-gradient(135deg, #2383e2 0%, #6940a5 40%, #d44c47 100%);
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(255,255,255,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 30%, rgba(255,255,255,0.12) 0%, transparent 50%);
+  }
+
+  .cover-badge {
+    position: absolute;
+    top: 32px;
+    right: 48px;
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+  }
+
+  .cover-date {
+    position: absolute;
+    bottom: 32px;
+    right: 48px;
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 1px;
+  }
+
+  /* ── Content ── */
+  .content {
+    flex: 1;
+    padding: 0 64px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── Header ── */
+  .header {
+    padding-top: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgb(233, 233, 231);
+    flex-shrink: 0;
+  }
+
+  .page-icon {
+    font-size: 52px;
+    margin-bottom: 8px;
+    margin-top: -48px;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.1));
+  }
+
+  .page-title {
+    font-size: 48px;
+    font-weight: 800;
+    color: rgb(55, 53, 47);
+    letter-spacing: -1.5px;
+    line-height: 1.15;
+  }
+
+  .page-subtitle {
+    font-size: 18px;
+    color: rgba(55, 53, 47, 0.45);
+    font-weight: 400;
+    margin-top: 6px;
+  }
+
+  .prop-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+  }
+
+  .notion-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 22px;
+    white-space: nowrap;
+  }
+
+  .tag-blue    { background: rgb(211, 229, 239); color: rgb(24, 51, 71); }
+  .tag-purple  { background: rgb(232, 222, 238); color: rgb(65, 36, 84); }
+  .tag-green   { background: rgb(219, 237, 219); color: rgb(28, 56, 41); }
+  .tag-orange  { background: rgb(250, 222, 201); color: rgb(73, 41, 14); }
+  .tag-red     { background: rgb(255, 226, 221); color: rgb(93, 23, 21); }
+  .tag-yellow  { background: rgb(253, 236, 200); color: rgb(64, 44, 27); }
+  .tag-pink    { background: rgb(245, 224, 233); color: rgb(76, 35, 55); }
+  .tag-gray    { background: rgb(227, 226, 224); color: rgb(50, 48, 44); }
+
+  /* ── News List ── */
+  .news-list {
+    flex: 1;
+    padding-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .news-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 15px 8px;
+    border-radius: 4px;
+    transition: background 0.1s;
+    border-bottom: 1px solid rgba(55, 53, 47, 0.04);
+  }
+
+  .news-item:hover {
+    background: rgba(55, 53, 47, 0.03);
+  }
+
+  .news-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .num-hot {
+    background: linear-gradient(135deg, #d44c47, #e8590c);
+    color: #fff;
+  }
+
+  .num-default {
+    background: rgba(55, 53, 47, 0.06);
+    color: rgba(55, 53, 47, 0.55);
+  }
+
+  .news-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .news-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: rgb(55, 53, 47);
+    line-height: 1.45;
+    letter-spacing: -0.3px;
+  }
+
+  .news-title .hl {
+    color: rgb(35, 131, 226);
+  }
+
+  .news-title .hl-red {
+    color: rgb(212, 76, 71);
+  }
+
+  .news-title .hl-purple {
+    color: rgb(105, 64, 165);
+  }
+
+  .news-title .hl-orange {
+    color: rgb(217, 115, 13);
+  }
+
+  .news-desc {
+    font-size: 15.5px;
+    color: rgba(55, 53, 47, 0.5);
+    line-height: 1.5;
+    margin-top: 4px;
+  }
+
+  .news-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 600;
+    vertical-align: middle;
+    margin-left: 8px;
+    position: relative;
+    top: -1px;
+  }
+
+  /* ── Callout ── */
+  .notion-callout {
+    display: flex;
+    gap: 12px;
+    padding: 16px 14px;
+    border-radius: 4px;
+    background: rgb(241, 241, 239);
+    margin-top: 12px;
+    flex-shrink: 0;
+  }
+
+  .callout-icon {
+    font-size: 22px;
+    flex-shrink: 0;
+    line-height: 1.5;
+  }
+
+  .callout-text {
+    font-size: 15px;
+    color: rgba(55, 53, 47, 0.7);
+    line-height: 1.65;
+  }
+
+  .callout-text strong {
+    font-weight: 700;
+    color: rgb(55, 53, 47);
+  }
+
+  /* ── Bottom ── */
+  .bottom-bar {
+    flex-shrink: 0;
+    padding: 14px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgb(233, 233, 231);
+    margin-top: 12px;
+    padding-bottom: 4px;
+  }
+
+  .bottom-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .bottom-tag {
+    font-size: 12px;
+    color: rgba(55, 53, 47, 0.35);
+    padding: 2px 8px;
+    border-radius: 3px;
+    background: rgba(55, 53, 47, 0.04);
+    font-weight: 500;
+  }
+
+  .bottom-source {
+    font-size: 12px;
+    color: rgba(55, 53, 47, 0.25);
+    letter-spacing: 0.3px;
+  }
+
+  /* ── Footer Branding ── */
+  .footer {
+    flex-shrink: 0;
+    height: 72px;
+    background: rgb(251, 251, 250);
+    border-top: 1px solid rgb(233, 233, 231);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .footer-logo {
+    font-size: 24px;
+  }
+
+  .footer-text {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(55, 53, 47, 0.35);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  /* ── Separator dots ── */
+  .sep-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(55, 53, 47, 0.15);
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 6px;
+  }
+
+  /* ── Data Row ── */
+  .data-strip {
+    display: flex;
+    gap: 0;
+    margin-top: 12px;
+    border-radius: 6px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .data-cell {
+    flex: 1;
+    padding: 14px 12px;
+    text-align: center;
+    border-right: 1px solid rgba(55, 53, 47, 0.06);
+  }
+
+  .data-cell:last-child { border-right: none; }
+
+  .data-cell:nth-child(odd) { background: rgb(251, 251, 250); }
+  .data-cell:nth-child(even) { background: rgb(247, 246, 243); }
+
+  .data-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(55, 53, 47, 0.4);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .data-value {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+  }
+
+  .dv-red { color: rgb(212, 76, 71); }
+  .dv-blue { color: rgb(35, 131, 226); }
+  .dv-orange { color: rgb(217, 115, 13); }
+  .dv-purple { color: rgb(105, 64, 165); }
+  .dv-green { color: rgb(0, 135, 107); }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- Cover Banner -->
+  <div class="cover">
+    <div class="cover-badge">AI DAILY BRIEFING</div>
+    <div class="cover-date">2026 · 04 · 13 SUN</div>
+  </div>
+
+  <!-- Content -->
+  <div class="content">
+
+    <!-- Header -->
+    <div class="header">
+      <div class="page-icon">📡</div>
+      <h1 class="page-title">AI Daily · 10 条速报</h1>
+      <div class="page-subtitle">2026年4月13日 · 星期日 · 第 15 周</div>
+      <div class="prop-tags">
+        <span class="notion-tag tag-blue">模型发布</span>
+        <span class="notion-tag tag-purple">并购融资</span>
+        <span class="notion-tag tag-red">芯片/算力</span>
+        <span class="notion-tag tag-pink">安全合规</span>
+        <span class="notion-tag tag-orange">企业动态</span>
+      </div>
+    </div>
+
+    <!-- News List -->
+    <div class="news-list">
+
+      <div class="news-item">
+        <div class="news-num num-hot">1</div>
+        <div class="news-content">
+          <div class="news-title"><span class="hl-red">GPT-6 官宣 4/14 发布</span>，性能提升 40%<span class="news-tag tag-red">🔥 头条</span></div>
+          <div class="news-desc">代号 Spud，预训练 3 月完成，直接对标 Claude Mythos</div>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-num num-default">2</div>
+        <div class="news-content">
+          <div class="news-title">Meta 发布首款<span class="hl">闭源旗舰 Muse Spark</span></div>
+          <div class="news-desc">原生多模态推理，效率 10x Llama 4 Maverick</div>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-num num-default">3</div>
+        <div class="news-content">
+          <div class="news-title"><span class="hl-purple">GLM-5.1 登顶</span>开源模型 #1</div>
+          <div class="news-desc">Code Arena #3，编码逼近 Claude Sonnet 4.6</div>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-num num-default">4</div>
+        <div class="news-content">
+          <div class="news-title">Anthropic <span class="hl-red">4 亿美元</span>收购 Coefficient Bio</div>
+          <div class="news-desc">首次高调布局生命科学，AI 驱动药物发现</div>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-num num-default">5</div>
+        <div class="news-content">
+          <div class="news-title">生数科技<span class="hl-orange">近 20 亿元 B 轮</span>，阿里云领投</div>
+          <div class="news-desc">国内视频生成赛道头部，资本持续看好 AIGC 多媒体</div>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-num num-default">6</div>
+        <div class="news-content">
+          <div class="news-title">Anthropic 企业支出<span class="hl">即将超越 OpenAI</span></div>
+          <div class="news-desc">ARR 从 $190 亿 → $300 亿，六个月翻倍</div>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-num num-default">7</div>
+        <div class="news-content">
+          <div class="news-title">日本 <span class="hl-red">40 亿美元</span>押注 Rapidus 2nm 芯片</div>
+          <div class="news-desc">国家援助 2.35 万亿日元，目标 2027 量产</div>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-num num-default">8</div>
+        <div class="news-content">
+          <div class="news-title">英伟达支持 SiFive <span class="hl">估值 $36.5 亿</span></div>
+          <div class="news-desc">RISC-V 开放架构需求激增，定制芯片生态壮大</div>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-num num-default">9</div>
+        <div class="news-content">
+          <div class="news-title">Claude Mythos 引发<span class="hl-red">多国监管紧急评估</span></div>
+          <div class="news-desc">可发现零日漏洞，英国央行 + FCA 紧急会谈</div>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-num num-default">10</div>
+        <div class="news-content">
+          <div class="news-title">苹果测试 <span class="hl-purple">4 款 AI 智能眼镜</span>设计</div>
+          <div class="news-desc">计划 2027 发布，iPhone 18 Pro 同期亮相</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Data Strip -->
+    <div class="data-strip">
+      <div class="data-cell">
+        <div class="data-label">GPT-6</div>
+        <div class="data-value dv-red">+40%</div>
+      </div>
+      <div class="data-cell">
+        <div class="data-label">Anthropic</div>
+        <div class="data-value dv-blue">$300亿</div>
+      </div>
+      <div class="data-cell">
+        <div class="data-label">Rapidus</div>
+        <div class="data-value dv-orange">¥2.35万亿</div>
+      </div>
+      <div class="data-cell">
+        <div class="data-label">生数科技</div>
+        <div class="data-value dv-purple">~20亿</div>
+      </div>
+    </div>
+
+    <!-- Callout -->
+    <div class="notion-callout">
+      <div class="callout-icon">💡</div>
+      <div class="callout-text">
+        <strong>编者按</strong> — AI 竞赛从「更大更强」进入「更快更专」的新阶段。GPT-6 争技术制高点，Anthropic 并购拓版图，Meta 放弃纯开源拥抱商用。下半场不只比谁更大，而是比谁更快触达用户。
+      </div>
+    </div>
+
+    <!-- Bottom -->
+    <div class="bottom-bar">
+      <div class="bottom-tags">
+        <span class="bottom-tag">#GPT6</span>
+        <span class="bottom-tag">#MuseSpark</span>
+        <span class="bottom-tag">#GLM5</span>
+        <span class="bottom-tag">#Anthropic</span>
+        <span class="bottom-tag">#Rapidus</span>
+        <span class="bottom-tag">#ClaudeMythos</span>
+        <span class="bottom-tag">#Apple</span>
+      </div>
+      <span class="bottom-source">smol.ai · creati.ai</span>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span class="footer-logo">📡</span>
+    <span class="footer-text">AI Daily Briefing</span>
+    <span class="sep-dot"></span>
+    <span class="footer-text" style="letter-spacing: 1px; font-weight: 500;">Powered by CodeBuddy</span>
+  </div>
+
+</div>
+
+</body>
+</html>
