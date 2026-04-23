@@ -3,7 +3,7 @@
     "date": "2026-04-23",
     "dateCompact": "20260423",
     "weekday": "星期四",
-    "extractedAt": "2026-04-23T02:22:52.289Z",
+    "extractedAt": "2026-04-23T03:18:04.544Z",
     "sourceFile": "CODM_Competitive_Daily_20260423.md",
     "version": "1.0.0"
   },
@@ -28,14 +28,27 @@
   ],
   "competitors": [
     {
-      "icon": "🎯",
-      "nameCN": "三角洲行动",
-      "nameEN": "Delta Force",
+      "icon": "🔀",
+      "nameCN": "横向维度对比",
+      "nameEN": "跨竞品同维度分析",
       "isSelf": false,
-      "threatLevel": "high",
-      "threatEmoji": "🔴",
-      "threatReason": "P0代言人官宣+双IP联动+猛攻节倒计时1天",
+      "threatLevel": "low",
+      "threatEmoji": "🟢",
+      "threatReason": "",
       "attentionLevel": "",
+      "highlights": [],
+      "tempo": "",
+      "sources": []
+    },
+    {
+      "icon": "🔽",
+      "nameCN": "纵向竞品详情",
+      "nameEN": "",
+      "isSelf": false,
+      "threatLevel": "low",
+      "threatEmoji": "🟢",
+      "threatReason": "端游赛道，路线图社区讨论期",
+      "attentionLevel": "⚡⚡⚡",
       "highlights": [
         {
           "text": "猛攻节代言人官宣姜文 — 华语影坛顶级咖位，「翻译翻译，什么叫惊喜」经典台词引爆社区",
@@ -54,7 +67,35 @@
           "priority": 2
         },
         {
+          "text": "S4「永恒监狱」(Eternal Prison)上线次日，重生岛BR+DMZ双模式运营稳定",
+          "priority": 2
+        },
+        {
+          "text": "哥斯拉×金刚MonsterVerse联动4/24正式开启：怪兽主题活动+限定任务+联动外观解锁",
+          "priority": 2
+        },
+        {
+          "text": "一周年第二波奖励今日(4/23)发放：15张「无人区」门票+S级武器涂装+AK102涂装+3×3安全箱",
+          "priority": 2
+        },
+        {
           "text": "乌鲁鲁联动皮肤曝光（疑似猛攻节限定），社区高度期待",
+          "priority": 1
+        },
+        {
+          "text": "Mythic DP27 LMG首日表现引社区讨论，通行证4款新干员外观持续曝光",
+          "priority": 1
+        },
+        {
+          "text": "4500点券(Bonds)福利总计已全部可领取：登录奖励+周年庆任务+挑战任务+兑换码",
+          "priority": 1
+        },
+        {
+          "text": "2026路线图持续社区热议：S3(五月)→S4(七月)→S5(秋季)三个赛季清晰排期",
+          "priority": 1
+        },
+        {
+          "text": "S4确认Wake Island(威克岛)经典回归+海战模式(Naval Warfare)实装，航母可操控",
           "priority": 1
         },
         {
@@ -64,36 +105,6 @@
         {
           "text": "全面战场国际邀请赛4/27报名开放，吴彦祖联动传说外观「飞虎-威龙」4/29上线",
           "priority": 0
-        }
-      ],
-      "tempo": "「顶级代言人+双IP联动+猛攻节福利+电竞」四线引爆，年度最高密度宣发周",
-      "sources": [
-        "https://www.sohu.com/a/1013123316_122575551",
-        "https://news.17173.com/content/04212026/115107807.shtml",
-        "https://www.gamersky.com/news/202604/2126902.shtml"
-      ]
-    },
-    {
-      "icon": "🔫",
-      "nameCN": "CODM / 使命召唤手游",
-      "nameEN": "",
-      "isSelf": true,
-      "threatLevel": "self",
-      "threatEmoji": "",
-      "threatReason": "自家S4赛季运营第二天+联动倒计时",
-      "attentionLevel": "⚡⚡⚡",
-      "highlights": [
-        {
-          "text": "S4「永恒监狱」(Eternal Prison)上线次日，重生岛BR+DMZ双模式运营稳定",
-          "priority": 2
-        },
-        {
-          "text": "哥斯拉×金刚MonsterVerse联动4/24正式开启：怪兽主题活动+限定任务+联动外观解锁",
-          "priority": 2
-        },
-        {
-          "text": "Mythic DP27 LMG首日表现引社区讨论，通行证4款新干员外观持续曝光",
-          "priority": 1
         },
         {
           "text": "全新BR职业Toxic Overload毒气战术上线首日社区反馈积极",
@@ -106,31 +117,6 @@
         {
           "text": "创作者内容矩阵持续产出S4首发实况+哥斯拉预告内容",
           "priority": 0
-        }
-      ],
-      "tempo": "「S4首发热度释放+联动预热→4/24怪兽活动正式启动」蓄势待发",
-      "sources": [
-        "https://www.callofduty.com/blog/2026/04/call-of-duty-mobile-season-4-2026-eternal-prison",
-        "https://gamingonphone.com/news/cod-mobile-season-4-2026-eternal-prison-brings-rebirth-island-mythic-dp27-and-godzilla-x-kong-collaboration/"
-      ]
-    },
-    {
-      "icon": "🏙️",
-      "nameCN": "暗区突围：无限",
-      "nameEN": "Arena Breakout: Infinite",
-      "isSelf": false,
-      "threatLevel": "medium",
-      "threatEmoji": "🟡",
-      "threatReason": "周年庆第二波奖励今日释放",
-      "attentionLevel": "",
-      "highlights": [
-        {
-          "text": "一周年第二波奖励今日(4/23)发放：15张「无人区」门票+S级武器涂装+AK102涂装+3×3安全箱",
-          "priority": 2
-        },
-        {
-          "text": "4500点券(Bonds)福利总计已全部可领取：登录奖励+周年庆任务+挑战任务+兑换码",
-          "priority": 1
         },
         {
           "text": "混沌质概率UP活动持续中(4/21起)，红色品质收藏品产出提高",
@@ -143,31 +129,6 @@
         {
           "text": "S5「异变」赛季稳定运营，新枪械改装码192/FAMAS分类系统上线",
           "priority": 0
-        }
-      ],
-      "tempo": "「周年庆二波福利高峰+赛事+持续运营」最大化周年庆长尾热度",
-      "sources": [
-        "https://aqtwwx.qq.com/web202501/newsdetail.html?newsid=18767505",
-        "https://soren.com/zh-CN/news/arena-breakout-infinite/2026-04-20-arena-breakout-infinite"
-      ]
-    },
-    {
-      "icon": "🪖",
-      "nameCN": "Battlefield 6",
-      "nameEN": "战地6",
-      "isSelf": false,
-      "threatLevel": "low",
-      "threatEmoji": "🟢",
-      "threatReason": "端游赛道，路线图社区讨论期",
-      "attentionLevel": "",
-      "highlights": [
-        {
-          "text": "2026路线图持续社区热议：S3(五月)→S4(七月)→S5(秋季)三个赛季清晰排期",
-          "priority": 1
-        },
-        {
-          "text": "S4确认Wake Island(威克岛)经典回归+海战模式(Naval Warfare)实装，航母可操控",
-          "priority": 1
         },
         {
           "text": "S3五月上线Golmud Railway重制+服务器浏览器+REDSEC天梯排位",
@@ -184,6 +145,13 @@
       ],
       "tempo": "「路线图信心释放+经典地图回归+海战革新」长线社区运营",
       "sources": [
+        "https://www.sohu.com/a/1013123316_122575551",
+        "https://news.17173.com/content/04212026/115107807.shtml",
+        "https://www.gamersky.com/news/202604/2126902.shtml",
+        "https://www.callofduty.com/blog/2026/04/call-of-duty-mobile-season-4-2026-eternal-prison",
+        "https://gamingonphone.com/news/cod-mobile-season-4-2026-eternal-prison-brings-rebirth-island-mythic-dp27-and-godzilla-x-kong-collaboration/",
+        "https://aqtwwx.qq.com/web202501/newsdetail.html?newsid=18767505",
+        "https://soren.com/zh-CN/news/arena-breakout-infinite/2026-04-20-arena-breakout-infinite",
         "https://www.ea.com/games/battlefield/battlefield-6/seasons/battlefield-2026-roadmap",
         "https://wccftech.com/battlefield-6-2026-roadmap-naval-warfare-season-4/"
       ]
@@ -217,39 +185,40 @@
   ],
   "insights": [
     {
-      "title": "三角洲行动「姜文代言+双IP联动」对CODM宣发构成最大竞争压力",
-      "body": "三角洲行动在猛攻节开启前一天（4/23）官宣姜文代言，叠加4/30古墓丽影劳拉联动，形成「顶级代言人+双IP联动+年度盛典」三重buff。姜文的全民知名度+《让子弹飞》的经典IP效应远超一般游戏联动。",
+      "title": "4/24「三方同日对撞」— CODM 必须打赢视觉差异化战",
+      "body": "明日将出现三角洲猛攻节首期 vs CODM哥斯拉联动 vs 暗区突围周年庆余热的三方同日竞争。横向对比来看，三角洲在代言人/IP维度占绝对优势（姜文+双IP），CODM需要在视觉冲击力这个维度打出差异——MonsterVerse的巨型怪兽是其他竞品无法复制的视觉资产。",
       "codmActions": [
-        "4/24是关键对撞日：CODM哥斯拉×金刚联动 vs 三角洲猛攻节同日开启，宣发素材必须当日高密度释放抢占声量",
-        "姜文代言启示：国内市场代言人/IP的话题引爆力极强，CODM后续联动可考虑华语顶级IP+明星组合拳",
-        "三角洲「双IP同期叠加」的策略值得关注——一个代言人+一个游戏IP同时释放，制造话题浓度"
-      ]
-    },
-    {
-      "title": "暗区突围「分波福利+长尾运营」策略值得持续跟踪",
-      "body": "暗区突围周年庆从4/17到4/23分两波发放，有效将热度从1天拉长到7天。今日第二波（无人区门票）为高价值稀缺福利，精准制造二次登录高峰。",
-      "codmActions": [
-        "S4赛季中期活动规划应参考分波策略，避免哥斯拉联动热度首周后断崖",
-        "高价值稀缺道具（如限定武器/限定抽奖机会）适合作为「第二波福利」制造回流高峰"
-      ]
-    },
-    {
-      "title": "明日(4/24)「三方同日竞争」是本月最激烈宣发日",
-      "body": "4/24将出现三角洲猛攻节首期+CODM哥斯拉联动+暗区突围周年庆余热的三方同日竞争。",
-      "codmActions": [
-        "建议4/24当日准备「哥斯拉×金刚」核弹级视觉素材——巨型怪兽的视觉冲击力是CODM的差异化王牌",
+        "4/24当日准备「哥斯拉×金刚」核弹级视觉素材——巨型怪兽的视觉冲击力是CODM的差异化王牌，横向对比中无人能敌",
         "社媒矩阵应在4/24零点即开始释放联动内容，抢在三角洲猛攻节前建立声量优势",
         "提前准备创作者KOL内容包，确保联动首日内容产出不被猛攻节分流"
+      ]
+    },
+    {
+      "title": "横向对比揭示：CODM缺「代言人层」，需要用「IP深度」弥补",
+      "body": "横向看IP/代言人维度：三角洲有姜文（全民级代言人），暗区有周年庆福利锚定，CODM 仅有IP联动缺少人物锚点。MonsterVerse 是S级IP但缺少「人格化」传播点——哥斯拉没有台词能出圈。",
+      "codmActions": [
+        "后续联动可考虑华语顶级IP+明星组合拳，补齐代言人维度的缺口",
+        "本次联动应深挖MonsterVerse的「场景式」传播——巨兽破坏城市的震撼场景比角色更有传播力",
+        "在KOL内容中强化「沉浸感」叙事：怪兽从天而降的BR实况比静态海报更适合传播"
+      ]
+    },
+    {
+      "title": "暗区突围「分波福利」策略 — CODM 赛季中期可复制",
+      "body": "纵向看暗区突围的周年庆运营：4/17首波→4/23二波，7天分两波精准拉升登录曲线。横向对比CODM通常是赛季首日一波放完，中期活跃容易断崖。",
+      "codmActions": [
+        "S4赛季中期活动规划应参考分波策略，MonsterVerse联动可设计「第一周怪兽活动 → 第二周终极BOSS挑战」双波节奏",
+        "高价值稀缺道具（如限定武器/限定抽奖机会）适合作为「第二波福利」制造回流高峰",
+        "将暗区「无人区门票」这种稀缺资源分波发放的思路应用到CODM的限定内容解锁节奏中"
       ]
     }
   ],
   "stats": {
-    "totalCompetitors": 3,
-    "highThreat": 1,
-    "mediumThreat": 1,
-    "lowThreat": 1,
+    "totalCompetitors": 2,
+    "highThreat": 0,
+    "mediumThreat": 0,
+    "lowThreat": 2,
     "totalInsights": 3,
-    "totalActions": 8,
+    "totalActions": 9,
     "maxIntensity": 5,
     "codmIntensity": 4
   }

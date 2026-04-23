@@ -395,43 +395,29 @@
     "dateCompact": "20260423",
     "weekday": "星期四",
     "stats": {
-      "totalCompetitors": 3,
-      "highThreat": 1,
-      "mediumThreat": 1,
-      "lowThreat": 1,
+      "totalCompetitors": 2,
+      "highThreat": 0,
+      "mediumThreat": 0,
+      "lowThreat": 2,
       "totalInsights": 3,
-      "totalActions": 8,
+      "totalActions": 9,
       "maxIntensity": 5,
       "codmIntensity": 4
     },
     "competitors": [
       {
-        "nameCN": "三角洲行动",
-        "isSelf": false,
-        "threatLevel": "high",
-        "threatEmoji": "🔴",
-        "intensityScore": 5
-      },
-      {
-        "nameCN": "CODM / 使命召唤手游",
-        "isSelf": true,
-        "threatLevel": "self",
-        "threatEmoji": "",
-        "intensityScore": 0
-      },
-      {
-        "nameCN": "暗区突围：无限",
-        "isSelf": false,
-        "threatLevel": "medium",
-        "threatEmoji": "🟡",
-        "intensityScore": 4
-      },
-      {
-        "nameCN": "Battlefield 6",
+        "nameCN": "横向维度对比",
         "isSelf": false,
         "threatLevel": "low",
         "threatEmoji": "🟢",
-        "intensityScore": 3
+        "intensityScore": 0
+      },
+      {
+        "nameCN": "纵向竞品详情",
+        "isSelf": false,
+        "threatLevel": "low",
+        "threatEmoji": "🟢",
+        "intensityScore": 0
       }
     ]
   }
