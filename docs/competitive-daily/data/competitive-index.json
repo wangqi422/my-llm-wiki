@@ -420,5 +420,36 @@
         "intensityScore": 0
       }
     ]
+  },
+  {
+    "date": "2026-04-24",
+    "dateCompact": "20260424",
+    "weekday": "星期五",
+    "stats": {
+      "totalCompetitors": 2,
+      "highThreat": 0,
+      "mediumThreat": 1,
+      "lowThreat": 1,
+      "totalInsights": 3,
+      "totalActions": 8,
+      "maxIntensity": 0,
+      "codmIntensity": 0
+    },
+    "competitors": [
+      {
+        "nameCN": "横向维度对比",
+        "isSelf": false,
+        "threatLevel": "low",
+        "threatEmoji": "🟢",
+        "intensityScore": 0
+      },
+      {
+        "nameCN": "竞品详情",
+        "isSelf": false,
+        "threatLevel": "medium",
+        "threatEmoji": "🟡",
+        "intensityScore": 0
+      }
+    ]
   }
 ]
