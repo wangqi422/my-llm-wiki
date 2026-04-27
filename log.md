@@ -15,7 +15,18 @@
 - **版式**: Dark Ops 暗黑风（2026-04-19 确认版式）
 - **GitHub**: https://wangqi422.github.io/my-llm-wiki/docs/competitive-daily/competitive-daily-card-20260427.html
 
-## [2026-04-27 09:50] WEEKLY-CARD FIX | AI 干货周报 Issue #05 修订版
+## [2026-04-27 09:55] WEEKLY-CARD CONFIRMED | AI 干货周报 Issue #05 最终版
+
+- **用户确认版**：「团队级 Agent + 1M 上下文周」（9 条，三板块 3/3/3）
+- 主题：OpenAI Workspace Agents / DeepSeek V4 / Anthropic Claude Code Subagents & Agent Teams / Google 企业 Agent 构建器 / Karpathy LLM Wiki
+- 产物状态：仓库内 `raw/daily-reports/AI_Practical_Weekly_Report_20260426.md` + `docs/ai-daily/ai-weekly-card-20260426.{html,png}` 即为最终版
+- 推送：已推送至 3 个企微群（AI小柒速递 / 新群 / 竞品日报群）
+- GitHub Pages：https://wangqi422.github.io/my-llm-wiki/docs/ai-daily/ai-weekly-card-20260426.html
+- 复盘：早期我自行做了一版「Agent 编程基建周 + ComfyUI 融资」9 条，又做了一版「视觉 AI 双爆发 + GPT-Image-2 + Claude Design」10 条修订版；自动化任务 `ai` 在 09:51 触发产出当前最终版，用户认可此版本。中间所有版本作废。
+
+---
+
+## [2026-04-27 09:50] WEEKLY-CARD FIX | AI 干货周报 Issue #05 修订版（已被自动化任务覆盖，作废）
 
 - **订正原因**：用户指出原版漏掉 GPT-Image-2（4/21 OpenAI 发布）和 Claude Design（持续发酵）
 - **本次修订**：精选条数 9 → **10 条**
