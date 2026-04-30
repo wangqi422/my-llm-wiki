@@ -3,16 +3,33 @@
     "date": "2026-04-30",
     "dateCompact": "20260430",
     "weekday": "星期四",
-    "extractedAt": "2026-04-30T06:11:27.219Z",
+    "extractedAt": "2026-04-30T06:15:31.404Z",
     "sourceFile": "CODM_Competitive_Daily_20260430.md",
     "version": "1.0.0"
   },
-  "overview": "",
-  "highlights": [],
+  "overview": "五一前夕竞品集中发力：三角洲行动猛攻节4/30全面上线，2600三角券+古墓丽影联动预热双重钩子；暗区突围手游4/30四大新玩法同步上线，\"淘金节\"主题赛季开启；暗区突围：无限端游S5「异变」平稳运营。CODM\"困兽之斗\"进入稳定期，哥斯拉联动+五一登录活动需确保假期声量不被竞品碾压。",
+  "highlights": [
+    {
+      "text": "[三角洲] 4/30猛攻节福利全面上线：2600限时三角券+古墓丽影联动预热",
+      "priority": 3
+    },
+    {
+      "text": "[暗区手游] 4/30四大全新玩法同步上线，\"淘金节\"主题赛季开启",
+      "priority": 3
+    },
+    {
+      "text": "[CODM] 困兽之斗稳定运营，五一登录活动预热（外星人角色+幸运币）",
+      "priority": 2
+    },
+    {
+      "text": "[暗区端游] S5「异变」平稳运营，无重大更新",
+      "priority": 1
+    }
+  ],
   "competitors": [
     {
-      "icon": "🎯",
-      "nameCN": "重点速览",
+      "icon": "🔀",
+      "nameCN": "横向维度对比",
       "nameEN": "",
       "isSelf": false,
       "threatLevel": "low",
@@ -24,82 +41,53 @@
       "sources": []
     },
     {
-      "icon": "⚖️",
-      "nameCN": "横向对比矩阵",
-      "nameEN": "",
-      "isSelf": false,
-      "threatLevel": "low",
-      "threatEmoji": "🟢",
-      "threatReason": "",
-      "attentionLevel": "",
-      "highlights": [],
-      "tempo": "",
-      "sources": []
-    },
-    {
-      "icon": "🎮",
+      "icon": "🔽",
       "nameCN": "竞品详情",
       "nameEN": "",
       "isSelf": false,
-      "threatLevel": "low",
-      "threatEmoji": "🟢",
-      "threatReason": "",
+      "threatLevel": "medium",
+      "threatEmoji": "🟡",
+      "threatReason": "五一黄金周窗口期，需确保声量",
       "attentionLevel": "",
       "highlights": [
         {
-          "text": "4月30日，猛攻节福利全面上线，2600 限时三角券人人可得，全新定制装备券助力战斗",
+          "text": "4/30猛攻节福利全面上线：2600限时三角券人人可得，全新定制装备券助力战斗，精准狙击五一假期用户时长",
+          "priority": 3
+        },
+        {
+          "text": "古墓丽影联动5/8预热中：挖宝玩法有机会获取「手办：劳拉」，完成系列活动可免费获取联动传说武器外观「AKM战斗步枪-古墓丽影」",
+          "priority": 3
+        },
+        {
+          "text": "4/30四大全新玩法模式同步上线：PvE、PvP、撤离战、资源争夺战差异化布局，内容厚度碾压同期竞品单点更新",
+          "priority": 3
+        },
+        {
+          "text": "S9「回声」赛季持续发酵：声纹侦察主题、新干员、新武器、水下战斗机制热度不减",
+          "priority": 2
+        },
+        {
+          "text": "\"淘金节\"主题赛季开启：以\"驮宝瑞象\"为核心意象，沉浸式寻宝体验，切中搜打撤核心爽点\"暴富快感\"",
+          "priority": 2
+        },
+        {
+          "text": "4/21\"困兽之斗\"版本进入稳定运营期，哥斯拉大战金刚联动转盘持续",
+          "priority": 2
+        },
+        {
+          "text": "五一登录活动预热：可领取外星人角色和使命卡片幸运币",
+          "priority": 2
+        },
+        {
+          "text": "2600三角券为限时货币，制造FOMO感，驱动假期集中登录",
           "priority": 0
         },
         {
-          "text": "S9「回声」赛季持续发酵：声纹侦察主题、新干员、新武器、水下战斗机制",
-          "priority": 0
-        },
-        {
-          "text": "古墓丽影联动预热：5月8日起，挖宝玩法有机会获取「手办：劳拉」，完成系列活动可免费获取联动传说武器外观「AKM战斗步枪-古墓丽影」",
-          "priority": 0
-        },
-        {
-          "text": "猛攻节选择在 4/30（五一前夕）全面放量福利，精准狙击假期用户时长",
-          "priority": 0
-        },
-        {
-          "text": "2600 三角券为限时货币，制造 FOMO 感，驱动假期集中登录",
-          "priority": 0
-        },
-        {
-          "text": "古墓丽影联动是经典 IP 焕新，对 25-35 岁男性用户有强吸引力",
-          "priority": 0
-        },
-        {
-          "text": "对 CODM 启示：五一节点福利投放需加码，避免用户被三角洲\"三角券\"虹吸",
-          "priority": 0
-        },
-        {
-          "text": "4月30日四大全新玩法模式同步上线：PvE、PvP、撤离战、资源争夺战差异化布局",
-          "priority": 0
-        },
-        {
-          "text": "\"淘金节\"主题赛季：以\"驮宝瑞象\"为核心意象，沉浸式寻宝体验",
-          "priority": 0
-        },
-        {
-          "text": "6小时前刚发布更新，热度和新鲜感正处于峰值",
-          "priority": 0
-        },
-        {
-          "text": "\"淘金节\"主题切中搜打撤核心爽点——\"暴富快感\"，心理钩子精准",
-          "priority": 0
-        },
-        {
-          "text": "四大玩法同时上线，内容厚度碾压同期竞品单点更新",
+          "text": "刚发布更新，热度和新鲜感正处于峰值",
           "priority": 0
         },
         {
           "text": "手游端持续高频迭代，与端游「无限」形成互补矩阵",
-          "priority": 0
-        },
-        {
-          "text": "对 CODM 启示：DMZ/搜打撤模式的内容深度和随机奖励机制值得借鉴，CODM 的 DMZ 模式需加快内容迭代节奏",
           "priority": 0
         },
         {
@@ -111,77 +99,90 @@
           "priority": 0
         },
         {
-          "text": "端游瞄准 PC 硬核用户，与 CODM 移动端主战场错位竞争",
+          "text": "端游瞄准PC硬核用户，与CODM移动端主战场错位竞争",
           "priority": 0
         },
         {
-          "text": "画质和沉浸感是端游壁垒，对 CODM 高端玩家有潜在分流",
+          "text": "4/27 DMZ模式平衡性调整：打击者削弱、DP27增强，核心玩家反馈积极",
           "priority": 0
         },
         {
-          "text": "当前威胁有限，但需关注其电竞赛事布局",
-          "priority": 0
-        },
-        {
-          "text": "4月21日\"困兽之斗\"版本进入稳定运营期",
-          "priority": 0
-        },
-        {
-          "text": "4月27日平衡性调整：DMZ 模式打击者削弱、DP27 增强",
-          "priority": 0
-        },
-        {
-          "text": "哥斯拉大战金刚联动转盘持续进行中",
-          "priority": 0
-        },
-        {
-          "text": "五一登录活动预热：可领取外星人角色和使命卡片幸运币",
+          "text": "S4赛季手册暗示新内容，5月是否会有新联动待官宣",
           "priority": 0
         }
       ],
       "tempo": "",
-      "sources": []
-    },
-    {
-      "icon": "🔥",
-      "nameCN": "明日关注",
-      "nameEN": "",
-      "isSelf": false,
-      "threatLevel": "low",
-      "threatEmoji": "🟢",
-      "threatReason": "",
-      "attentionLevel": "",
-      "highlights": [
-        {
-          "text": "五一假期首日（5/1）各竞品活动数据表现",
-          "priority": 0
-        },
-        {
-          "text": "三角洲行动猛攻节首周留存数据",
-          "priority": 0
-        },
-        {
-          "text": "暗区突围\"淘金节\"玩法口碑发酵",
-          "priority": 0
-        },
-        {
-          "text": "CODM 五一登录活动实际参与率",
-          "priority": 0
-        }
-      ],
-      "tempo": "",
-      "sources": []
+      "sources": [
+        "https://www.9game.cn/sjzxd/11823571.html",
+        "https://www.ali213.net/news/html/2026-4/1006993.html",
+        "https://www.huanxiyou.com/a/28315.html",
+        "https://np.huya.com/news/articles/a4ee2572516860aaafabf98a79c10c.html",
+        "https://aqtwwx.qq.com/web202501/index.html",
+        "https://codm.qq.com/gicp/news/887/18771079.html",
+        "https://www.bilibili.com/video/BV12toCBGE7S/"
+      ]
     }
   ],
-  "intensityTable": [],
-  "insights": [],
+  "intensityTable": [
+    {
+      "name": "三角洲行动",
+      "event": "⭐×5",
+      "score": 0,
+      "means": ""
+    },
+    {
+      "name": "暗区突围",
+      "event": "⭐×4",
+      "score": 0,
+      "means": ""
+    },
+    {
+      "name": "CODM",
+      "event": "⭐×3",
+      "score": 0,
+      "means": ""
+    },
+    {
+      "name": "暗区突围：无限",
+      "event": "⭐×1",
+      "score": 0,
+      "means": ""
+    }
+  ],
+  "insights": [
+    {
+      "title": "五一节点防御：三角洲+暗区双重夹击，CODM需打时间差",
+      "body": "三角洲猛攻节2600三角券和暗区四大玩法同日上线，五一前夕两大竞品同时发力。CODM如在4/30正面硬刚容易被声量淹没，建议5/1早8点抢先发布五一专属活动，打时间差。",
+      "codmActions": [
+        "4/30保持低调观察，5/1早8点抢先发布\"CODMer的五一专属礼\"主视觉",
+        "五一期间每日一个\"CODM五一限定内容\"保持持续曝光",
+        "避免福利堆砌，突出\"CODM专属感\"差异化"
+      ]
+    },
+    {
+      "title": "福利钩子设计：参考三角洲\"限时货币+免费传说武器\"组合",
+      "body": "三角洲2600三角券是通用货币限时发放，制造强FOMO；古墓丽影免费传说武器外观则提供社交展示价值。CODM的\"外星人角色+幸运币\"组合获得感偏弱。",
+      "codmActions": [
+        "建议追加限时免费史诗/传说武器皮肤，比\"幸运币\"更有即时获得感",
+        "参考三角洲策略：免费传说武器需完成系列活动才能获取，既送福利又拉活跃"
+      ]
+    },
+    {
+      "title": "DMZ模式需加速迭代：暗区四大玩法的内容厚度值得借鉴",
+      "body": "暗区手游一次上线PvE、PvP、撤离战、资源争夺战四种模式，内容厚度远超CODM DMZ的单点更新。搜打撤品类玩家对\"新鲜感\"极度敏感。 --- CODM 运营启发（核心行动项） 1. 5/1早8点抢占先机：抢先发布五一登录活动主视觉，打时间差 2. 福利钩子升级：追加免费史诗/传说武器皮肤，增强即时获得感 3. DMZ内容加速：每赛季至少一次大更新，借鉴暗区随机奖励机制",
+      "codmActions": [
+        "CODM DMZ模式需至少每赛季一次大更新（新地图/新机制），维持核心玩家新鲜度",
+        "借鉴暗区\"淘金节\"的随机奖励机制，增加DMZ搜刮的惊喜感和\"暴富快感\""
+      ]
+    }
+  ],
   "stats": {
-    "totalCompetitors": 4,
+    "totalCompetitors": 2,
     "highThreat": 0,
-    "mediumThreat": 0,
-    "lowThreat": 4,
-    "totalInsights": 0,
-    "totalActions": 0,
+    "mediumThreat": 1,
+    "lowThreat": 1,
+    "totalInsights": 3,
+    "totalActions": 7,
     "maxIntensity": 0,
     "codmIntensity": 0
   }
